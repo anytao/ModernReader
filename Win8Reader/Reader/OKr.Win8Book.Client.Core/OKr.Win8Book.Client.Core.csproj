@@ -102,7 +102,22 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Ad.cs" />
+    <Compile Include="Data\Book.cs" />
+    <Compile Include="Data\Chapter.cs" />
+    <Compile Include="Data\ChapterMark.cs" />
+    <Compile Include="Data\Mark.cs" />
+    <Compile Include="Data\OKrApp.cs" />
+    <Compile Include="Data\Page.cs" />
+    <Compile Include="OKrBookConfig.cs" />
+    <Compile Include="OKrBookContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\OKr.Common\OKr.Common.csproj">
+      <Project>{da9207ea-d120-4995-8a58-d20bd99afa29}</Project>
+      <Name>OKr.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

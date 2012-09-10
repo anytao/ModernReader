@@ -100,8 +100,13 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Folder Include="Config\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Web\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\OKrContextBase.cs" />
+    <Compile Include="Data\EntityBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
