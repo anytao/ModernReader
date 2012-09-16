@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reader", "Reader", "{624546
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKr.Common", "Common\OKr.Common\OKr.Common.csproj", "{DA9207EA-D120-4995-8A58-D20BD99AFA29}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packer", "Packer", "{18BE8983-515F-4CD9-985A-D03E2D304CB8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Builder", "Builder", "{18BE8983-515F-4CD9-985A-D03E2D304CB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKr.Win8Book.Client.Core", "Reader\OKr.Win8Book.Client.Core\OKr.Win8Book.Client.Core.csproj", "{42D85E93-4708-4BDD-9D63-94C685C7A1C5}"
 EndProject
