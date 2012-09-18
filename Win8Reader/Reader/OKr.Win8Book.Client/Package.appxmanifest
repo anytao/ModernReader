@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="0238a92c-674d-4741-858d-26b65d2588f4" Publisher="CN=Tao" Version="1.0.0.0" />
+  <Identity Name="fc72d4e1-3bbb-42bd-bde9-d39e858c9d63" Publisher="CN=Anytao" Version="1.0.0.0" />
   <Properties>
     <DisplayName>OKr.Win8Book.Client</DisplayName>
-    <PublisherDisplayName>Tao</PublisherDisplayName>
+    <PublisherDisplayName>Anytao</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
-    <OSMinVersion>6.2.0</OSMinVersion>
-    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="OKr.Win8Book.Client.App">
-      <VisualElements DisplayName="OKr Reader" Logo="Assets\Img\Logo.png" SmallLogo="Assets\Img\SmallLogo.png" Description="A win8 ebook reader for txt and pics." ForegroundText="light" BackgroundColor="#464646">
-        <DefaultTile ShowName="allLogos" ShortName="OKrBook" />
-        <SplashScreen Image="Assets\Img\SplashScreen.png" />
+      <VisualElements DisplayName="OKrReader" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="A windows 8 text book reader." ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>
     </Application>
   </Applications>

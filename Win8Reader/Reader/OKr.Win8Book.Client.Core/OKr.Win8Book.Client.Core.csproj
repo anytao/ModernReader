@@ -102,6 +102,10 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\TextParser.cs" />
+    <Compile Include="Context\BookContext.cs" />
+    <Compile Include="Context\OKrBookContextBase.cs" />
+    <Compile Include="Context\ProgressContext.cs" />
     <Compile Include="Data\Ad.cs" />
     <Compile Include="Data\Book.cs" />
     <Compile Include="Data\Chapter.cs" />
@@ -110,7 +114,9 @@
     <Compile Include="Data\OKrApp.cs" />
     <Compile Include="Data\Page.cs" />
     <Compile Include="OKrBookConfig.cs" />
+    <Compile Include="OKrBookConstant.cs" />
     <Compile Include="OKrBookContext.cs" />
+    <Compile Include="OKrBookService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

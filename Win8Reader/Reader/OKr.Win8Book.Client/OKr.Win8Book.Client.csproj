@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A13C63F-ED4D-41CF-BA5C-B290D3574A4F}</ProjectGuid>
+    <ProjectGuid>{9EF40851-686C-47C1-B40A-AACD6B61115C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OKr.Win8Book.Client</RootNamespace>
@@ -101,7 +101,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Control\" />
+    <ProjectReference Include="..\..\Common\OKr.Common\OKr.Common.csproj">
+      <Project>{da9207ea-d120-4995-8a58-d20bd99afa29}</Project>
+      <Name>OKr.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OKr.Win8Book.Client.Core\OKr.Win8Book.Client.Core.csproj">
+      <Project>{42d85e93-4708-4bdd-9d63-94c685c7a1c5}</Project>
+      <Name>OKr.Win8Book.Client.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -116,20 +123,161 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Data\me.config" />
+    <Content Include="Assets\Data\okrapp.config" />
     <None Include="OKr.Win8Book.Client_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Img\Logo.png" />
-    <Content Include="Assets\Img\SmallLogo.png" />
-    <Content Include="Assets\Img\SplashScreen.png" />
-    <Content Include="Assets\Img\StoreLogo.png" />
+    <Content Include="Assets\Data\app\okr-bg-3guo.png" />
+    <Content Include="Assets\Data\app\okr-bg-fengshen.png" />
+    <Content Include="Assets\Data\app\okr-bg-honglou.png" />
+    <Content Include="Assets\Data\app\okr-bg-jinping.png" />
+    <Content Include="Assets\Data\app\okr-bg-liaozhai.png" />
+    <Content Include="Assets\Data\app\okr-bg-rulin.png" />
+    <Content Include="Assets\Data\app\okr-bg-shuihu.png" />
+    <Content Include="Assets\Data\app\okr-bg-soushen.png" />
+    <Content Include="Assets\Data\app\okr-bg-xixiang.png" />
+    <Content Include="Assets\Data\app\okr-bg-xiyou.png" />
+    <Content Include="Assets\Data\book\001.txt" />
+    <Content Include="Assets\Data\book\002.txt" />
+    <Content Include="Assets\Data\book\003.txt" />
+    <Content Include="Assets\Data\book\004.txt" />
+    <Content Include="Assets\Data\book\005.txt" />
+    <Content Include="Assets\Data\book\006.txt" />
+    <Content Include="Assets\Data\book\007.txt" />
+    <Content Include="Assets\Data\book\008.txt" />
+    <Content Include="Assets\Data\book\009.txt" />
+    <Content Include="Assets\Data\book\010.txt" />
+    <Content Include="Assets\Data\book\011.txt" />
+    <Content Include="Assets\Data\book\012.txt" />
+    <Content Include="Assets\Data\book\013.txt" />
+    <Content Include="Assets\Data\book\014.txt" />
+    <Content Include="Assets\Data\book\015.txt" />
+    <Content Include="Assets\Data\book\016.txt" />
+    <Content Include="Assets\Data\book\017.txt" />
+    <Content Include="Assets\Data\book\018.txt" />
+    <Content Include="Assets\Data\book\019.txt" />
+    <Content Include="Assets\Data\book\020.txt" />
+    <Content Include="Assets\Data\book\021.txt" />
+    <Content Include="Assets\Data\book\022.txt" />
+    <Content Include="Assets\Data\book\023.txt" />
+    <Content Include="Assets\Data\book\024.txt" />
+    <Content Include="Assets\Data\book\025.txt" />
+    <Content Include="Assets\Data\book\026.txt" />
+    <Content Include="Assets\Data\book\027.txt" />
+    <Content Include="Assets\Data\book\028.txt" />
+    <Content Include="Assets\Data\book\029.txt" />
+    <Content Include="Assets\Data\book\030.txt" />
+    <Content Include="Assets\Data\book\031.txt" />
+    <Content Include="Assets\Data\book\032.txt" />
+    <Content Include="Assets\Data\book\033.txt" />
+    <Content Include="Assets\Data\book\034.txt" />
+    <Content Include="Assets\Data\book\035.txt" />
+    <Content Include="Assets\Data\book\036.txt" />
+    <Content Include="Assets\Data\book\037.txt" />
+    <Content Include="Assets\Data\book\038.txt" />
+    <Content Include="Assets\Data\book\039.txt" />
+    <Content Include="Assets\Data\book\040.txt" />
+    <Content Include="Assets\Data\book\041.txt" />
+    <Content Include="Assets\Data\book\042.txt" />
+    <Content Include="Assets\Data\book\043.txt" />
+    <Content Include="Assets\Data\book\044.txt" />
+    <Content Include="Assets\Data\book\045.txt" />
+    <Content Include="Assets\Data\book\046.txt" />
+    <Content Include="Assets\Data\book\047.txt" />
+    <Content Include="Assets\Data\book\048.txt" />
+    <Content Include="Assets\Data\book\049.txt" />
+    <Content Include="Assets\Data\book\050.txt" />
+    <Content Include="Assets\Data\book\051.txt" />
+    <Content Include="Assets\Data\book\052.txt" />
+    <Content Include="Assets\Data\book\053.txt" />
+    <Content Include="Assets\Data\book\054.txt" />
+    <Content Include="Assets\Data\book\055.txt" />
+    <Content Include="Assets\Data\book\056.txt" />
+    <Content Include="Assets\Data\book\057.txt" />
+    <Content Include="Assets\Data\book\058.txt" />
+    <Content Include="Assets\Data\book\059.txt" />
+    <Content Include="Assets\Data\book\060.txt" />
+    <Content Include="Assets\Data\book\061.txt" />
+    <Content Include="Assets\Data\book\062.txt" />
+    <Content Include="Assets\Data\book\063.txt" />
+    <Content Include="Assets\Data\book\064.txt" />
+    <Content Include="Assets\Data\book\065.txt" />
+    <Content Include="Assets\Data\book\066.txt" />
+    <Content Include="Assets\Data\book\067.txt" />
+    <Content Include="Assets\Data\book\068.txt" />
+    <Content Include="Assets\Data\book\069.txt" />
+    <Content Include="Assets\Data\book\070.txt" />
+    <Content Include="Assets\Data\book\071.txt" />
+    <Content Include="Assets\Data\book\072.txt" />
+    <Content Include="Assets\Data\book\073.txt" />
+    <Content Include="Assets\Data\book\074.txt" />
+    <Content Include="Assets\Data\book\075.txt" />
+    <Content Include="Assets\Data\book\076.txt" />
+    <Content Include="Assets\Data\book\077.txt" />
+    <Content Include="Assets\Data\book\078.txt" />
+    <Content Include="Assets\Data\book\079.txt" />
+    <Content Include="Assets\Data\book\080.txt" />
+    <Content Include="Assets\Data\book\081.txt" />
+    <Content Include="Assets\Data\book\082.txt" />
+    <Content Include="Assets\Data\book\083.txt" />
+    <Content Include="Assets\Data\book\084.txt" />
+    <Content Include="Assets\Data\book\085.txt" />
+    <Content Include="Assets\Data\book\086.txt" />
+    <Content Include="Assets\Data\book\087.txt" />
+    <Content Include="Assets\Data\book\088.txt" />
+    <Content Include="Assets\Data\book\089.txt" />
+    <Content Include="Assets\Data\book\090.txt" />
+    <Content Include="Assets\Data\book\091.txt" />
+    <Content Include="Assets\Data\book\092.txt" />
+    <Content Include="Assets\Data\book\093.txt" />
+    <Content Include="Assets\Data\book\094.txt" />
+    <Content Include="Assets\Data\book\095.txt" />
+    <Content Include="Assets\Data\book\096.txt" />
+    <Content Include="Assets\Data\book\097.txt" />
+    <Content Include="Assets\Data\book\098.txt" />
+    <Content Include="Assets\Data\book\099.txt" />
+    <Content Include="Assets\Data\book\100.txt" />
+    <Content Include="Assets\Data\book\101.txt" />
+    <Content Include="Assets\Data\book\102.txt" />
+    <Content Include="Assets\Data\book\103.txt" />
+    <Content Include="Assets\Data\book\104.txt" />
+    <Content Include="Assets\Data\book\105.txt" />
+    <Content Include="Assets\Data\book\106.txt" />
+    <Content Include="Assets\Data\book\107.txt" />
+    <Content Include="Assets\Data\book\108.txt" />
+    <Content Include="Assets\Data\book\109.txt" />
+    <Content Include="Assets\Data\book\110.txt" />
+    <Content Include="Assets\Data\book\111.txt" />
+    <Content Include="Assets\Data\book\112.txt" />
+    <Content Include="Assets\Data\book\113.txt" />
+    <Content Include="Assets\Data\book\114.txt" />
+    <Content Include="Assets\Data\book\115.txt" />
+    <Content Include="Assets\Data\book\116.txt" />
+    <Content Include="Assets\Data\book\117.txt" />
+    <Content Include="Assets\Data\book\118.txt" />
+    <Content Include="Assets\Data\book\119.txt" />
+    <Content Include="Assets\Data\book\120.txt" />
+    <Content Include="Assets\Data\book\category.txt" />
+    <Content Include="Assets\Data\cover.png" />
+    <Content Include="Assets\Data\okr-bg-200-3guo_173.png" />
+    <Content Include="Assets\Data\okr-bg-200-3guo_200.png" />
+    <Content Include="Assets\Data\okr-bg-200-3guo_62.png" />
+    <Content Include="Assets\Data\okr-bg-200-3guo_99.png" />
+    <Content Include="Assets\Data\okr-bg.png" />
+    <Content Include="Assets\Data\okr-icon.png" />
+    <Content Include="Assets\Data\okr-splash.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\StoreLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Assets\Style\StandardStyles.xaml">
+    <Page Include="Common\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

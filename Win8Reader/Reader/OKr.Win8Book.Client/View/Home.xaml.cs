@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using OKr.Win8Book.Client.Core.Context;
+using OKr.Win8Book.Client.Core.Data;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -19,8 +21,11 @@ namespace OKr.Win8Book.Client.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Home : Page
+    public sealed partial class Home : Windows.UI.Xaml.Controls.Page
     {
+        private Book book;
+        private Mark mark;
+
         public Home()
         {
             this.InitializeComponent();
@@ -33,6 +38,17 @@ namespace OKr.Win8Book.Client.View
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.pr.IsActive = true;
+
+            this.Init();
+
+            this.pr.IsActive = false;
+        }
+
+        private async void Init()
+        {
+            BookContext bc = new BookContext();
+            this.book = await bc.Load();
         }
     }
 }
