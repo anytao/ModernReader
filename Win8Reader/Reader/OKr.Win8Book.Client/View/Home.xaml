@@ -7,9 +7,34 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="categoryTemplate">
+            <Grid Width="300" Height="159" Tapped="OnCategory">
+                <Grid Margin="10">
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Title}" Margin="0,10,0,0"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
+
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="首页" />
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="pageTitle" Text="首页" Grid.Column="1" Style="{StaticResource PageTitleStyle}" />
+        </Grid>
+
+        <GridView x:Name="categoryGridView" Grid.Row="1" SelectionMode="None" Padding="116,0,40,46" ItemsSource="{Binding Chapters}" ItemTemplate="{StaticResource categoryTemplate}">
+        </GridView>
+
         <ProgressRing x:Name="pr" Foreground="LightBlue" Width="122" Height="122" />
 
     </Grid>

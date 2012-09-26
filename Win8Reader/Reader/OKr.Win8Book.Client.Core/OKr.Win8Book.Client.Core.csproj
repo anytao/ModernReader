@@ -113,6 +113,7 @@
     <Compile Include="Data\Mark.cs" />
     <Compile Include="Data\OKrApp.cs" />
     <Compile Include="Data\Page.cs" />
+    <Compile Include="Data\Progress.cs" />
     <Compile Include="OKrBookConfig.cs" />
     <Compile Include="OKrBookConstant.cs" />
     <Compile Include="OKrBookContext.cs" />

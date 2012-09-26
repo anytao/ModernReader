@@ -49,6 +49,14 @@ namespace OKr.Win8Book.Client.View
         {
             BookContext bc = new BookContext();
             this.book = await bc.Load();
+
+            this.DataContext = book;
+        }
+
+        private void OnCategory(object sender, TappedRoutedEventArgs e)
+        {
+            var category = (sender as FrameworkElement).DataContext as Chapter;
+            this.Frame.Navigate(typeof(Viewer), category);
         }
     }
 }

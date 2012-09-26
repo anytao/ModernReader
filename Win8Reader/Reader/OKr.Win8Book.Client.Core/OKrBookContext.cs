@@ -44,10 +44,10 @@ namespace OKr.Win8Book.Client.Core
             // this.Config = 
 
             this.InitState();
-            this.InitFile();
+            await this.InitFile();
         }
 
-        private async void InitFile()
+        private async Task InitFile()
         {
             StorageFile category = await StorageFile.GetFileFromPathAsync(Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, @"Assets\Data\book\category.txt"));
 
