@@ -89,4 +89,22 @@
             </VisualStateManager.VisualStateGroups>
         </Grid>
     </Grid>
+
+    <Page.BottomAppBar>
+        <AppBar Padding="10,0,10,0" AutomationProperties.Name="Bottom App Bar">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                    <Button x:Name="btnMark" Style="{StaticResource PicturesAppBarButtonStyle}" AutomationProperties.Name="书签" Visibility="Visible" Click="OnMark" />                    
+                </StackPanel>
+                <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <Button x:Name="btnFont" Style="{StaticResource SaveLocalAppBarButtonStyle}" AutomationProperties.Name="字体" Click="OnFontChange"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+    
 </Page>

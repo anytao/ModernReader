@@ -9,20 +9,21 @@ using OKr.Win8Book.Client.Core.Data;
 
 namespace OKr.Win8Book.Client.Core.Context
 {
-    public class ProgressContext : OKrStateContextBase<Progress>
+    public class MarkContext : OKrStateContextBase<Mark>
     {
-        public ProgressContext()
-            : base(new OKrStorage<Progress>(OKrBookConstant.PROGRESS), true)
+        public MarkContext()
+            : base(new OKrStorage<Mark>(OKrBookConstant.MARK), true)
         {
  
         }
 
-        protected async override Task<Progress> DoLoad()
+
+        protected async override Task<Mark> DoLoad()
         {
-            return new Progress();
+            return new Mark();
         }
 
-        protected override void DoSave(Progress data)
+        protected override void DoSave(Mark data)
         {
         }
     }

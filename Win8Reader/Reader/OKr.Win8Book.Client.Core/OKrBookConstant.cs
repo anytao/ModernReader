@@ -21,5 +21,7 @@ namespace OKr.Win8Book.Client.Core
         public static readonly string AUTHCONFIG = "auth.config";
         public static readonly string SETTINGCONFIG = "setting.config";
         public static readonly string BOOK = "book.xml";
+        public static readonly string MARK = "mark.xml";
+        public static readonly string PROGRESS = "progress.xml";
     }
 }

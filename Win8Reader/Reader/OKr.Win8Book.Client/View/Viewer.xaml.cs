@@ -143,6 +143,16 @@ namespace OKr.Win8Book.Client.View
             this.chapter.CurrentPage = this.chapter.Pages[this.current];
         }
 
+        private void OnFontChange(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnMark(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private int current;
     }
 }
