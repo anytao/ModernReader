@@ -115,7 +115,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
@@ -124,9 +123,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ItemDetailPage1.xaml.cs">
-      <DependentUpon>ItemDetailPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Viewer.xaml.cs">
       <DependentUpon>Viewer.xaml</DependentUpon>
@@ -303,10 +299,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Home.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ItemDetailPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
