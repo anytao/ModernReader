@@ -23,5 +23,16 @@ namespace OKr.Win8Book.Client.Core.Data
         public Mark Mark { get; set; }
         public List<string> PageList { get; set; }
         public List<Page> Pages { get; set; }
+
+        private Page currentPage;
+
+        public Page CurrentPage 
+        {
+            get { return this.currentPage; }
+            set
+            {
+                this.SetProperty(ref this.currentPage, value);
+            }
+        }
     }
 }

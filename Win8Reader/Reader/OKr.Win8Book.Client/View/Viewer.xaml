@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:common="using:OKr.Win8Book.Client.Common"
     NavigationCacheMode="Enabled">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
@@ -23,7 +24,69 @@
             <TextBlock x:Name="pageTitle" Text="{Binding Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
         </Grid>
 
-        
+        <Grid x:Name="bodyGrid" Grid.Row="1" ManipulationMode="TranslateX" ManipulationStarted="bodyGrid_ManipulationStarted" ManipulationDelta="bodyGrid_ManipulationDelta" ManipulationCompleted="bodyGrid_ManipulationCompleted">
 
+            <!-- Content is allowed to flow across as many columns as needed -->
+            <common:RichTextColumns x:Name="richTextColumns" Margin="117,0,117,47" VerticalAlignment="Top">
+                <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                    <Paragraph Margin="0,0,0,20">
+                        <Run FontSize="48" FontWeight="Normal" Text="{Binding Title}" Foreground="Red"/>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
+                    </Paragraph>
+                </RichTextBlock>
+
+                <!-- Additional columns are created from this template -->
+                <common:RichTextColumns.ColumnTemplate>
+                    <DataTemplate>
+                        <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                            <RichTextBlockOverflow.RenderTransform>
+                                <TranslateTransform X="-1" Y="4"/>
+                            </RichTextBlockOverflow.RenderTransform>
+                        </RichTextBlockOverflow>
+                    </DataTemplate>
+                </common:RichTextColumns.ColumnTemplate>
+            </common:RichTextColumns>
+
+            <VisualStateManager.VisualStateGroups>
+
+                <!-- Visual states reflect the application's view state inside the FlipView -->
+                <VisualStateGroup x:Name="ApplicationViewStates">
+                    <VisualState x:Name="FullScreenLandscape"/>
+                    <VisualState x:Name="Filled"/>
+
+                    <!-- Respect the narrower 100-pixel margin convention for portrait -->
+                    <VisualState x:Name="FullScreenPortrait">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextColumns" Storyboard.TargetProperty="Margin">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="97,0,87,57"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="image" Storyboard.TargetProperty="MaxHeight">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="400"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+
+                    <!-- When snapped, the content is reformatted and scrolls vertically -->
+                    <VisualState x:Name="Snapped">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextColumns" Storyboard.TargetProperty="Margin">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="17,0,17,57"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="scrollViewer" Storyboard.TargetProperty="Style">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource VerticalScrollViewerStyle}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextBlock" Storyboard.TargetProperty="Width">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="280"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="image" Storyboard.TargetProperty="MaxHeight">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="160"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
     </Grid>
 </Page>

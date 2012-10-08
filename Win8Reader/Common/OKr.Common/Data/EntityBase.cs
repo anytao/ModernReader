@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace OKr.Common.Data
 {
     [DataContract]
-    public abstract class EntityBase
+    public abstract class EntityBase : BindableBase
     {
+
     }
 }
