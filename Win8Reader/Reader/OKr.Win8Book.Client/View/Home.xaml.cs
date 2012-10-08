@@ -50,8 +50,8 @@ namespace OKr.Win8Book.Client.View
                 this.pr.IsActive = false;
 
                 this.DataContext = viewModel;
-                LoadTheme();
             }
+            LoadTheme();
         }
 
         private void OnCategory(object sender, TappedRoutedEventArgs e)

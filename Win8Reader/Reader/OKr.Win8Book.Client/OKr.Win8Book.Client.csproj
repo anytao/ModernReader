@@ -138,6 +138,10 @@
     <Content Include="Assets\Common\PageBackgroundLight.jpg" />
     <Content Include="Assets\Data\me.config" />
     <Content Include="Assets\Data\okrapp.config" />
+    <Content Include="Assets\Home\ChapterIcon1.png" />
+    <Content Include="Assets\Home\ChapterIcon2.png" />
+    <Content Include="Assets\Home\ChapterIcon3.png" />
+    <Content Include="Assets\Home\MarkIcon1.png" />
     <Content Include="Common\ReadMe.txt" />
     <None Include="OKr.Win8Book.Client_TemporaryKey.pfx" />
   </ItemGroup>

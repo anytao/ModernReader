@@ -40,22 +40,19 @@
         <Setter Property="Tag" Value="SkipTheme"/>
     </Style>
 
-    <Style x:Key="Home_Chapter_Icon_Read_Style" TargetType="Rectangle">
-        <Setter Property="Fill" Value="#FF88c024"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Height" Value="40"/>
+    <Style x:Key="Home_Chapter_Icon_Read_Style" TargetType="Image">
+        <Setter Property="Source" Value="/Assets/Home/ChapterIcon1.png"/>
+        <Setter Property="Stretch" Value="None"/>
     </Style>
 
-    <Style x:Key="Home_Chapter_Icon_Reading_Style" TargetType="Rectangle">
-        <Setter Property="Fill" Value="#FFf1960a"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Height" Value="40"/>
+    <Style x:Key="Home_Chapter_Icon_Reading_Style" TargetType="Image">
+        <Setter Property="Source" Value="/Assets/Home/ChapterIcon2.png"/>
+        <Setter Property="Stretch" Value="None"/>
     </Style>
 
-    <Style x:Key="Home_Chapter_Icon_UnRead_Style" TargetType="Rectangle">
-        <Setter Property="Fill" Value="#FF22a3e0"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Height" Value="40"/>
+    <Style x:Key="Home_Chapter_Icon_UnRead_Style" TargetType="Image">
+        <Setter Property="Source" Value="/Assets/Home/ChapterIcon3.png"/>
+        <Setter Property="Stretch" Value="None"/>
     </Style>
 
     <Style x:Key="Home_ChapterName_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
@@ -65,7 +62,35 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="20,0,0,0"/>
     </Style>
-    
+
+    <Style x:Key="Home_Mark_Icon_1_Style" TargetType="Image">
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Source" Value="/Assets/Home/MarkIcon1.png"/>
+        <Setter Property="Stretch" Value="None"/>
+    </Style>
+
+    <Style x:Key="Home_MarkTitle_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="Margin" Value="20,10,20,0"/>
+    </Style>
+
+    <Style x:Key="Home_MarkContent_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Opacity" Value="0.6"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="20,0,20,0"/>
+        <Setter Property="MaxHeight" Value="50"/>
+    </Style>
+
+    <Style x:Key="Home_MarkTemplate_Background_Style" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#33B4B4B4"/>
+        <Setter Property="Grid.ColumnSpan" Value="2"/>
+        <Setter Property="Margin" Value="12,0,0,0"/>
+    </Style>
+
     <!--xxx-->
 
     <!--xxx-->

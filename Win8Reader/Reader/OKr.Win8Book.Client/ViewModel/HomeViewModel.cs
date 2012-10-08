@@ -22,6 +22,16 @@ namespace OKr.Win8Book.Client.ViewModel
             }
         }
 
+        private ObservableCollection<Chapter> topChapters = new ObservableCollection<Chapter>();
+        public ObservableCollection<Chapter> TopChapters
+        {
+            get { return topChapters; }
+            set
+            {
+                this.SetProperty(ref topChapters, value);
+            }
+        }
+
         private Mark mark;
         public Mark Mark
         {
@@ -54,6 +64,12 @@ namespace OKr.Win8Book.Client.ViewModel
         {
             BookContext bc = new BookContext();
             this.Book = await bc.Load();
+
+            var filterResult = this.Book.Chapters.Take(10);
+            foreach (var chapter in filterResult)
+            {
+                TopChapters.Add(chapter);
+            }
         }
 
         private async Task LoadMark()

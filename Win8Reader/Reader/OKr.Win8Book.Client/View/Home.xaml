@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
+                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
                 <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
             </Grid>
         </DataTemplate>
@@ -34,11 +34,13 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
-                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}" Foreground="Black"/>
-                <TextBlock Grid.Column="2" Text="{Binding Content}" Style="{StaticResource Home_ChapterName_Style}" Foreground="Blue"/>
+                <Rectangle Style="{StaticResource Home_MarkTemplate_Background_Style}"/>
+                <Image Style="{StaticResource Home_Mark_Icon_1_Style}"/>
+                <StackPanel Grid.Column="1" >
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource Home_MarkTitle_Style}" />
+                    <TextBlock Text="{Binding Content}" Style="{StaticResource Home_MarkContent_Style}" />
+                </StackPanel>
             </Grid>
         </DataTemplate>
 
@@ -75,12 +77,12 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <!--column 0-->
-                <Grid Margin="120,0,0,0" Width="560" DataContext="{Binding Book}">
+                <Grid Margin="120,0,0,0" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" DataContext="{Binding Book}">
                         <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
                         <TextBlock Style="{StaticResource Home_SectionTileCountStyle}">
                             <Run Text="共"/>
@@ -88,8 +90,8 @@
                             <Run Text="章"/>
                         </TextBlock>
                     </StackPanel>
-                    <ListView Grid.Row="1" Margin="0,20,0,0"
-                            ItemsSource="{Binding Chapters}"
+                    <ListView Grid.Row="1" Margin="0,20,0,0" Width="560" 
+                            ItemsSource="{Binding TopChapters}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
@@ -97,7 +99,7 @@
                     </ListView>
                 </Grid>
                 <!--column 1-->
-                <Grid Grid.Column="1" Margin="120,0,0,0" Width="560">
+                <Grid Grid.Column="1" Margin="80,0,0,0" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -110,7 +112,7 @@
                             <Run Text="枚"/>
                         </TextBlock>
                     </StackPanel>
-                    <ListView Grid.Row="1" Margin="0,20,0,0"
+                    <ListView Grid.Row="1" Margin="0,20,0,0" Width="450"
                             ItemsSource="{Binding RecentMarks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
                             SelectionMode="None"
