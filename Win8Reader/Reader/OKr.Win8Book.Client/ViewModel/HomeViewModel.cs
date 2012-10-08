@@ -32,7 +32,7 @@ namespace OKr.Win8Book.Client.ViewModel
             }
         }
 
-        public OKrApps Apps { get; set; }
+        public OKrApps OKrApp { get; set; }
 
         private ObservableCollection<ChapterMark> recentMarks=new ObservableCollection<ChapterMark>();
         public ObservableCollection<ChapterMark> RecentMarks
@@ -56,7 +56,7 @@ namespace OKr.Win8Book.Client.ViewModel
         private async Task LoadApps()
         {
             OKrAppContext oc = new OKrAppContext();
-            this.Apps = await oc.Load();
+            this.OKrApp = await oc.Load();
         }
 
         private async Task LoadBook()

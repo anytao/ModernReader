@@ -98,5 +98,10 @@ namespace OKr.Win8Book.Client.View
 
             this.Frame.Navigate(typeof(Viewer), chapter);
         }
+
+        private void App_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }
