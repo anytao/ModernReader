@@ -46,7 +46,11 @@ namespace OKr.Win8Book.Client.View
 
                 this.chapter = category;
 
-                await LoadData();
+                this.chapter = await LoadData();
+                chapter.CurrentPage = chapter.Pages[0];
+                this.current = 0;
+
+                this.DataContext = chapter;
             }
 
         }
@@ -56,29 +60,26 @@ namespace OKr.Win8Book.Client.View
             if (this.Frame != null && this.Frame.CanGoBack) this.Frame.GoBack();
         }
 
-        private async Task LoadData()
+        private async Task<Chapter> LoadData()
         {
             int[] count = this.GetCounts(this.fontsize);
-            //this.chapter = this.book.Chapters[this.currentChapter];
-            //this.chapter.PageCount = count[0];
 
             OKrStorage storage = new OKrStorage();
 
             Windows.ApplicationModel.Package package = Windows.ApplicationModel.Package.Current;
             Windows.Storage.StorageFolder installedLocation = package.InstalledLocation;
-            var file = await installedLocation.GetFileAsync("/Assets/Data/book/" + this.chapter.FileName + ".txt");
 
-            var content = await FileIO.ReadTextAsync(file, Windows.Storage.Streams.UnicodeEncoding.Utf8); 
+            var file = await StorageFile.GetFileFromPathAsync(Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, @"Assets\Data\book\" + this.chapter.FileName + ".txt"));
 
-            //string content = await storage.ReadString(); //"ms-appx:///Assets/Data/book/" + this.chapter.FileName + ".txt"
+            var content = await FileIO.ReadTextAsync(file, Windows.Storage.Streams.UnicodeEncoding.Utf8);
 
-            //string content = AtFile.GetContent(OkrBookContext.Current.Config.Data + "/" + this.chapter.FileName + ".txt", 4);
             Chapter chapter = null;
             if (content != null)
             {
                 chapter = TextParser.GetChapter(content, count);
             }
-           
+
+            return chapter;
         }
 
         private int[] GetCounts(int fontSize)
@@ -94,9 +95,9 @@ namespace OKr.Win8Book.Client.View
             return numArray;
         }
 
-        private int fontsize = 22;
-        private int height = 26;
-        private int lineHeight = 28;
+        private int fontsize = 20;
+        private int height = 2100; //762;
+        private int lineHeight = 42; //0x10;
         private int currentChapter;
 
 
@@ -105,5 +106,43 @@ namespace OKr.Win8Book.Client.View
         private Book book;
         private Mark mark;
         private Chapter chapter;
+
+        private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+
+        }
+
+        private void bodyGrid_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+        {
+
+        }
+
+        private void bodyGrid_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (e.Velocities.Linear.X > 2)
+            {
+                PrePage();
+            }
+            else if (e.Velocities.Linear.X < -2)
+            {
+                NextPage();
+            }
+        }
+
+        private void NextPage()
+        {
+            this.current++;
+
+            this.chapter.CurrentPage = this.chapter.Pages[this.current];
+        }
+
+        private void PrePage()
+        {
+            this.current--;
+
+            this.chapter.CurrentPage = this.chapter.Pages[this.current];
+        }
+
+        private int current;
     }
 }

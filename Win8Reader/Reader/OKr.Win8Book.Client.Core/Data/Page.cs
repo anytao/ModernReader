@@ -18,5 +18,20 @@ namespace OKr.Win8Book.Client.Core.Data
         public int FontSize { get; set; }
         public string Result { get; set; }
         public List<string> Row { get; set; }
+
+        public string Text 
+        {
+            get 
+            {
+                string text = "";
+
+                foreach (var item in Row)
+                {
+                    text += item;
+                }
+
+                return text;
+            }
+        }
     }
 }

@@ -107,6 +107,7 @@
     <Compile Include="Context\IOKrStateContext.cs" />
     <Compile Include="Context\OKrContextBase.cs" />
     <Compile Include="Context\OKrStateContextBase.cs" />
+    <Compile Include="Data\BindableBase.cs" />
     <Compile Include="Data\EntityBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\OKrStorage.cs" />

@@ -115,6 +115,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -129,6 +134,7 @@
     </AppxManifest>
     <Content Include="Assets\Data\me.config" />
     <Content Include="Assets\Data\okrapp.config" />
+    <Content Include="Common\ReadMe.txt" />
     <None Include="OKr.Win8Book.Client_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
