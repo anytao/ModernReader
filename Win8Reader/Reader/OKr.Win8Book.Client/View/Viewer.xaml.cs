@@ -29,7 +29,7 @@ namespace OKr.Win8Book.Client.View
         {
             this.InitializeComponent();
         }
-        
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             var category = e.Parameter as Chapter;
@@ -39,15 +39,16 @@ namespace OKr.Win8Book.Client.View
                 this.currentChapter = category.ChapterNo;
 
                 this.chapter = category;
-
-                this.chapter = await LoadData();
-                chapter.CurrentPage = chapter.Pages[0];
                 this.current = 0;
+
+                this.book = await bc.Load();
+                this.chapter = await LoadData(this.currentChapter);
+                chapter.CurrentPage = chapter.Pages[this.current];
 
                 this.DataContext = chapter;
 
-                
                 this.mark = await mc.Load();
+                this.progress = await pc.Load();
             }
         }
 
@@ -58,7 +59,75 @@ namespace OKr.Win8Book.Client.View
 
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
+            double x = e.Position.X;
+            double y = e.Position.Y;
 
+            if (x < 200.0)
+            {
+                if (this.current > 0)
+                {
+                    this.current--;
+                    this.ChangePage();
+                    //this.pageno1.Text = this.pageno2.Text;
+                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+                    this.SetPage();
+                    
+                }
+                else if (this.currentChapter >= 1)
+                {
+                    this.currentChapter--;
+                    //this.title1.Text = this.title2.Text;
+                    //this.LoadData(this.currentChapter);
+                    this.current = this.chapter.PageNum - 1;
+                    this.ChangePage();
+                    //this.pageno1.Text = this.pageno2.Text;
+                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+                    this.SetChapter();                    
+                }
+                else
+                {
+                    //MessageBox.Show(OkrConstant.FIRSTPAGEERR);
+                }
+            }
+            else if (x > 280.0)
+            {
+                if (this.current <= (this.chapter.PageNum - 2))
+                {
+                    this.current++;
+                    this.ChangePage();
+                    //this.pageno1.Text = this.pageno2.Text;
+                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+                    this.SetPage();
+                }
+                else if (this.currentChapter < (this.book.Chapters.Count - 1))
+                {
+                    this.currentChapter++;
+                    this.current = 0;
+                    //this.pageno1.Text = this.pageno2.Text;
+                    //this.title1.Text = this.title2.Text;
+                    this.LoadData(this.currentChapter);
+                    this.ChangePage();
+                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+                    //this.SetChapter();
+                }
+                else
+                {
+                    // MessageBox.Show(OkrConstant.LASTPAGEERR);
+                }
+            }
+        }
+
+        private void ChangePage()
+        {
+        }
+
+        private async void SetChapter()
+        {
+            this.progress.Chapter = this.currentChapter;
+            this.progress.Page = this.current;
+            this.progress.Percent = 0.0;
+
+            await pc.Save(this.progress);
         }
 
         private void bodyGrid_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
@@ -141,7 +210,7 @@ namespace OKr.Win8Book.Client.View
             this.mc.Save(this.mark);
         }
 
-        private async Task<Chapter> LoadData()
+        private async Task<Chapter> LoadData(int index)
         {
             int[] count = this.GetCounts(this.fontsize);
 
@@ -149,6 +218,8 @@ namespace OKr.Win8Book.Client.View
 
             Windows.ApplicationModel.Package package = Windows.ApplicationModel.Package.Current;
             Windows.Storage.StorageFolder installedLocation = package.InstalledLocation;
+
+            this.chapter = this.book.Chapters[index];
 
             var file = await StorageFile.GetFileFromPathAsync(Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, @"Assets\Data\book\" + this.chapter.FileName + ".txt"));
 
@@ -222,18 +293,27 @@ namespace OKr.Win8Book.Client.View
             //});
         }
 
+        private void SetPage()
+        {
+            this.progress.Page = this.current;
+            this.progress.Percent = ((double)this.current) / ((double)this.chapter.PageNum);
+            pc.Save(this.progress);
+        }
+
         private int fontsize = OKrBookConfig.DEFALUTFONTSIZE;
         private int height = OKrBookConfig.HEIGHT; //762;
         private int lineHeight = OKrBookConfig.LINEHEIGHT; //0x10;
         private int currentChapter;
 
         MarkContext mc = new MarkContext();
+        ProgressContext pc = new ProgressContext();
+        BookContext bc = new BookContext();
 
         private Progress progress;
         private Book book;
         private Mark mark;
         private Chapter chapter;
 
-        private int current;        
+        private int current;
     }
 }

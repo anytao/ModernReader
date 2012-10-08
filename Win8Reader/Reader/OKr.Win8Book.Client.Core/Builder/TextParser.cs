@@ -24,6 +24,7 @@ namespace OKr.Win8Book.Client.Core.Builder
             {
                 reader = new StreamReader(stream);
                 string str2 = null;
+                int index = 0;
                 while ((str2 = reader.ReadLine()) != null)
                 {
                     string[] strArray = str2.Replace("&&", "&").Split(new char[] { '&' });
@@ -33,8 +34,11 @@ namespace OKr.Win8Book.Client.Core.Builder
                         item.Title = strArray[0];
                         item.FileName = strArray[1];
                         item.Size = int.Parse(strArray[2]);
+                        item.ChapterNo = index;
                         result.Chapters.Add(item);
                     }
+
+                    index++;
                 }
                 reader.Dispose();
             }
