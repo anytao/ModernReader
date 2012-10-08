@@ -46,6 +46,8 @@ namespace OKr.Win8Book.Client.View
             this.book = await bc.Load();
 
             this.DataContext = book;
+
+            this.LoadMark();
         }
 
         private void OnCategory(object sender, TappedRoutedEventArgs e)
@@ -69,6 +71,41 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
+
+        private async void LoadMark()
+        {
+            MarkContext mc = new MarkContext();
+            this.mark = await mc.Load();
+
+            foreach (var mark in this.mark.Marks)
+            {
+                ChapterMark tmp = mark;
+                //BookmarkItem item = new BookmarkItem();
+                //item.DataContext = tmp;
+
+                //item.Click += (sender, ex) =>
+                //{
+                //    Progress progress = null;
+
+                //    IsolatedStorageSettings.ApplicationSettings.TryGetValue<Progress>("current", out progress);
+                //    if (progress == null)
+                //    {
+                //        progress = new Progress();
+                //    }
+                //    progress.Chapter = tmp.ChapterNo;
+                //    progress.Page = tmp.Current;
+                //    progress.Percent = tmp.Percent;
+                //    IsolatedStorageSettings.ApplicationSettings["current"] = progress;
+
+                //    //Dispatcher.BeginInvoke(() =>
+                //    //{
+                //    //    (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/View/Viewer.xaml", UriKind.Relative));
+                //    //});
+                // };
+
+                //this.mlist.Items.Add(item);
+            }
+        }
 
     }
 }

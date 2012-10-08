@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="Builder\TextParser.cs" />
     <Compile Include="Context\BookContext.cs" />
+    <Compile Include="Context\MarkContext.cs" />
     <Compile Include="Context\OKrBookContextBase.cs" />
     <Compile Include="Context\ProgressContext.cs" />
     <Compile Include="Data\Ad.cs" />

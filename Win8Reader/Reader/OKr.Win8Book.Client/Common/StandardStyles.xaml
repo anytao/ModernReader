@@ -406,6 +406,17 @@
         Uncomment any style you reference (as not all may be required).
     -->
 
+    <Style x:Key="PicturesAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="PicturesAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Pictures"/>
+        <Setter Property="Content" Value="&#xE158;"/>
+    </Style>
+    <Style x:Key="SaveLocalAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="SaveLocalAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Save Local"/>
+        <Setter Property="Content" Value="&#xE159;"/>
+    </Style>
+
     <!--
     
     <Style x:Key="SkipBackAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
