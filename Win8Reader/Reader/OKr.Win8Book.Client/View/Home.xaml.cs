@@ -62,18 +62,11 @@ namespace OKr.Win8Book.Client.View
             this.Frame.Navigate(typeof(Viewer), category);
         }
 
-        #region Theme
+        #region App Bar
 
-        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        private void OnTheme(object sender, RoutedEventArgs e)
         {
-            if ((sender as ToggleSwitch).IsOn)
-            {
-                SetTheme(false);
-            }
-            else
-            {
-                SetTheme(true);
-            }
+            SwitchTheme();
         }
 
         #endregion
@@ -99,5 +92,7 @@ namespace OKr.Win8Book.Client.View
         {
 
         }
+
+  
     }
 }

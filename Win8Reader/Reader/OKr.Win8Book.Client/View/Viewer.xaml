@@ -5,11 +5,12 @@
     xmlns:local="using:OKr.Win8Book.Client.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:OKrControls="using:OKr.Win8Book.Client.Controls"
     mc:Ignorable="d"
     xmlns:common="using:OKr.Win8Book.Client.Common"
     NavigationCacheMode="Enabled">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -20,16 +21,25 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" IsEnabled="True" Style="{StaticResource BackButtonStyle}" Click="GoBack"/>
+            <!--<Button  IsEnabled="True" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>-->
+            <OKrControls:ImageButton x:Name="backButton" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>
             <TextBlock x:Name="pageTitle" Text="{Binding Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
         </Grid>
 
-        <Grid x:Name="bodyGrid" Grid.Row="1" ManipulationMode="TranslateX" ManipulationStarted="bodyGrid_ManipulationStarted" ManipulationDelta="bodyGrid_ManipulationDelta" ManipulationCompleted="bodyGrid_ManipulationCompleted">
+        <Grid x:Name="bodyGrid" Grid.Row="1" 
+              ManipulationMode="TranslateX" 
+              ManipulationStarted="bodyGrid_ManipulationStarted" 
+              ManipulationDelta="bodyGrid_ManipulationDelta" 
+              ManipulationCompleted="bodyGrid_ManipulationCompleted">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <TextBlock FontSize="48" FontWeight="Normal" Text="{Binding Title}" Foreground="Red"/> 
-            
+            <TextBlock Text="{Binding Title}" Style="{StaticResource Viewer_ChapterName_Style}"/>
+
             <!-- Content is allowed to flow across as many columns as needed -->
-            <common:RichTextColumns x:Name="richTextColumns" Margin="117,50,117,47" VerticalAlignment="Top">
+            <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
                 <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
                     <Paragraph>
                         <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
@@ -97,13 +107,14 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
-                    <Button x:Name="btnMark" Style="{StaticResource PicturesAppBarButtonStyle}" AutomationProperties.Name="书签" Visibility="Visible" Click="OnMark" />                    
+                    <Button x:Name="btnMark" Style="{StaticResource PicturesAppBarButtonStyle}" AutomationProperties.Name="书签" Visibility="Visible" Click="OnMark" />
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
                     <Button x:Name="btnFont" Style="{StaticResource SaveLocalAppBarButtonStyle}" AutomationProperties.Name="字体" Click="OnFontChange"/>
                 </StackPanel>
             </Grid>
         </AppBar>
     </Page.BottomAppBar>
-    
+
 </common:LayoutAwarePage>

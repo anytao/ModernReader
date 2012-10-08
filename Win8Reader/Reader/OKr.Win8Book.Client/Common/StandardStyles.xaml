@@ -416,6 +416,11 @@
         <Setter Property="AutomationProperties.Name" Value="Save Local"/>
         <Setter Property="Content" Value="&#xE159;"/>
     </Style>
+    <Style x:Key="EmojiAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="EmojiAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Emoji"/>
+        <Setter Property="Content" Value="&#xE11D;"/>
+    </Style>
 
     <!--
     
@@ -567,11 +572,7 @@
         <Setter Property="AutomationProperties.Name" Value="Upload"/>
         <Setter Property="Content" Value="&#xE11C;"/>
     </Style>
-    <Style x:Key="EmojiAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
-        <Setter Property="AutomationProperties.AutomationId" Value="EmojiAppBarButton"/>
-        <Setter Property="AutomationProperties.Name" Value="Emoji"/>
-        <Setter Property="Content" Value="&#xE11D;"/>
-    </Style>
+    
     <Style x:Key="TwoPageAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
         <Setter Property="AutomationProperties.AutomationId" Value="TwoPageAppBarButton"/>
         <Setter Property="AutomationProperties.Name" Value="Two Page"/>

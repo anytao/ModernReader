@@ -14,6 +14,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using OKr.Win8Book.Client.Common;
+using Windows.UI.Xaml.Controls;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -49,12 +50,14 @@ namespace OKr.Win8Book.Client.View
 
                 this.pageTitle.Text = this.book.Name;
             }
+
+            LoadTheme();
         }
 
-        private void GoBack(object sender, RoutedEventArgs e)
-        {
-            if (this.Frame != null && this.Frame.CanGoBack) this.Frame.GoBack();
-        }
+        //private void GoBack(object sender, RoutedEventArgs e)
+        //{
+        //    if (this.Frame != null && this.Frame.CanGoBack) this.Frame.GoBack();
+        //}
 
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
@@ -318,5 +321,15 @@ namespace OKr.Win8Book.Client.View
         private Chapter chapter;
 
         private int current;
+
+        #region App Bar
+
+        private void OnTheme(object sender, RoutedEventArgs e)
+        {
+            SwitchTheme();
+        }
+
+        #endregion
+
     }
 }

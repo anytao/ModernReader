@@ -72,12 +72,9 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" IsEnabled="False" Style="{StaticResource BackButtonStyle}" Click="GoBack"/>
-            <TextBlock x:Name="pageTitle" Text="首页" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
+            <Button x:Name="backButton_PlaceHolder" IsEnabled="False" Style="{StaticResource BackButtonStyle}" Click="GoBack"/>
+            <TextBlock x:Name="pageTitle" Text="{Binding Book.Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
         </Grid>
-
-        <!--test-->
-        <ToggleSwitch HorizontalAlignment="Right" Header="Switch Theme" Toggled="ToggleSwitch_Toggled"/>
 
         <!--full view-->
         <ScrollViewer x:Name="gridViewScrollViewer"  Grid.Row="1"
@@ -142,9 +139,8 @@
                         </ListView.ItemsPanel>
                     </ListView>
                 </Grid>
-
                 <!--column 2-->
-                <Grid Grid.Column="2" Margin="80,0,0,0" >
+                <Grid Grid.Column="2" Margin="80,0,80,0" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -182,4 +178,21 @@
         <ProgressRing x:Name="pr" Foreground="LightBlue" Width="122" Height="122" />
 
     </Grid>
+
+    <Page.BottomAppBar>
+        <AppBar Padding="10,0,10,0" AutomationProperties.Name="Bottom App Bar">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                </StackPanel>
+                <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+    
 </common:LayoutAwarePage>

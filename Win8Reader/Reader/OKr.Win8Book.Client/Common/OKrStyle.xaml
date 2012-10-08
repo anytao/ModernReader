@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
-    xmlns:local="using:OKr.Win8Book.Client.Common">
+    xmlns:local="using:OKr.Win8Book.Client.Common"
+    xmlns:OKrControls="using:OKr.Win8Book.Client.Controls">
     
     
     <!--theme-->
@@ -21,8 +22,61 @@
     <Style x:Key="PageTitleStyle" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
         <Setter Property="FontSize" Value="56"/>
         <Setter Property="TextWrapping" Value="NoWrap"/>
-        <Setter Property="VerticalAlignment" Value="Bottom"/>
-        <Setter Property="Margin" Value="0,0,30,40"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <!--<Setter Property="Margin" Value="0,0,0,25"/>-->
+    </Style>
+
+    <Style x:Key="ImageButton_OneImage_Style" TargetType="OKrControls:ImageButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="OKrControls:ImageButton">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" />
+                                        <DoubleAnimation Duration="0" To="0.8" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image" />
+                                        <DoubleAnimation Duration="0" To="0.8" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="image" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused"/>
+                                <VisualState x:Name="Unfocused"/>
+                                <VisualState x:Name="PointerFocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Image x:Name="image" Source="{TemplateBinding BackgroundNormal}" Stretch="None" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <CompositeTransform/>
+                            </Image.RenderTransform>
+                        </Image>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="OKrBackButton_Light_Style" TargetType="OKrControls:ImageButton" BasedOn="{StaticResource ImageButton_OneImage_Style}">
+        <Setter Property="BackgroundNormal" Value="/Assets/Common/BackButtonBlack.png"/>
+        <Setter Property="Margin" Value="36,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="OKrBackButton_Dark_Style" TargetType="OKrControls:ImageButton" BasedOn="{StaticResource ImageButton_OneImage_Style}">
+        <Setter Property="BackgroundNormal" Value="/Assets/Common/BackButtonWhite.png"/>
+        <Setter Property="Margin" Value="36,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="NonScrollable_ListViewStyle" TargetType="ListView">
@@ -148,6 +202,15 @@
         <Setter Property="Opacity" Value="0.6"/>
     </Style>
 
+    <!--viewer-->
+    <Style x:Key="Viewer_ChapterName_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="Margin" Value="120,0,0,0"/>
+    </Style>
+    
+    
     <!--xxx-->
 
     <!--xxx-->
