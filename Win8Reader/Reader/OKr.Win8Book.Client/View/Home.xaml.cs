@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using OKr.Win8Book.Client.Core.Context;
+﻿using OKr.Win8Book.Client.Core.Context;
 using OKr.Win8Book.Client.Core.Data;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using OKr.Win8Book.Client.Common;
+using Windows.UI.Xaml.Media;
+using System.Collections.Generic;
+using System;
+using Windows.UI.Xaml.Controls;
 
 namespace OKr.Win8Book.Client.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Home : Windows.UI.Xaml.Controls.Page
+    public sealed partial class Home : LayoutAwarePage
     {
         private Book book;
         private Mark mark;
@@ -38,12 +31,13 @@ namespace OKr.Win8Book.Client.View
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
             this.pr.IsActive = true;
 
             this.Init();
 
             this.pr.IsActive = false;
-
         }
 
         private async void Init()
@@ -59,5 +53,22 @@ namespace OKr.Win8Book.Client.View
             var category = (sender as FrameworkElement).DataContext as Chapter;
             this.Frame.Navigate(typeof(Viewer), category);
         }
+
+        #region Theme
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if ((sender as ToggleSwitch).IsOn)
+            {
+                SwitchTheme(true);
+            }
+            else
+            {
+                SwitchTheme(false);
+            }
+        }
+
+        #endregion
+
     }
 }

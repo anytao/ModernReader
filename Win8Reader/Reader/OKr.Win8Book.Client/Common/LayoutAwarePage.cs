@@ -34,7 +34,7 @@ namespace OKr.Win8Book.Client.Common
     /// </list>
     /// </summary>
     [Windows.Foundation.Metadata.WebHostHidden]
-    public class LayoutAwarePage : Page
+    public partial class LayoutAwarePage : Page
     {
         /// <summary>
         /// Identifies the <see cref="DefaultViewModel"/> dependency property.

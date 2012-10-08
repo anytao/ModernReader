@@ -3,17 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OKr.Win8Book.Client.Common">
 
-    
+    <!--theme-->
+    <SolidColorBrush x:Name="OKr_Light_Theme_Foreground" Color="#FF000000"/>
+    <SolidColorBrush x:Name="OKr_Dark_Theme_Foreground" Color="#FFFFFFFF"/>
+
     <!--base-->
-    <Style x:Key="OKrTheme_TextBlock_Dark" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#FF000000"/>
-    </Style>
-
-    <Style x:Key="OKrTheme_TextBlock_Light" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#FFFFFFFF"/>
-    </Style>
-
-    <Style x:Key="OKrTextBlockStyleBase" TargetType="TextBlock" BasedOn="{StaticResource OKrTheme_TextBlock_Dark}">
+    <Style x:Key="OKrTextBlockStyleBase" TargetType="TextBlock" >
         <Setter Property="FontFamily" Value="Microsoft YaHei"/>
         <Setter Property="TextTrimming" Value="WordEllipsis"/>
     </Style>
@@ -23,7 +18,7 @@
         <Setter Property="FontSize" Value="56"/>
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
-        <Setter Property="Margin" Value="120,0,0,0"/>
+        <Setter Property="Margin" Value="0,0,30,40"/>
     </Style>
 
     <!--Home-->
