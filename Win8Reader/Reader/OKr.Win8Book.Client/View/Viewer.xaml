@@ -26,12 +26,11 @@
 
         <Grid x:Name="bodyGrid" Grid.Row="1" ManipulationMode="TranslateX" ManipulationStarted="bodyGrid_ManipulationStarted" ManipulationDelta="bodyGrid_ManipulationDelta" ManipulationCompleted="bodyGrid_ManipulationCompleted">
 
+            <TextBlock FontSize="48" FontWeight="Normal" Text="{Binding Title}" Foreground="Red"/> 
+            
             <!-- Content is allowed to flow across as many columns as needed -->
-            <common:RichTextColumns x:Name="richTextColumns" Margin="117,0,117,47" VerticalAlignment="Top">
+            <common:RichTextColumns x:Name="richTextColumns" Margin="117,50,117,47" VerticalAlignment="Top">
                 <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
-                    <Paragraph Margin="0,0,0,20">
-                        <Run FontSize="48" FontWeight="Normal" Text="{Binding Title}" Foreground="Red"/>
-                    </Paragraph>
                     <Paragraph>
                         <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
                     </Paragraph>

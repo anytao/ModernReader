@@ -11,6 +11,7 @@ namespace OKr.Win8Book.Client.Core.Data
     {
         public string AppId { get; set; }
         public string AppName { get; set; }
+        public string Author { get; set; }
         public string Intro { get; set; }
         public string Version { get; set; }
         public string Build { get; set; }

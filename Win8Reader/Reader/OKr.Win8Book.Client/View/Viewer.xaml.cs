@@ -31,7 +31,6 @@ namespace OKr.Win8Book.Client.View
             var category = e.Parameter as Chapter;
             if (e.NavigationMode == NavigationMode.New)
             {
-                this.pageTitle.Text = category.Title;
                 this.currentChapter = category.ChapterNo;
 
                 this.chapter = category;
@@ -46,7 +45,9 @@ namespace OKr.Win8Book.Client.View
                 this.mark = await mc.Load();
                 this.progress = await pc.Load();
 
-                this.chapter.Mark = this.mark;                
+                this.chapter.Mark = this.mark;
+
+                this.pageTitle.Text = this.book.Name;
             }
         }
 

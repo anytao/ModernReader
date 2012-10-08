@@ -41,6 +41,7 @@ namespace OKr.Win8Book.Client.Core.Context
                 OKrApp app = new OKrApp();
                 app.AppId = item.Element("id").Value;
                 app.AppName = item.Element("name").Value;
+                app.Author = item.Element("author").Value;
                 app.Intro = item.Element("intro").Value;
                 app.Pic = "ms-appx:///Assets/Data/app/" + item.Element("icon").Value;
 

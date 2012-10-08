@@ -20,7 +20,10 @@ namespace OKr.Win8Book.Client.Core.Context
 
         protected async override Task<Book> DoLoad()
         {
-            return await TextParser.GetBook("book\\category.txt");
+            var book = await TextParser.GetBook("book\\category.txt");
+            book.Name = "三国演义";
+
+            return book;
         }
 
         protected override void DoSave(Book data)

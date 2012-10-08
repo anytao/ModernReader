@@ -53,6 +53,7 @@
                 <Image Source="{Binding Pic}" Width="128" Height="160" Stretch="UniformToFill"/>
                 <StackPanel Grid.Column="1" Margin="16,0,0,0" Width="128">
                     <TextBlock Text="{Binding AppName}" Style="{StaticResource Home_OKrAppName_Style}" Foreground="Black"/>
+                    <TextBlock Text="{Binding Author}" Style="{StaticResource Home_OKrAppIntro_Style}" Foreground="Blue"/>
                     <TextBlock Text="{Binding Intro}" Style="{StaticResource Home_OKrAppIntro_Style}" Foreground="Blue"/>
                 </StackPanel>
             </Grid>

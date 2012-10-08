@@ -51,6 +51,7 @@ namespace OKr.Win8Book.Client.View
 
                 this.DataContext = viewModel;
             }
+
             LoadTheme();
         }
 
@@ -89,8 +90,7 @@ namespace OKr.Win8Book.Client.View
             Chapter chapter = new Chapter();
             chapter.Title = data.Title;
             chapter.ChapterNo = data.ChapterNo;
-            chapter.PageCount = data.Current;
-
+            chapter.PageCount = data.Current;            
 
             this.Frame.Navigate(typeof(Viewer), chapter);
         }
