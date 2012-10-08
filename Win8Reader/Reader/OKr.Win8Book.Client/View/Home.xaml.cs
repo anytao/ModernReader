@@ -10,6 +10,7 @@ using System;
 using Windows.UI.Xaml.Controls;
 using OKr.Win8Book.Client.ViewModel;
 using Windows.UI.ApplicationSettings;
+using OKr.Win8Book.Client.Controls;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -20,6 +21,8 @@ namespace OKr.Win8Book.Client.View
         public Home()
         {
             this.InitializeComponent();
+
+            this.TopAppBar = new NavBar(this, false, true, true);
 
             SettingsPane.GetForCurrentView().CommandsRequested += SettingCommandsRequested;
         }
