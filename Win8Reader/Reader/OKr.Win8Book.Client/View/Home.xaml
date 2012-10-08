@@ -53,6 +53,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="1" Text="{Binding AppName}" Style="{StaticResource Home_ChapterName_Style}" Foreground="Black"/>
                 <TextBlock Grid.Column="2" Text="{Binding Intro}" Style="{StaticResource Home_ChapterName_Style}" Foreground="Blue"/>
+                <Image Source="{Binding Pic}" />
             </Grid>
         </DataTemplate>
 
