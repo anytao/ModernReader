@@ -139,7 +139,7 @@
     <Content Include="Assets\Common\BackButtonWhite.png" />
     <Content Include="Assets\Common\PageBackgroundDark.jpg" />
     <Content Include="Assets\Common\PageBackgroundLight.jpg" />
-    <Content Include="Assets\Data\me.config" />
+    <Content Include="Assets\Data\me.okr" />
     <Content Include="Assets\Data\okrapp.config" />
     <Content Include="Assets\Home\ChapterIcon1.png" />
     <Content Include="Assets\Home\ChapterIcon2.png" />

@@ -15,6 +15,9 @@ namespace OKr.Win8Book.Client.Core.Data
         }
 
         public string Name { get; set; }
+        public string Author { get; set; }
+        public string Desc { get; set; }
+
         public List<Chapter> Chapters { get; set; }
         public int Current { get; set; }
     }
