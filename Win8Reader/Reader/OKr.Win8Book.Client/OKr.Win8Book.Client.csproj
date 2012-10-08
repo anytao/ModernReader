@@ -119,6 +119,7 @@
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
     <Compile Include="Common\LayoutAwarePageExtension.cs" />
+    <Compile Include="Common\OKrPageBase.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Controls\ImageButton.cs" />
@@ -139,7 +140,9 @@
     <Content Include="Assets\Common\BackButtonWhite.png" />
     <Content Include="Assets\Common\PageBackgroundDark.jpg" />
     <Content Include="Assets\Common\PageBackgroundLight.jpg" />
-    <Content Include="Assets\Data\me.okr" />
+    <Content Include="Assets\Data\me.okr">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Assets\Data\okrapp.config" />
     <Content Include="Assets\Home\ChapterIcon1.png" />
     <Content Include="Assets\Home\ChapterIcon2.png" />

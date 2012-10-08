@@ -9,14 +9,23 @@ using System.Collections.Generic;
 using System;
 using Windows.UI.Xaml.Controls;
 using OKr.Win8Book.Client.ViewModel;
+using Windows.UI.ApplicationSettings;
 
 namespace OKr.Win8Book.Client.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class Home : LayoutAwarePage
+    public sealed partial class Home : OKrPageBase
     {
+        #region Ctor
+
+        public Home()
+        {
+            this.InitializeComponent();
+
+            SettingsPane.GetForCurrentView().CommandsRequested += SettingCommandsRequested;
+        }
+
+        #endregion
+
         #region Properties
 
         HomeViewModel viewModel
@@ -29,16 +38,8 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
-        public Home()
-        {
-            this.InitializeComponent();
-        }
+        #region Hanlders
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.  The Parameter
-        /// property is typically used to configure the page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -62,15 +63,6 @@ namespace OKr.Win8Book.Client.View
             this.Frame.Navigate(typeof(Viewer), category);
         }
 
-        #region App Bar
-
-        private void OnTheme(object sender, RoutedEventArgs e)
-        {
-            SwitchTheme();
-            this.BottomAppBar.IsOpen = false;
-        }
-
-        #endregion
 
         private void Chapters_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -94,6 +86,61 @@ namespace OKr.Win8Book.Client.View
 
         }
 
-  
+        #endregion
+
+        #region Setting
+
+        private void SettingCommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            scAbout = new SettingsCommand("About", "关于", async (x) =>
+            {               
+            });
+
+            scFeedback = new SettingsCommand("Feedback", "用户反馈", async (x) =>
+            {
+                var success = await Windows.System.Launcher.LaunchUriAsync(new Uri("mailto:service@okr.me", UriKind.RelativeOrAbsolute));
+            });
+
+            scPrivacy = new SettingsCommand("Privacy", "隐私策略", async (x) =>
+            {
+                var success = await Windows.System.Launcher.LaunchUriAsync(new Uri("http://okrwork.sinaapp.com/im/5", UriKind.RelativeOrAbsolute));
+            });
+
+
+            if (!args.Request.ApplicationCommands.Contains(scAbout))
+            {
+                args.Request.ApplicationCommands.Add(scAbout);
+            }
+
+            if (!args.Request.ApplicationCommands.Contains(scFeedback))
+            {
+                args.Request.ApplicationCommands.Add(scFeedback);
+            }
+
+            if (!args.Request.ApplicationCommands.Contains(scPrivacy))
+            {
+                args.Request.ApplicationCommands.Add(scPrivacy);
+            }
+        }
+
+        #endregion
+
+        #region App Bar
+
+        private void OnTheme(object sender, RoutedEventArgs e)
+        {
+            SwitchTheme();
+            this.BottomAppBar.IsOpen = false;
+        }
+
+        #endregion
+
+        #region Variables
+
+        private SettingsCommand scAbout;
+        private SettingsCommand scPrivacy;
+        private SettingsCommand scFeedback;
+
+        #endregion
     }
 }

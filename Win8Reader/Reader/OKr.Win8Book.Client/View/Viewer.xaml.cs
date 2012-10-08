@@ -18,12 +18,18 @@ using Windows.UI.Xaml.Controls;
 
 namespace OKr.Win8Book.Client.View
 {
-    public sealed partial class Viewer : LayoutAwarePage
+    public sealed partial class Viewer : OKrPageBase
     {
+        #region Ctor
+
         public Viewer()
         {
             this.InitializeComponent();
         }
+
+        #endregion
+
+        #region Handlers
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -54,81 +60,8 @@ namespace OKr.Win8Book.Client.View
             LoadTheme();
         }
 
-        //private void GoBack(object sender, RoutedEventArgs e)
-        //{
-        //    if (this.Frame != null && this.Frame.CanGoBack) this.Frame.GoBack();
-        //}
-
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
-            //double x = e.Position.X;
-            //double y = e.Position.Y;
-
-            //if (x < 200.0)
-            //{
-            //    if (this.current > 0)
-            //    {
-            //        this.current--;
-            //        this.ChangePage();
-            //        //this.pageno1.Text = this.pageno2.Text;
-            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-            //        this.SetPage();
-            //    }
-            //    else if (this.currentChapter >= 1)
-            //    {
-            //        this.currentChapter--;
-            //        //this.title1.Text = this.title2.Text;
-            //        //this.LoadData(this.currentChapter);
-            //        this.current = this.chapter.PageNum - 1;
-            //        this.ChangePage();
-            //        //this.pageno1.Text = this.pageno2.Text;
-            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-            //        this.SetChapter();                    
-            //    }
-            //    else
-            //    {
-            //        //MessageBox.Show(OkrConstant.FIRSTPAGEERR);
-            //    }
-            //}
-            //else if (x > 280.0)
-            //{
-            //    if (this.current <= (this.chapter.PageNum - 2))
-            //    {
-            //        this.current++;
-            //        this.ChangePage();
-            //        //this.pageno1.Text = this.pageno2.Text;
-            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-            //        this.SetPage();
-            //    }
-            //    else if (this.currentChapter < (this.book.Chapters.Count - 1))
-            //    {
-            //        this.currentChapter++;
-            //        this.current = 0;
-            //        //this.pageno1.Text = this.pageno2.Text;
-            //        //this.title1.Text = this.title2.Text;
-            //        //this.LoadData(this.currentChapter);
-            //        this.ChangePage();
-            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-            //        //this.SetChapter();
-            //    }
-            //    else
-            //    {
-            //        // MessageBox.Show(OkrConstant.LASTPAGEERR);
-            //    }
-            //}
-        }
-
-        private void ChangePage()
-        {
-        }
-
-        private async void SetChapter()
-        {
-            this.progress.Chapter = this.currentChapter;
-            this.progress.Page = this.current;
-            this.progress.Percent = 0.0;
-
-            await pc.Save(this.progress);
         }
 
         private void bodyGrid_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
@@ -198,6 +131,23 @@ namespace OKr.Win8Book.Client.View
             await this.mc.Save(this.mark);
 
             App.HomeViewModel.NotifyMarksChanged();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void ChangePage()
+        {
+        }
+
+        private async void SetChapter()
+        {
+            this.progress.Chapter = this.currentChapter;
+            this.progress.Page = this.current;
+            this.progress.Percent = 0.0;
+
+            await pc.Save(this.progress);
         }
 
         private async Task<Chapter> LoadData(int index, string title)
@@ -306,6 +256,20 @@ namespace OKr.Win8Book.Client.View
             await pc.Save(this.progress);
         }
 
+        #endregion
+
+        #region App Bar
+
+        private void OnTheme(object sender, RoutedEventArgs e)
+        {
+            SwitchTheme();
+            this.BottomAppBar.IsOpen = false;
+        }
+
+        #endregion
+
+        #region Variables
+
         private int fontsize = OKrBookConfig.DEFALUTFONTSIZE;
         private int height = OKrBookConfig.HEIGHT; //762;
         private int lineHeight = OKrBookConfig.LINEHEIGHT; //0x10;
@@ -322,15 +286,6 @@ namespace OKr.Win8Book.Client.View
 
         private int current;
 
-        #region App Bar
-
-        private void OnTheme(object sender, RoutedEventArgs e)
-        {
-            SwitchTheme();
-            this.BottomAppBar.IsOpen = false;
-        }
-
         #endregion
-
     }
 }

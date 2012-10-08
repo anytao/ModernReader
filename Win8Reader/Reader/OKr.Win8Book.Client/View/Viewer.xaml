@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<common:OKrPageBase
     x:Class="OKr.Win8Book.Client.View.Viewer"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -117,4 +117,4 @@
         </AppBar>
     </Page.BottomAppBar>
 
-</common:LayoutAwarePage>
+</common:OKrPageBase>
