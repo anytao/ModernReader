@@ -19,6 +19,10 @@ namespace OKr.Win8Book.Client.View
     {
         #region Properties
 
+        private Book book;
+        private Mark mark;
+        private OKrApps apps;
+
         HomeViewModel viewModel
         {
             get
@@ -53,6 +57,7 @@ namespace OKr.Win8Book.Client.View
             }
             LoadTheme();
         }
+
 
         private void OnCategory(object sender, TappedRoutedEventArgs e)
         {
@@ -92,6 +97,11 @@ namespace OKr.Win8Book.Client.View
 
 
             this.Frame.Navigate(typeof(Viewer), chapter);
+        }
+
+        private void App_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }
