@@ -19,10 +19,6 @@ namespace OKr.Win8Book.Client.View
     {
         #region Properties
 
-        private Book book;
-        private Mark mark;
-        private OKrApps apps;
-
         HomeViewModel viewModel
         {
             get

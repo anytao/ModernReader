@@ -134,6 +134,19 @@
         <Setter Property="Margin" Value="12,0,0,0"/>
     </Style>
 
+    <Style x:Key="Home_OKrAppName_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="Home_OKrAppIntro_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+
     <!--xxx-->
 
     <!--xxx-->
