@@ -30,7 +30,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MarkTemplate">
-            <Grid >
+            <Grid Height="90" Width="360">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -103,6 +103,7 @@
                         </TextBlock>
                     </StackPanel>
                     <ListView Grid.Row="1" Margin="0,20,0,0" Width="560" 
+                              Style="{StaticResource NonScrollable_ListViewStyle}"
                             ItemsSource="{Binding TopChapters}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
                             SelectionMode="None"
@@ -117,19 +118,25 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
+                        <TextBlock Text="书签" Style="{StaticResource Home_SectionTileStyle}"/>
                         <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" DataContext="{Binding Mark}">
                             <Run Text="共"/>
                             <Run Text="{Binding Marks.Count}"/>
                             <Run Text="枚"/>
                         </TextBlock>
                     </StackPanel>
-                    <ListView Grid.Row="1" Margin="0,20,0,0" Width="450"
+                    <ListView Grid.Row="1" Margin="0,20,0,0" 
+                              Style="{StaticResource NonScrollable_ListViewStyle}"
                             ItemsSource="{Binding RecentMarks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
-                            ItemClick="Mark_ItemClick" >
+                            ItemClick="Mark_ItemClick">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
                     </ListView>
                 </Grid>
 
