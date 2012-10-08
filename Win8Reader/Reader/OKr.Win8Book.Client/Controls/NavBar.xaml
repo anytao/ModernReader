@@ -10,20 +10,20 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <StackPanel Orientation="Horizontal" >
-        <OKrControls:ImageButton x:Name="btnHome"  Margin="8,8,0,8" 
+    <StackPanel Orientation="Horizontal" Style="{StaticResource AppBarBackgroundStyle}">
+        <OKrControls:ImageButton x:Name="btnHome" Margin="10,10,0,10" 
                                 Style="{StaticResource ImageButton_OneImage_Style}" 
-                                BackgroundNormal="/Assets/Common/appBarTopHome.png"
+                                BackgroundNormal="/Assets/NavBar/NavHome.png"
                                 Click="OnHome"/>
 
-        <OKrControls:ImageButton x:Name="btnChapter"  Margin="8,8,0,8" 
+        <OKrControls:ImageButton x:Name="btnChapter"  Margin="10,10,0,10" 
                                 Style="{StaticResource ImageButton_OneImage_Style}" 
-                                BackgroundNormal="/Assets/Common/appBarTopHome.png"
+                                BackgroundNormal="/Assets/NavBar/NavChapters.png"
                                 Click="OnChapter"/>
 
-        <OKrControls:ImageButton x:Name="btnMark"  Margin="8,8,0,8" 
+        <OKrControls:ImageButton x:Name="btnMark"  Margin="10,10,0,10" 
                                 Style="{StaticResource ImageButton_OneImage_Style}" 
-                                BackgroundNormal="/Assets/Common/appBarTopHome.png"
+                                BackgroundNormal="/Assets/NavBar/NavMark.png"
                                 Click="OnMark"/>
     </StackPanel>
 </AppBar>

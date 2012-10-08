@@ -168,7 +168,7 @@
 
     <Page.BottomAppBar>
         <AppBar Padding="10,0,10,0" AutomationProperties.Name="Bottom App Bar">
-            <Grid>
+            <Grid Style="{StaticResource AppBarBackgroundStyle}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>

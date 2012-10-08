@@ -121,7 +121,13 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    <!--App Bar-->
+    <Style x:Key="AppBarBackgroundStyle" TargetType="Panel" >
+        <Setter Property="Background" Value="#FF3d8400"/>
+        <Setter Property="Margin" Value="-10,-2"/>
+    </Style>
+    
     <!--Home-->
     <Style x:Key="Home_SectionTileStyle" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
         <Setter Property="FontSize" Value="27"/>
@@ -214,58 +220,6 @@
     
     
     <!--xxx-->
-    <Style x:Key="TopAppBarImageButtonStyle" TargetType="OKrControls:ImageButton">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="OKrControls:ImageButton">
-                    <Grid>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="PointerOver">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundNormal" />
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundHover" />
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundPressed" />
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundDisabled" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundNormal" />
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundHover" />
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundPressed" />
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundDisabled" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundNormal" />
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundHover" />
-                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundPressed" />
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="backgroundDisabled" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused"/>
-                                <VisualState x:Name="Unfocused"/>
-                                <VisualState x:Name="PointerFocused"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-
-                        <Grid>
-                            <Image x:Name="backgroundDisabled" Source="{TemplateBinding BackgroundDisabled}" Stretch="None" Opacity="0"/>
-                            <Image x:Name="backgroundPressed" Source="{TemplateBinding BackgroundPressed}" Stretch="None" Opacity="0"/>
-                            <Image x:Name="backgroundHover" Source="{TemplateBinding BackgroundHover}" Stretch="None" Opacity="0"/>
-                            <Image x:Name="backgroundNormal" Source="{TemplateBinding BackgroundNormal}" Stretch="None"/>
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <!--xxx-->
     <!--xxx-->
     <!--xxx-->

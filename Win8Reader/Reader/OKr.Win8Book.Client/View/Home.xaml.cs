@@ -43,17 +43,18 @@ namespace OKr.Win8Book.Client.View
 
         #region Hanlders
 
+        private bool DataLoaded = false;
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            if (e.NavigationMode == NavigationMode.New)
+            if (!DataLoaded)
             {
                 this.pr.IsActive = true;
                 await viewModel.Load();
                 this.pr.IsActive = false;
 
                 this.DataContext = viewModel;
+                DataLoaded = true;
             }
 
             LoadTheme();
@@ -71,7 +72,7 @@ namespace OKr.Win8Book.Client.View
             Chapter chapter = new Chapter();
             chapter.Title = data.Title;
             chapter.ChapterNo = data.ChapterNo;
-            chapter.PageCount = data.Current;            
+            chapter.PageCount = data.Current;
 
             this.Frame.Navigate(typeof(Viewer), chapter);
         }
@@ -88,7 +89,7 @@ namespace OKr.Win8Book.Client.View
         private void SettingCommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
         {
             scAbout = new SettingsCommand("About", "关于", async (x) =>
-            {               
+            {
             });
 
             scFeedback = new SettingsCommand("Feedback", "用户反馈", async (x) =>
@@ -125,7 +126,7 @@ namespace OKr.Win8Book.Client.View
         private void OnTheme(object sender, RoutedEventArgs e)
         {
             SwitchTheme();
-            this.BottomAppBar.IsOpen = false;
+            HideAppBars();
         }
 
         #endregion

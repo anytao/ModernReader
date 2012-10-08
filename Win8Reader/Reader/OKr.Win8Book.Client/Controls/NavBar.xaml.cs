@@ -12,13 +12,15 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using OKr.Win8Book.Client.Common;
 
 namespace OKr.Win8Book.Client.Controls
 {
     public sealed partial class NavBar : AppBar
     {
+        private OKrPageBase page = null;
 
-        public NavBar(Page page, bool homeEnabled, bool chapterEnabled, bool markEnabled)
+        public NavBar(OKrPageBase page, bool homeEnabled, bool chapterEnabled, bool markEnabled)
         {
             this.InitializeComponent();
             this.page = page;
@@ -29,22 +31,21 @@ namespace OKr.Win8Book.Client.Controls
 
         private void OnHome(object sender, RoutedEventArgs e)
         {
-            this.IsOpen = false;
+            page.HideAppBars();
             this.page.Frame.Navigate(typeof(Home));
         }
 
         private void OnChapter(object sender, RoutedEventArgs e)
         {
-            this.IsOpen = false;
+            page.HideAppBars();
             this.page.Frame.Navigate(typeof(Catalog));
         }
 
         private void OnMark(object sender, RoutedEventArgs e)
         {
-            this.IsOpen = false;
+            page.HideAppBars();
             this.page.Frame.Navigate(typeof(Bookmark));
         }
 
-        private Page page = null;
     }
 }

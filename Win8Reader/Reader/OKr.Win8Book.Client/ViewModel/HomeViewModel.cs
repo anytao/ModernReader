@@ -74,6 +74,7 @@ namespace OKr.Win8Book.Client.ViewModel
             BookContext bc = new BookContext();
             this.Book = await bc.Load();
 
+            TopChapters = new ObservableCollection<Chapter>();
             var filterResult = this.Book.Chapters.Take(10);
             foreach (var chapter in filterResult)
             {

@@ -27,7 +27,6 @@ namespace OKr.Win8Book.Client.View
         public Catalog()
         {
             this.InitializeComponent();
-
             this.TopAppBar = new NavBar(this, true, false, true);
         }
 
@@ -44,6 +43,8 @@ namespace OKr.Win8Book.Client.View
                 BookContext bc = new BookContext();
                 this.DataContext = await bc.Load();
             }
+
+            LoadTheme();
         }
 
         private void OnChapterItemClick(object sender, ItemClickEventArgs e)

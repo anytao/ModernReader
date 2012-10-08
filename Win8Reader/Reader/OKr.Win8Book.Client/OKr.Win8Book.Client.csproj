@@ -118,7 +118,6 @@
     <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
-    <Compile Include="Common\LayoutAwarePageExtension.cs" />
     <Compile Include="Common\OKrPageBase.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
@@ -145,7 +144,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="Assets\Common\appBarTopHome.png" />
     <Content Include="Assets\Common\BackButtonBlack.png" />
     <Content Include="Assets\Common\BackButtonWhite.png" />
     <Content Include="Assets\Common\PageBackgroundDark.jpg" />
@@ -158,6 +156,9 @@
     <Content Include="Assets\Home\ChapterIcon2.png" />
     <Content Include="Assets\Home\ChapterIcon3.png" />
     <Content Include="Assets\Home\MarkIcon1.png" />
+    <Content Include="Assets\NavBar\NavChapters.png" />
+    <Content Include="Assets\NavBar\NavHome.png" />
+    <Content Include="Assets\NavBar\NavMark.png" />
     <Content Include="Common\ReadMe.txt" />
     <None Include="OKr.Win8Book.Client_TemporaryKey.pfx" />
   </ItemGroup>
