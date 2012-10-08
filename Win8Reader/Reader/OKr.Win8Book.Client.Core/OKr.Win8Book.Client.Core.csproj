@@ -105,6 +105,7 @@
     <Compile Include="Builder\TextParser.cs" />
     <Compile Include="Context\BookContext.cs" />
     <Compile Include="Context\MarkContext.cs" />
+    <Compile Include="Context\OKrAppContext.cs" />
     <Compile Include="Context\OKrBookContextBase.cs" />
     <Compile Include="Context\ProgressContext.cs" />
     <Compile Include="Data\Ad.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Data\ChapterMark.cs" />
     <Compile Include="Data\Mark.cs" />
     <Compile Include="Data\OKrApp.cs" />
+    <Compile Include="Data\OKrApps.cs" />
     <Compile Include="Data\Page.cs" />
     <Compile Include="Data\Progress.cs" />
     <Compile Include="OKrBookConfig.cs" />

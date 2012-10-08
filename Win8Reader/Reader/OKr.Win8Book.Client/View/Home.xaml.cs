@@ -23,6 +23,7 @@ namespace OKr.Win8Book.Client.View
 
         private Book book;
         private Mark mark;
+        private OKrApps apps;
 
         #endregion
 
@@ -55,7 +56,9 @@ namespace OKr.Win8Book.Client.View
             this.DataContext = book;
 
             this.LoadMark();
+            this.LoadApps();
         }
+
 
         private void OnCategory(object sender, TappedRoutedEventArgs e)
         {
@@ -85,6 +88,14 @@ namespace OKr.Win8Book.Client.View
             this.mark = await mc.Load();
 
             this.markSection.DataContext = this.mark;
+        }
+
+
+        private async void LoadApps()
+        {
+            OKrAppContext oc = new OKrAppContext();
+            this.apps = await oc.Load();
+            
         }
 
         private void Chapters_ItemClick(object sender, ItemClickEventArgs e)
