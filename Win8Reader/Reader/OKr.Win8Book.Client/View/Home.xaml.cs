@@ -67,6 +67,7 @@ namespace OKr.Win8Book.Client.View
         private void OnTheme(object sender, RoutedEventArgs e)
         {
             SwitchTheme();
+            this.BottomAppBar.IsOpen = false;
         }
 
         #endregion
