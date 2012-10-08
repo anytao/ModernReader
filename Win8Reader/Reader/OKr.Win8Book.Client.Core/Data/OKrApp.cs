@@ -18,6 +18,7 @@ namespace OKr.Win8Book.Client.Core.Data
         public string Email { get; set; }
         public string Url { get; set; }
         public string Weibo { get; set; }
+        public string Pic { get; set; }
 
         public Ad Ad { get; set; }
     }

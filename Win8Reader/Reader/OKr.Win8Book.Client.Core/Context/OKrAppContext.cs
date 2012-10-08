@@ -42,7 +42,7 @@ namespace OKr.Win8Book.Client.Core.Context
                 app.AppId = item.Element("id").Value;
                 app.AppName = item.Element("name").Value;
                 app.Intro = item.Element("intro").Value;
-
+                app.Pic = "ms-appx:///Assets/Data/app/" + item.Element("icon").Value;
 
                 data.Apps.Add(app);
             }
