@@ -8,5 +8,9 @@ namespace OKr.Win8Book.Client.Core
 {
     public class OKrBookConfig
     {
+        public static readonly int DEFALUTFONTSIZE = 20;
+
+        public static readonly int HEIGHT = 2100;
+        public static readonly int LINEHEIGHT = 42;
     }
 }
