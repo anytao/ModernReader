@@ -17,9 +17,20 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="ChapterTemplate">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
+            </Grid>
+        </DataTemplate>
+
     </Page.Resources>
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -33,11 +44,55 @@
             <Button x:Name="backButton" IsEnabled="False" Style="{StaticResource BackButtonStyle}" Click="GoBack"/>
             <TextBlock x:Name="pageTitle" Text="首页" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
         </Grid>
-        
+
         <!--test-->
         <ToggleSwitch HorizontalAlignment="Right" Header="Switch Theme" Toggled="ToggleSwitch_Toggled"/>
 
-        <GridView x:Name="categoryGridView" Grid.Row="1" SelectionMode="None" Padding="116,0,40,46" ItemsSource="{Binding Chapters}" ItemTemplate="{StaticResource categoryTemplate}">
+        <!--full view-->
+        <ScrollViewer x:Name="gridViewScrollViewer"  Grid.Row="1"
+                      ZoomMode="Disabled"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                      HorizontalScrollMode="Enabled" VerticalScrollMode="Disabled"
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <!--column 1-->
+                <Grid Margin="120,0,0,0" Width="560">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
+                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}">
+                            <Run Text="共"/>
+                            <Run Text="{Binding Chapters.Count}"/>
+                            <Run Text="章"/>
+                        </TextBlock>
+                    </StackPanel>
+                    <ListView Grid.Row="1" Margin="0,20,0,0"
+                            ItemsSource="{Binding Chapters}"
+                            ItemTemplate="{StaticResource ChapterTemplate}"
+                            SelectionMode="None"
+                            IsItemClickEnabled="True"
+                            ItemClick="Chapters_ItemClick" >
+                    </ListView>
+                </Grid>
+                
+            </Grid>
+        </ScrollViewer>
+
+
+        <!--snapped view-->
+        <!--TO-DO-->
+
+        <GridView x:Name="categoryGridView" Grid.Row="1" SelectionMode="None" Padding="116,0,40,46" 
+                  ItemsSource="{Binding Chapters}" ItemTemplate="{StaticResource categoryTemplate}"
+                  Visibility="Collapsed">
         </GridView>
 
         <ProgressRing x:Name="pr" Foreground="LightBlue" Width="122" Height="122" />

@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Media;
 using System.Collections.Generic;
 using System;
 using Windows.UI.Xaml.Controls;
+using OKr.Win8Book.Client.ViewModel;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -16,8 +17,14 @@ namespace OKr.Win8Book.Client.View
     /// </summary>
     public sealed partial class Home : LayoutAwarePage
     {
+        #region Properties
+
+        private HomeViewModel viewModel = new HomeViewModel();
+
         private Book book;
         private Mark mark;
+
+        #endregion
 
         public Home()
         {
@@ -105,6 +112,11 @@ namespace OKr.Win8Book.Client.View
 
                 //this.mlist.Items.Add(item);
             }
+        }
+
+        private void Chapters_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
 
     }
