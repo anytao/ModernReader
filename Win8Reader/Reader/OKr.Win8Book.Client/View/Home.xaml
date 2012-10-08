@@ -34,9 +34,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Rectangle Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
-                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}" Foreground="Black"/>
+                <TextBlock Grid.Column="2" Text="{Binding Content}" Style="{StaticResource Home_ChapterName_Style}" Foreground="Blue"/>
             </Grid>
         </DataTemplate>
 
@@ -113,7 +115,7 @@
                             ItemTemplate="{StaticResource MarkTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
-                            ItemClick="Chapters_ItemClick" >
+                            ItemClick="Mark_ItemClick" >
                     </ListView>
                 </Grid>
             </Grid>
