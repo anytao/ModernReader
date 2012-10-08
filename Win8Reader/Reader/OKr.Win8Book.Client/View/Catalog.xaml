@@ -8,7 +8,65 @@
     xmlns:common="using:OKr.Win8Book.Client.Common"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="categoryTemplate">
+            <Grid Width="300" Height="159" Tapped="OnCategory">
+                <Grid Margin="10">
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Title}" Margin="0,10,0,0"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ChapterTemplate">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock x:Name="pageTitle" Text="{Binding Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
+        </Grid>
+
+        <Grid Margin="120,0,0,0" Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" DataContext="{Binding Book}">
+                <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
+                <TextBlock Style="{StaticResource Home_SectionTileCountStyle}">
+                            <Run Text="共"/>
+                            <Run Text="{Binding Chapters.Count}"/>
+                            <Run Text="章"/>
+                </TextBlock>
+            </StackPanel>
+            <ListView Grid.Row="1" Margin="0,20,0,0" Width="560" 
+                              Style="{StaticResource NonScrollable_ListViewStyle}"
+                            ItemsSource="{Binding Chapters}"
+                            ItemTemplate="{StaticResource ChapterTemplate}"
+                            SelectionMode="None"
+                            IsItemClickEnabled="True"
+                            ItemClick="OnChapterItemClick" >
+            </ListView>
+        </Grid>
+
 
     </Grid>
 </common:OKrPageBase>

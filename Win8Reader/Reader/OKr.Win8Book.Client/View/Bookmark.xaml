@@ -8,7 +8,75 @@
     xmlns:common="using:OKr.Win8Book.Client.Common"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="categoryTemplate">
+            <Grid Width="300" Height="159" Tapped="OnCategory">
+                <Grid Margin="10">
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Title}" Margin="0,10,0,0"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="MarkTemplate">
+            <Grid Height="90" Width="360">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Style="{StaticResource Home_MarkTemplate_Background_Style}"/>
+                <Image Style="{StaticResource Home_Mark_Icon_1_Style}"/>
+                <StackPanel Grid.Column="1" >
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource Home_MarkTitle_Style}" />
+                    <TextBlock Text="{Binding Content}" Style="{StaticResource Home_MarkContent_Style}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="pageTitle" Text="{Binding Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="120,0,0,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="书签" Style="{StaticResource Home_SectionTileStyle}"/>
+                <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" DataContext="{Binding Mark}">
+                            <Run Text="共"/>
+                            <Run Text="{Binding Marks.Count}"/>
+                            <Run Text="枚"/>
+                </TextBlock>
+            </StackPanel>
+            <ListView Grid.Row="1" Margin="0,20,0,0" 
+                              Style="{StaticResource NonScrollable_ListViewStyle}"
+                            ItemsSource="{Binding RecentMarks}"
+                            ItemTemplate="{StaticResource MarkTemplate}"
+                            SelectionMode="None"
+                            IsItemClickEnabled="True"
+                            ItemClick="OnMarkItemClick">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </Grid>
+
 
     </Grid>
 </common:OKrPageBase>

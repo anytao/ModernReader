@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using OKr.Win8Book.Client.Common;
 using OKr.Win8Book.Client.Controls;
+using OKr.Win8Book.Client.Core.Context;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -30,12 +31,23 @@ namespace OKr.Win8Book.Client.View
             this.TopAppBar = new NavBar(this, true, false, true);
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.  The Parameter
-        /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                BookContext bc = new BookContext();
+                this.DataContext = await bc.Load();
+            }
+        }
+
+        private void OnChapterItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void OnCategory(object sender, TappedRoutedEventArgs e)
         {
         }
     }

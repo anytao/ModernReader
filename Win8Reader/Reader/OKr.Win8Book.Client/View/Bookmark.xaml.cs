@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using OKr.Win8Book.Client.Common;
 using OKr.Win8Book.Client.Controls;
+using OKr.Win8Book.Client.Core.Context;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -35,8 +36,25 @@ namespace OKr.Win8Book.Client.View
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.  The Parameter
         /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                MarkContext mc = new MarkContext();
+                this.DataContext = await mc.Load();
+            }
+        }
+
+        private void OnMarkItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void OnCategory(object sender, TappedRoutedEventArgs e)
+        {
+
         }
     }
 }
