@@ -21,11 +21,19 @@ namespace OKr.Win8Book.Client.Common
         #region Theme
 
         private bool childrenCollected = false;
-        List<TextBlock> textBlocks = new List<TextBlock>();
+        List<TextBlock> textBlocks = null;
         Grid pageRootGrid = null;
+
+        protected void LoadTheme()
+        {
+            //TO-DO: load last set theme
+            SetTheme(App.IsLightTheme);
+        }
 
         protected void SetTheme(bool light)
         {
+            this.UpdateLayout();
+
             SolidColorBrush Theme_Foreground = null;
             ImageBrush pageBackgroundBrush = null;
 
@@ -40,12 +48,13 @@ namespace OKr.Win8Book.Client.Common
                 pageBackgroundBrush = App.Resources["OKr_Theme_PageBackground_Dark"] as ImageBrush;
             }
 
-            if (!childrenCollected)
-            {
-                GetChildrenOfType<TextBlock>(this, textBlocks);
-                pageRootGrid = GetFirstChildOfType<Grid>(this);
-                childrenCollected = true;
-            }
+            //if (!childrenCollected)
+            //{
+            textBlocks = new List<TextBlock>();
+            GetChildrenOfType<TextBlock>(this, textBlocks);
+            pageRootGrid = GetFirstChildOfType<Grid>(this);
+            childrenCollected = true;
+            //}
 
             foreach (var textBlock in textBlocks)
             {

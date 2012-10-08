@@ -9,22 +9,15 @@ using OKr.Win8Book.Client.Core.Builder;
 using OKr.Win8Book.Client.Core.Context;
 using OKr.Win8Book.Client.Core.Data;
 using Sina.View.Common.Toast;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using OKr.Win8Book.Client.Common;
 
 namespace OKr.Win8Book.Client.View
 {
-    public sealed partial class Viewer : Windows.UI.Xaml.Controls.Page
+    public sealed partial class Viewer : LayoutAwarePage
     {
         public Viewer()
         {
@@ -33,6 +26,8 @@ namespace OKr.Win8Book.Client.View
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
             var category = e.Parameter as Chapter;
             if (e.NavigationMode == NavigationMode.New)
             {
@@ -197,6 +192,8 @@ namespace OKr.Win8Book.Client.View
             this.ShowMark();
 
             await this.mc.Save(this.mark);
+
+            App.HomeViewModel.NotifyMarksChanged();
         }
 
         private async Task<Chapter> LoadData(int index, string title)
