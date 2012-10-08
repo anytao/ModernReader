@@ -33,6 +33,7 @@ namespace OKr.Win8Book.Client
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            //App.Current.RequestedTheme = ApplicationTheme.Light;
         }
 
         /// <summary>
