@@ -69,11 +69,11 @@ namespace OKr.Win8Book.Client.View
         {
             if ((sender as ToggleSwitch).IsOn)
             {
-                SwitchTheme(true);
+                SetTheme(true);
             }
             else
             {
-                SwitchTheme(false);
+                SetTheme(false);
             }
         }
 
@@ -84,39 +84,12 @@ namespace OKr.Win8Book.Client.View
             MarkContext mc = new MarkContext();
             this.mark = await mc.Load();
 
-            foreach (var mark in this.mark.Marks)
-            {
-                ChapterMark tmp = mark;
-                //BookmarkItem item = new BookmarkItem();
-                //item.DataContext = tmp;
-
-                //item.Click += (sender, ex) =>
-                //{
-                //    Progress progress = null;
-
-                //    IsolatedStorageSettings.ApplicationSettings.TryGetValue<Progress>("current", out progress);
-                //    if (progress == null)
-                //    {
-                //        progress = new Progress();
-                //    }
-                //    progress.Chapter = tmp.ChapterNo;
-                //    progress.Page = tmp.Current;
-                //    progress.Percent = tmp.Percent;
-                //    IsolatedStorageSettings.ApplicationSettings["current"] = progress;
-
-                //    //Dispatcher.BeginInvoke(() =>
-                //    //{
-                //    //    (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/View/Viewer.xaml", UriKind.Relative));
-                //    //});
-                // };
-
-                //this.mlist.Items.Add(item);
-            }
+            this.markSection.DataContext = this.mark;
         }
 
         private void Chapters_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(Viewer), e.ClickedItem as Chapter);
         }
 
     }

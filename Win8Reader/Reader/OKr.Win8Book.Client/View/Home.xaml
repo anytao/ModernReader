@@ -28,6 +28,17 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="MarkTemplate">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
+            </Grid>
+        </DataTemplate>
+
     </Page.Resources>
 
     <Grid>
@@ -82,7 +93,28 @@
                             ItemClick="Chapters_ItemClick" >
                     </ListView>
                 </Grid>
-                
+                <!--column 2-->
+                <Grid Grid.Column="1" Margin="120,0,0,0" Width="560" x:Name="markSection">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
+                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}">
+                            <Run Text="共"/>
+                            <Run Text="{Binding Chapters.Count}"/>
+                            <Run Text="章"/>
+                        </TextBlock>
+                    </StackPanel>
+                    <ListView Grid.Row="1" Margin="0,20,0,0"
+                            ItemsSource="{Binding Marks}"
+                            ItemTemplate="{StaticResource MarkTemplate}"
+                            SelectionMode="None"
+                            IsItemClickEnabled="True"
+                            ItemClick="Chapters_ItemClick" >
+                    </ListView>
+                </Grid>
             </Grid>
         </ScrollViewer>
 

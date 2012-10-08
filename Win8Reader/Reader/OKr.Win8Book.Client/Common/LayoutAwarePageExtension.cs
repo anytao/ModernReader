@@ -24,7 +24,7 @@ namespace OKr.Win8Book.Client.Common
         List<TextBlock> textBlocks = new List<TextBlock>();
         Grid pageRootGrid = null;
 
-        protected void SwitchTheme(bool light)
+        protected void SetTheme(bool light)
         {
             SolidColorBrush Theme_Foreground = null;
             ImageBrush pageBackgroundBrush = null;
