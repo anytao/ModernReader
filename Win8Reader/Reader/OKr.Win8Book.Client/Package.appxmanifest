@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="OKr.Win8Book.Client.App">
-      <VisualElements DisplayName="OKrReader" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="A windows 8 text book reader." ForegroundText="light" BackgroundColor="#464646">
+      <VisualElements DisplayName="OKrReader" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="A windows 8 text book reader." ForegroundText="light" BackgroundColor="#464646" ToastCapable="true">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>

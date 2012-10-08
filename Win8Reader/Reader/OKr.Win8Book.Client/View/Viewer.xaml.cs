@@ -8,6 +8,7 @@ using OKr.Win8Book.Client.Core;
 using OKr.Win8Book.Client.Core.Builder;
 using OKr.Win8Book.Client.Core.Context;
 using OKr.Win8Book.Client.Core.Data;
+using Sina.View.Common.Toast;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -59,62 +60,61 @@ namespace OKr.Win8Book.Client.View
 
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
-            double x = e.Position.X;
-            double y = e.Position.Y;
+            //double x = e.Position.X;
+            //double y = e.Position.Y;
 
-            if (x < 200.0)
-            {
-                if (this.current > 0)
-                {
-                    this.current--;
-                    this.ChangePage();
-                    //this.pageno1.Text = this.pageno2.Text;
-                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-                    this.SetPage();
-                    
-                }
-                else if (this.currentChapter >= 1)
-                {
-                    this.currentChapter--;
-                    //this.title1.Text = this.title2.Text;
-                    //this.LoadData(this.currentChapter);
-                    this.current = this.chapter.PageNum - 1;
-                    this.ChangePage();
-                    //this.pageno1.Text = this.pageno2.Text;
-                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-                    this.SetChapter();                    
-                }
-                else
-                {
-                    //MessageBox.Show(OkrConstant.FIRSTPAGEERR);
-                }
-            }
-            else if (x > 280.0)
-            {
-                if (this.current <= (this.chapter.PageNum - 2))
-                {
-                    this.current++;
-                    this.ChangePage();
-                    //this.pageno1.Text = this.pageno2.Text;
-                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-                    this.SetPage();
-                }
-                else if (this.currentChapter < (this.book.Chapters.Count - 1))
-                {
-                    this.currentChapter++;
-                    this.current = 0;
-                    //this.pageno1.Text = this.pageno2.Text;
-                    //this.title1.Text = this.title2.Text;
-                    this.LoadData(this.currentChapter);
-                    this.ChangePage();
-                    //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
-                    //this.SetChapter();
-                }
-                else
-                {
-                    // MessageBox.Show(OkrConstant.LASTPAGEERR);
-                }
-            }
+            //if (x < 200.0)
+            //{
+            //    if (this.current > 0)
+            //    {
+            //        this.current--;
+            //        this.ChangePage();
+            //        //this.pageno1.Text = this.pageno2.Text;
+            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+            //        this.SetPage();
+            //    }
+            //    else if (this.currentChapter >= 1)
+            //    {
+            //        this.currentChapter--;
+            //        //this.title1.Text = this.title2.Text;
+            //        //this.LoadData(this.currentChapter);
+            //        this.current = this.chapter.PageNum - 1;
+            //        this.ChangePage();
+            //        //this.pageno1.Text = this.pageno2.Text;
+            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+            //        this.SetChapter();                    
+            //    }
+            //    else
+            //    {
+            //        //MessageBox.Show(OkrConstant.FIRSTPAGEERR);
+            //    }
+            //}
+            //else if (x > 280.0)
+            //{
+            //    if (this.current <= (this.chapter.PageNum - 2))
+            //    {
+            //        this.current++;
+            //        this.ChangePage();
+            //        //this.pageno1.Text = this.pageno2.Text;
+            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+            //        this.SetPage();
+            //    }
+            //    else if (this.currentChapter < (this.book.Chapters.Count - 1))
+            //    {
+            //        this.currentChapter++;
+            //        this.current = 0;
+            //        //this.pageno1.Text = this.pageno2.Text;
+            //        //this.title1.Text = this.title2.Text;
+            //        //this.LoadData(this.currentChapter);
+            //        this.ChangePage();
+            //        //this.pageno2.Text = string.Concat(new object[] { this.index + 1, "/", this.chapter.PageNum, OkrConstant.PAGE });
+            //        //this.SetChapter();
+            //    }
+            //    else
+            //    {
+            //        // MessageBox.Show(OkrConstant.LASTPAGEERR);
+            //    }
+            //}
         }
 
         private void ChangePage()
@@ -145,6 +145,9 @@ namespace OKr.Win8Book.Client.View
             {
                 NextPage();
             }
+
+            this.SetPage();
+
         }
 
         private void OnFontChange(object sender, RoutedEventArgs e)
@@ -249,16 +252,30 @@ namespace OKr.Win8Book.Client.View
 
         private void NextPage()
         {
-            this.current++;
+            if (this.current >= this.chapter.Pages.Count - 1)
+            {
+                OKrToast.Show("已经是最后一页了。");
+            }
+            else
+            {
+                this.current++;
 
-            this.chapter.CurrentPage = this.chapter.Pages[this.current];
+                this.chapter.CurrentPage = this.chapter.Pages[this.current];
+            }            
         }
 
         private void PrePage()
         {
-            this.current--;
+            if (this.current <= 0)
+            {
+                OKrToast.Show("已经是第一页了。");
+            }
+            else
+            {
+                this.current--;
 
-            this.chapter.CurrentPage = this.chapter.Pages[this.current];
+                this.chapter.CurrentPage = this.chapter.Pages[this.current];
+            }         
         }
 
         private void ShowMark()
