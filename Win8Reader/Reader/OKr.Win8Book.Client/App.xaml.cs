@@ -1,22 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using OKr.Win8Book.Client.Core;
 using OKr.Win8Book.Client.View;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+using OKr.Win8Book.Client.ViewModel;
 
 namespace OKr.Win8Book.Client
 {
@@ -25,6 +14,8 @@ namespace OKr.Win8Book.Client
     /// </summary>
     public sealed partial class App : Application
     {
+        #region App Lifecycle
+        
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -92,5 +83,15 @@ namespace OKr.Win8Book.Client
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        #endregion
+
+        #region OKr Reader Logic
+
+        public HomeViewModel HomeViewModel = new HomeViewModel();
+
+        public bool IsLightTheme = true;
+
+        #endregion
     }
 }

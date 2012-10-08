@@ -19,10 +19,13 @@ namespace OKr.Win8Book.Client.View
     {
         #region Properties
 
-        private HomeViewModel viewModel = new HomeViewModel();
-
-        private Book book;
-        private Mark mark;
+        HomeViewModel viewModel
+        {
+            get
+            {
+                return App.HomeViewModel;
+            }
+        }
 
         #endregion
 
@@ -36,25 +39,19 @@ namespace OKr.Win8Book.Client.View
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.  The Parameter
         /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            this.pr.IsActive = true;
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                this.pr.IsActive = true;
+                await viewModel.Load();
+                this.pr.IsActive = false;
 
-            this.Init();
-
-            this.pr.IsActive = false;
-        }
-
-        private async void Init()
-        {
-            BookContext bc = new BookContext();
-            this.book = await bc.Load();
-
-            this.DataContext = book;
-
-            this.LoadMark();
+                this.DataContext = viewModel;
+                LoadTheme();
+            }
         }
 
         private void OnCategory(object sender, TappedRoutedEventArgs e)
@@ -69,23 +66,15 @@ namespace OKr.Win8Book.Client.View
         {
             if ((sender as ToggleSwitch).IsOn)
             {
-                SetTheme(true);
+                SetTheme(false);
             }
             else
             {
-                SetTheme(false);
+                SetTheme(true);
             }
         }
 
         #endregion
-
-        private async void LoadMark()
-        {
-            MarkContext mc = new MarkContext();
-            this.mark = await mc.Load();
-
-            this.markSection.DataContext = this.mark;
-        }
 
         private void Chapters_ItemClick(object sender, ItemClickEventArgs e)
         {

@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:OKr.Win8Book.Client.Common"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    NavigationCacheMode="Required">
 
     <Page.Resources>
         <DataTemplate x:Key="categoryTemplate">
@@ -71,8 +72,8 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <!--column 1-->
-                <Grid Margin="120,0,0,0" Width="560">
+                <!--column 0-->
+                <Grid Margin="120,0,0,0" Width="560" DataContext="{Binding Book}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -93,22 +94,22 @@
                             ItemClick="Chapters_ItemClick" >
                     </ListView>
                 </Grid>
-                <!--column 2-->
-                <Grid Grid.Column="1" Margin="120,0,0,0" Width="560" x:Name="markSection">
+                <!--column 1-->
+                <Grid Grid.Column="1" Margin="120,0,0,0" Width="560">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
-                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}">
+                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" DataContext="{Binding Mark}">
                             <Run Text="共"/>
-                            <Run Text="{Binding Chapters.Count}"/>
-                            <Run Text="章"/>
+                            <Run Text="{Binding Marks.Count}"/>
+                            <Run Text="枚"/>
                         </TextBlock>
                     </StackPanel>
                     <ListView Grid.Row="1" Margin="0,20,0,0"
-                            ItemsSource="{Binding Marks}"
+                            ItemsSource="{Binding RecentMarks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
