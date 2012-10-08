@@ -129,7 +129,7 @@ namespace OKr.Win8Book.Client.Core.Builder
 
         public static Chapter GetChapter(string context, int[] count)
         {
-            Chapter bean = new Chapter();
+            Chapter chapter = new Chapter();
             List<string> list = new List<string>();
             byte[] bytes = Encoding.GetEncoding("utf-8").GetBytes(context);
             int start = 0;
@@ -139,7 +139,7 @@ namespace OKr.Win8Book.Client.Core.Builder
                 Page item = GetOnePage(context, start, count);
                 start += item.CharNum;
                 list.Add(item.Result);
-                bean.Pages.Add(item);
+                chapter.Pages.Add(item);
                 if (start >= context.Length)
                 {
                     num2++;
@@ -147,9 +147,9 @@ namespace OKr.Win8Book.Client.Core.Builder
                 }
                 num2++;
             }
-            bean.PageList = list;
-            bean.PageNum = num2;
-            return bean;
+            chapter.PageList = list;
+            chapter.PageNum = num2;
+            return chapter;
         }
     }
 }

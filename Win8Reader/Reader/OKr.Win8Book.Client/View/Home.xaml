@@ -112,7 +112,7 @@
                             ItemTemplate="{StaticResource MarkTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
-                            ItemClick="Chapters_ItemClick" >
+                            ItemClick="Mark_ItemClick" >
                     </ListView>
                 </Grid>
             </Grid>

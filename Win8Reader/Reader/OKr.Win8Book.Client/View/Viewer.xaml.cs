@@ -40,16 +40,18 @@ namespace OKr.Win8Book.Client.View
                 this.currentChapter = category.ChapterNo;
 
                 this.chapter = category;
-                this.current = 0;
+                this.current = category.PageCount;
 
                 this.book = await bc.Load();
-                this.chapter = await LoadData(this.currentChapter);
+                this.chapter = await LoadData(this.currentChapter, category.Title);
                 chapter.CurrentPage = chapter.Pages[this.current];
 
                 this.DataContext = chapter;
 
                 this.mark = await mc.Load();
                 this.progress = await pc.Load();
+
+                this.chapter.Mark = this.mark;                
             }
         }
 
@@ -147,7 +149,6 @@ namespace OKr.Win8Book.Client.View
             }
 
             this.SetPage();
-
         }
 
         private void OnFontChange(object sender, RoutedEventArgs e)
@@ -155,7 +156,7 @@ namespace OKr.Win8Book.Client.View
 
         }
 
-        private void OnMark(object sender, RoutedEventArgs e)
+        private async void OnMark(object sender, RoutedEventArgs e)
         {
             Mark m = this.chapter.Mark;
 
@@ -165,7 +166,7 @@ namespace OKr.Win8Book.Client.View
                 this.chapter.Mark = m;
             }
 
-            ChapterMark item = m.Marks.FirstOrDefault(x => x.Current == this.current);
+            ChapterMark item = m.Marks.FirstOrDefault(x => x.Current == this.current && x.ChapterNo == this.currentChapter);
 
             if (item == null)
             {
@@ -175,45 +176,30 @@ namespace OKr.Win8Book.Client.View
                 item.Date = DateTime.Now.ToString("yyyy/mm/dd hh:MM:ss");
                 item.Current = this.current;
                 item.Percent = ((double)this.current) / ((double)this.chapter.PageNum);
-                // At.Okr.Client.Core.Data.Page setting = this.chapter.Pages[this.index];
-                // item.Content = setting.Row[0].Trim() + setting.Row[1].Trim();
+                OKr.Win8Book.Client.Core.Data.Page page = this.chapter.Pages[this.current];
+                item.Content = page.Row[0].Trim() + page.Row[1].Trim();
+
                 this.mark.Marks.Add(item);
-                m.Marks.Add(item);
             }
             else
             {
                 int chapterNo = item.ChapterNo;
-                List<ChapterMark> list = new List<ChapterMark>();
-                for (int i = 0; i < this.mark.Marks.Count; i++)
-                {
-                    if ((this.mark.Marks[i].ChapterNo != chapterNo) || (this.mark.Marks[i].Current != this.current))
-                    {
-                        list.Add(this.mark.Marks[i]);
-                    }
-                }
-                this.mark.Marks.Clear();
-                this.mark.Marks = list;
-                List<ChapterMark> list2 = new List<ChapterMark>();
-                for (int j = 0; j < m.Marks.Count; j++)
-                {
-                    if (m.Marks[j].Current != this.current)
-                    {
-                        list2.Add(m.Marks[j]);
-                    }
-                }
-                this.chapter.Mark.Marks.Clear();
-                this.chapter.Mark.Marks = list2;
-            }
 
-            // IsolatedStorageSettings.ApplicationSettings["marks"] = this.mark;
-            // IsolatedStorageSettings.ApplicationSettings["bookinfo"] = this.book;
+                List<ChapterMark> list = new List<ChapterMark>();
+                list = this.mark.Marks.Where(x => x.ChapterNo == chapterNo && x.Current == this.current).ToList();
+
+                foreach (var mark in list)
+                {
+                    this.mark.Marks.Remove(mark);
+                }
+            }
 
             this.ShowMark();
 
-            this.mc.Save(this.mark);
+            await this.mc.Save(this.mark);
         }
 
-        private async Task<Chapter> LoadData(int index)
+        private async Task<Chapter> LoadData(int index, string title)
         {
             int[] count = this.GetCounts(this.fontsize);
 
@@ -232,6 +218,8 @@ namespace OKr.Win8Book.Client.View
             if (content != null)
             {
                 chapter = TextParser.GetChapter(content, count);
+                chapter.Title = title;
+                chapter.ChapterNo = index;
             }
 
             return chapter;
@@ -310,11 +298,11 @@ namespace OKr.Win8Book.Client.View
             //});
         }
 
-        private void SetPage()
+        private async void SetPage()
         {
             this.progress.Page = this.current;
             this.progress.Percent = ((double)this.current) / ((double)this.chapter.PageNum);
-            pc.Save(this.progress);
+            await pc.Save(this.progress);
         }
 
         private int fontsize = OKrBookConfig.DEFALUTFONTSIZE;

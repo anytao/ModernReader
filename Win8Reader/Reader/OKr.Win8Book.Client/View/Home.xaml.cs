@@ -92,5 +92,17 @@ namespace OKr.Win8Book.Client.View
             this.Frame.Navigate(typeof(Viewer), e.ClickedItem as Chapter);
         }
 
+        private void Mark_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ChapterMark data = e.ClickedItem as ChapterMark;
+
+            Chapter chapter = new Chapter();
+            chapter.Title = data.Title;
+            chapter.ChapterNo = data.ChapterNo;
+            chapter.PageCount = data.Current;
+
+
+            this.Frame.Navigate(typeof(Viewer), chapter);
+        }
     }
 }
