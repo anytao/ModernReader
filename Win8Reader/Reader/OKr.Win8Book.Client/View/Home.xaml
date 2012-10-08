@@ -143,7 +143,7 @@
                 </Grid>
 
                 <!--column 2-->
-                <Grid Grid.Column="2" Margin="120,0,0,0" Width="560">
+                <Grid Grid.Column="2" Margin="80,0,0,0" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -152,11 +152,17 @@
                         <TextBlock Text="推荐阅读" Style="{StaticResource Home_SectionTileStyle}"/>                        
                     </StackPanel>
                     <ListView Grid.Row="1" Margin="0,20,0,0"
+                              Style="{StaticResource NonScrollable_ListViewStyle}"
                             ItemsSource="{Binding OKrApp.Apps}"
                             ItemTemplate="{StaticResource OKrAppTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="App_ItemClick" >
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
                     </ListView>
                 </Grid>
                 
