@@ -5,6 +5,7 @@ using System.Linq;
 using OKr.Win8Book.Client.Common;
 using OKr.Win8Book.Client.Controls;
 using OKr.Win8Book.Client.Core.Context;
+using OKr.Win8Book.Client.Core.Data;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -19,17 +20,20 @@ using Windows.UI.Xaml.Navigation;
 
 namespace OKr.Win8Book.Client.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Catalog : OKrPageBase
     {
+        #region Ctor
+
         public Catalog()
         {
             this.InitializeComponent();
 
             this.TopAppBar = new NavBar(this, true, false, true);
         }
+
+        #endregion
+
+        #region Handlers
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -44,11 +48,9 @@ namespace OKr.Win8Book.Client.View
 
         private void OnChapterItemClick(object sender, ItemClickEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(Viewer), e.ClickedItem as Chapter);
         }
 
-        private void OnCategory(object sender, TappedRoutedEventArgs e)
-        {
-        }
+        #endregion
     }
 }

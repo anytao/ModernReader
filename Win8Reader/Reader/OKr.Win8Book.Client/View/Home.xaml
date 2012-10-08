@@ -10,14 +10,6 @@
     NavigationCacheMode="Required">
 
     <Page.Resources>
-        <DataTemplate x:Key="categoryTemplate">
-            <Grid Width="300" Height="159" Tapped="OnCategory">
-                <Grid Margin="10">
-                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Title}" Margin="0,10,0,0"/>
-                </Grid>
-            </Grid>
-        </DataTemplate>
-
         <DataTemplate x:Key="ChapterTemplate">
             <Grid >
                 <Grid.ColumnDefinitions>
@@ -169,11 +161,6 @@
 
         <!--snapped view-->
         <!--TO-DO-->
-
-        <GridView x:Name="categoryGridView" Grid.Row="1" SelectionMode="None" Padding="116,0,40,46" 
-                  ItemsSource="{Binding Chapters}" ItemTemplate="{StaticResource categoryTemplate}"
-                  Visibility="Collapsed">
-        </GridView>
 
         <ProgressRing x:Name="pr" Foreground="LightBlue" Width="122" Height="122" />
 

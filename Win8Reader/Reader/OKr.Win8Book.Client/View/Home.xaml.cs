@@ -59,12 +59,6 @@ namespace OKr.Win8Book.Client.View
             LoadTheme();
         }
 
-        private void OnCategory(object sender, TappedRoutedEventArgs e)
-        {
-            var category = (sender as FrameworkElement).DataContext as Chapter;
-            this.Frame.Navigate(typeof(Viewer), category);
-        }
-
         private void Chapters_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(Viewer), e.ClickedItem as Chapter);
