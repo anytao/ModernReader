@@ -43,6 +43,7 @@ namespace OKr.Win8Book.Client.View
             this.Init();
 
             this.pr.IsActive = false;
+
         }
 
         private async void Init()
