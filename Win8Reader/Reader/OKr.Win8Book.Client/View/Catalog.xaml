@@ -51,18 +51,20 @@
                             <Run Text="章"/>
                 </TextBlock>
             </StackPanel>
-            <GridView Grid.Row="1" Margin="0,20,0,0" Padding="120,0,80,50"
+            <ScrollViewer Grid.Row="1" Margin="0,20,0,0" 
+                HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" 
+                          VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
+                <ListView Padding="120,0,80,50"
                             ItemsSource="{Binding Book.Chapters}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
-                            SelectionMode="None"
-                            IsItemClickEnabled="True"
-                            ItemClick="OnChapterItemClick" >
-                <!--<ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapGrid />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>-->
-            </GridView>
+                              Style="{StaticResource NonScrollable_ListViewStyle}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Margin="0,0,0,0" Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ListView>
+            </ScrollViewer>
         </Grid>
 
     </Grid>
@@ -82,5 +84,5 @@
             </Grid>
         </AppBar>
     </Page.BottomAppBar>
-    
+
 </common:OKrPageBase>
