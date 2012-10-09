@@ -15,39 +15,58 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using OKr.Win8Book.Client.ViewModel;
 
 namespace OKr.Win8Book.Client.View
 {
     public sealed partial class Bookmark : OKrPageBase
     {
+        #region Properties
+
+        HomeViewModel viewModel
+        {
+            get
+            {
+                return App.HomeViewModel;
+            }
+        }
+
+        #endregion
+
         #region Ctor
 
         public Bookmark()
         {
             this.InitializeComponent();
-
             this.TopAppBar = new NavBar(this, true, true, false);
+            this.DataContext = viewModel;
+        }
+
+        #endregion
+
+        #region Lifecycle
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            //if (e.NavigationMode == NavigationMode.New)
+            //{
+            //    BookContext bc = new BookContext();
+            //    var book = await bc.Load();
+
+            //    this.pageTitle.Text = book.Name;
+
+            //    MarkContext mc = new MarkContext();
+            //    this.DataContext = await mc.Load();
+            //}
+
+            LoadTheme();
         }
 
         #endregion
 
         #region Handlers
-
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            if (e.NavigationMode == NavigationMode.New)
-            {
-                BookContext bc = new BookContext();
-                var book = await bc.Load();
-
-                this.pageTitle.Text = book.Name;
-
-                MarkContext mc = new MarkContext();
-                this.DataContext = await mc.Load();
-            }
-        }
 
         private void OnMarkItemClick(object sender, ItemClickEventArgs e)
         {
@@ -62,5 +81,11 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
+
+        private void OnTheme(object sender, RoutedEventArgs e)
+        {
+            SwitchTheme();
+            HideAppBars();
+        }
     }
 }

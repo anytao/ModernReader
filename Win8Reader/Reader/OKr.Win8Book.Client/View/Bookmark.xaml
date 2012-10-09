@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:OKr.Win8Book.Client.Common"
+    xmlns:OKrControls="using:OKr.Win8Book.Client.Controls"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
 
@@ -24,6 +25,7 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        
     </Page.Resources>
 
     <Grid>
@@ -37,24 +39,24 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <TextBlock x:Name="pageTitle" Text="" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
+            <OKrControls:ImageButton x:Name="backButton" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>
+            <TextBlock x:Name="pageTitle" Text="{Binding Book.Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="120,0,0,0" >
+        <Grid Grid.Row="1" DataContext="{Binding Mark}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="120,0,0,0">
                 <TextBlock Text="书签" Style="{StaticResource Home_SectionTileStyle}"/>
-                <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" DataContext="{Binding}">
+                <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" >
                             <Run Text="共"/>
                             <Run Text="{Binding Marks.Count}"/>
                             <Run Text="枚"/>
                 </TextBlock>
             </StackPanel>
-            <ListView Grid.Row="1" Margin="0,20,0,0" 
+            <ListView Grid.Row="1" Margin="0,20,0,0" Padding="120,0,0,0"
                               Style="{StaticResource NonScrollable_ListViewStyle}"
                             ItemsSource="{Binding Marks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
@@ -69,6 +71,22 @@
             </ListView>
         </Grid>
 
-
     </Grid>
+
+    <Page.BottomAppBar>
+        <AppBar Padding="10,0,10,0" AutomationProperties.Name="Bottom App Bar">
+            <Grid Style="{StaticResource AppBarBackgroundStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                </StackPanel>
+                <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+
 </common:OKrPageBase>

@@ -16,19 +16,6 @@ namespace OKr.Win8Book.Client.View
 {
     public sealed partial class Home : OKrPageBase
     {
-        #region Ctor
-
-        public Home()
-        {
-            this.InitializeComponent();
-
-            this.TopAppBar = new NavBar(this, false, true, true);
-
-            SettingsPane.GetForCurrentView().CommandsRequested += SettingCommandsRequested;
-        }
-
-        #endregion
-
         #region Properties
 
         HomeViewModel viewModel
@@ -41,7 +28,18 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
-        #region Hanlders
+        #region Ctor
+
+        public Home()
+        {
+            this.InitializeComponent();
+            this.TopAppBar = new NavBar(this, false, true, true);
+            SettingsPane.GetForCurrentView().CommandsRequested += SettingCommandsRequested;
+        }
+
+        #endregion
+
+        #region Lifecycle
 
         private bool DataLoaded = false;
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -59,6 +57,10 @@ namespace OKr.Win8Book.Client.View
 
             LoadTheme();
         }
+
+        #endregion
+
+        #region Hanlders
 
         private void Chapters_ItemClick(object sender, ItemClickEventArgs e)
         {

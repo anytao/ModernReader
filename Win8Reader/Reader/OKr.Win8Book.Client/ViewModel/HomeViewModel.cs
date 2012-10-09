@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Linq;
+using Windows.UI.Xaml.Media;
 
 namespace OKr.Win8Book.Client.ViewModel
 {
     public class HomeViewModel : BindableBase
     {
         #region Properties
+
+        protected App App { get { return App.Current as App; } }
 
         private Book book;
         public Book Book
@@ -54,14 +57,47 @@ namespace OKr.Win8Book.Client.ViewModel
             }
         }
 
+        private SolidColorBrush themeForeground;
+        public SolidColorBrush ThemeForeground
+        {
+            get { return themeForeground; }
+            set
+            {
+                this.SetProperty(ref themeForeground, value);
+            }
+        }
+
         #endregion
 
         public async Task Load()
         {
+            SetTheme(App.IsLightTheme);
             await LoadBook();
             await LoadMark();
             await LoadApps();
         }
+
+        #region Theme
+
+        public void SwitchTheme()
+        {
+            SetTheme(!App.IsLightTheme);
+        }
+
+        private void SetTheme(bool light)
+        {
+            App.IsLightTheme = light;
+            if (light)
+            {
+                ThemeForeground = App.Resources["OKr_Theme_Foreground_Light"] as SolidColorBrush;
+            }
+            else
+            {
+                ThemeForeground = App.Resources["OKr_Theme_Foreground_Dark"] as SolidColorBrush;
+            }
+        }
+
+        #endregion
 
         private async Task LoadApps()
         {

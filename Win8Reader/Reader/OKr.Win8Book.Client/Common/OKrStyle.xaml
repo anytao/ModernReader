@@ -4,7 +4,6 @@
     xmlns:local="using:OKr.Win8Book.Client.Common"
     xmlns:OKrControls="using:OKr.Win8Book.Client.Controls">
     
-    
     <!--theme-->
     <SolidColorBrush x:Name="OKr_Theme_Foreground_Light" Color="#FF000000"/>
     <SolidColorBrush x:Name="OKr_Theme_Foreground_Dark" Color="#FFFFFFFF"/>
@@ -17,7 +16,7 @@
         <Setter Property="FontFamily" Value="Microsoft YaHei"/>
         <Setter Property="TextTrimming" Value="WordEllipsis"/>
     </Style>
-
+    
     <!--common-->
     <Style x:Key="PageTitleStyle" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
         <Setter Property="FontSize" Value="56"/>

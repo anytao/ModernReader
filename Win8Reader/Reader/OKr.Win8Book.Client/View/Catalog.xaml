@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:OKr.Win8Book.Client.Common"
+    xmlns:OKrControls="using:OKr.Win8Book.Client.Controls"
     mc:Ignorable="d"
     NavigationCacheMode="Enabled">
 
@@ -33,16 +34,16 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock x:Name="pageTitle" Text="{Binding Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
+            <OKrControls:ImageButton x:Name="backButton" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>
+            <TextBlock x:Name="pageTitle" Text="{Binding Book.Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
         </Grid>
 
-        <Grid Margin="120,0,0,0" Grid.Row="1" >
+        <Grid Grid.Row="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" DataContext="{Binding Book}">
+            <StackPanel Orientation="Horizontal" DataContext="{Binding Book}" Margin="120,0,0,0">
                 <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
                 <TextBlock Style="{StaticResource Home_SectionTileCountStyle}">
                             <Run Text="共"/>
@@ -50,16 +51,36 @@
                             <Run Text="章"/>
                 </TextBlock>
             </StackPanel>
-            <ListView Grid.Row="1" Margin="0,20,0,0" Width="560" 
-                              Style="{StaticResource NonScrollable_ListViewStyle}"
-                            ItemsSource="{Binding Chapters}"
+            <ListView Grid.Row="1" Margin="0,20,0,50" Padding="120,0,0,0"
+                            ItemsSource="{Binding Book.Chapters}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="OnChapterItemClick" >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
             </ListView>
         </Grid>
 
-
     </Grid>
+
+    <Page.BottomAppBar>
+        <AppBar Padding="10,0,10,0" AutomationProperties.Name="Bottom App Bar">
+            <Grid Style="{StaticResource AppBarBackgroundStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                </StackPanel>
+                <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+    
 </common:OKrPageBase>

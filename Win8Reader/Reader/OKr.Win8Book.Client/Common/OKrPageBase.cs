@@ -1,10 +1,12 @@
-﻿using System;
+﻿using OKr.Win8Book.Client.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 
 namespace OKr.Win8Book.Client.Common
@@ -14,17 +16,31 @@ namespace OKr.Win8Book.Client.Common
         #region Properties
 
         protected App App { get { return App.Current as App; } }
+
         public const string SkipTheme = "skiptheme";
+
+        private static ThemeViewModel themeViewModel = null;
+        public static ThemeViewModel ThemeViewModel
+        {
+            get
+            {
+                if (themeViewModel == null)
+                {
+                    themeViewModel = new ViewModel.ThemeViewModel();
+                    themeViewModel.Load();
+                }
+                return themeViewModel;
+            }
+        }
 
         #endregion
 
         #region Theme
 
-        //private bool childrenCollected = false;
         List<TextBlock> textBlocks = null;
+        List<RichTextBlock> richTextBlocks = null;
         Grid pageRootGrid = null;
         FrameworkElement backButton = null;
-        List<RichTextBlock> richTextBlocks = null;
 
         protected void LoadTheme()
         {
@@ -34,42 +50,39 @@ namespace OKr.Win8Book.Client.Common
 
         protected void SwitchTheme()
         {
-            SetTheme(!App.IsLightTheme);
+            App.IsLightTheme = !App.IsLightTheme;
+            ThemeViewModel.SetTheme(App.IsLightTheme);
+            SetTheme(App.IsLightTheme);
         }
 
         protected void SetTheme(bool light)
         {
-            App.IsLightTheme = light;
-
             this.UpdateLayout();
 
-            SolidColorBrush Theme_Foreground = null;
+            //SolidColorBrush Theme_Foreground = null;
             ImageBrush pageBackgroundBrush = null;
             Style backButtonStyle = null;
 
             if (light)
             {
-                Theme_Foreground = App.Resources["OKr_Theme_Foreground_Light"] as SolidColorBrush;
+                //Theme_Foreground = App.Resources["OKr_Theme_Foreground_Light"] as SolidColorBrush;
                 pageBackgroundBrush = App.Resources["OKr_Theme_PageBackground_Light"] as ImageBrush;
                 backButtonStyle = App.Resources["OKrBackButton_Light_Style"] as Style;
             }
             else
             {
-                Theme_Foreground = App.Resources["OKr_Theme_Foreground_Dark"] as SolidColorBrush;
+                //Theme_Foreground = App.Resources["OKr_Theme_Foreground_Dark"] as SolidColorBrush;
                 pageBackgroundBrush = App.Resources["OKr_Theme_PageBackground_Dark"] as ImageBrush;
                 backButtonStyle = App.Resources["OKrBackButton_Dark_Style"] as Style;
             }
 
-            //if (!childrenCollected)
-            //{
             textBlocks = new List<TextBlock>();
             GetChildrenOfType<TextBlock>(this, textBlocks);
             richTextBlocks = new List<RichTextBlock>();
             GetChildrenOfType<RichTextBlock>(this, richTextBlocks);
+
             pageRootGrid = GetFirstChildOfType<Grid>(this);
             backButton = GetChildByName(this, "backButton");
-            //childrenCollected = true;
-            //}
 
             foreach (var textBlock in textBlocks)
             {
@@ -79,7 +92,12 @@ namespace OKr.Win8Book.Client.Common
                 }
                 else
                 {
-                    textBlock.Foreground = Theme_Foreground;
+                    //textBlock.Foreground = Theme_Foreground;
+                    Binding binding = new Binding();
+                    binding.Source = ThemeViewModel;
+                    binding.Path = new PropertyPath("ThemeForeground");
+                    binding.Mode = BindingMode.OneWay;
+                    textBlock.SetBinding(TextBlock.ForegroundProperty, binding);
                 }
             }
 
@@ -91,7 +109,12 @@ namespace OKr.Win8Book.Client.Common
                 }
                 else
                 {
-                    rtb.Foreground = Theme_Foreground;
+                    //rtb.Foreground = Theme_Foreground;
+                    Binding binding = new Binding();
+                    binding.Source = ThemeViewModel;
+                    binding.Path = new PropertyPath("ThemeForeground");
+                    binding.Mode = BindingMode.OneWay;
+                    rtb.SetBinding(RichTextBlock.ForegroundProperty, binding);
                 }
             }
 

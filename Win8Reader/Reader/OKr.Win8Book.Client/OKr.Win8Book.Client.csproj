@@ -121,11 +121,13 @@
     <Compile Include="Common\OKrPageBase.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Controls\DataContextProxy cs.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\NavBar.xaml.cs">
       <DependentUpon>NavBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ThemeViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="View\Bookmark.xaml.cs">
       <DependentUpon>Bookmark.xaml</DependentUpon>

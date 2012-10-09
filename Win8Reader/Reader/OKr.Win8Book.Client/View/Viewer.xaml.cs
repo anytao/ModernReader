@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using OKr.Win8Book.Client.Common;
 using Windows.UI.Xaml.Controls;
+using OKr.Win8Book.Client.Controls;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -25,11 +26,12 @@ namespace OKr.Win8Book.Client.View
         public Viewer()
         {
             this.InitializeComponent();
+            this.TopAppBar = new NavBar(this, false, true, true);
         }
 
         #endregion
 
-        #region Handlers
+        #region Lifecycle
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -59,6 +61,10 @@ namespace OKr.Win8Book.Client.View
 
             LoadTheme();
         }
+
+        #endregion
+
+        #region Handlers
 
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
@@ -263,7 +269,7 @@ namespace OKr.Win8Book.Client.View
         private void OnTheme(object sender, RoutedEventArgs e)
         {
             SwitchTheme();
-            this.BottomAppBar.IsOpen = false;
+            HideAppBars();
         }
 
         #endregion

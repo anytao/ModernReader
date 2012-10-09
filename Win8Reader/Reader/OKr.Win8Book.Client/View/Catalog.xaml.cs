@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using OKr.Win8Book.Client.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,34 +23,50 @@ namespace OKr.Win8Book.Client.View
 {
     public sealed partial class Catalog : OKrPageBase
     {
+        #region Properties
+
+        HomeViewModel viewModel
+        {
+            get
+            {
+                return App.HomeViewModel;
+            }
+        }
+
+        #endregion
+
         #region Ctor
 
         public Catalog()
         {
             this.InitializeComponent();
             this.TopAppBar = new NavBar(this, true, false, true);
+            this.DataContext = viewModel;
         }
 
         #endregion
 
-        #region Handlers
+        #region Lifecycle
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            if (e.NavigationMode == NavigationMode.New)
-            {
-                BookContext bc = new BookContext();
-                this.DataContext = await bc.Load();
-            }
-
             LoadTheme();
         }
 
         private void OnChapterItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(Viewer), e.ClickedItem as Chapter);
+        }
+
+        #endregion
+
+        #region App Bar
+
+        private void OnTheme(object sender, RoutedEventArgs e)
+        {
+            SwitchTheme();
+            HideAppBars();
         }
 
         #endregion
