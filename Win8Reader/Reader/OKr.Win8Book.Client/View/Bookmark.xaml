@@ -56,19 +56,18 @@
                             <Run Text="枚"/>
                 </TextBlock>
             </StackPanel>
-            <ListView Grid.Row="1" Margin="0,20,0,0" Padding="120,0,0,0"
-                              Style="{StaticResource NonScrollable_ListViewStyle}"
+            <GridView Grid.Row="1" Margin="0,20,0,0" Padding="120,0,80,50"
                             ItemsSource="{Binding Marks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="OnMarkItemClick">
-                <ListView.ItemsPanel>
+                <!--<ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapGrid />
                     </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
+                </ListView.ItemsPanel>-->
+            </GridView>
         </Grid>
 
     </Grid>

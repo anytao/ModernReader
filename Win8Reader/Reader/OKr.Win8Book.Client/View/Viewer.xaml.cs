@@ -26,7 +26,7 @@ namespace OKr.Win8Book.Client.View
         public Viewer()
         {
             this.InitializeComponent();
-            this.TopAppBar = new NavBar(this, false, true, true);
+            this.TopAppBar = new NavBar(this, true, true, true);
         }
 
         #endregion

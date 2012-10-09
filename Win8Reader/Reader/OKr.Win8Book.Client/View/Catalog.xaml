@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="ChapterTemplate">
-            <Grid >
+            <Grid Width="500" Margin="0,0,20,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -51,18 +51,18 @@
                             <Run Text="章"/>
                 </TextBlock>
             </StackPanel>
-            <ListView Grid.Row="1" Margin="0,20,0,50" Padding="120,0,0,0"
+            <GridView Grid.Row="1" Margin="0,20,0,0" Padding="120,0,80,50"
                             ItemsSource="{Binding Book.Chapters}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="OnChapterItemClick" >
-                <ListView.ItemsPanel>
+                <!--<ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapGrid />
                     </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
+                </ListView.ItemsPanel>-->
+            </GridView>
         </Grid>
 
     </Grid>
