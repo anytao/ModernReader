@@ -62,11 +62,6 @@
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="OnMarkItemClick">
-                <!--<ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapGrid />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>-->
             </GridView>
         </Grid>
 
