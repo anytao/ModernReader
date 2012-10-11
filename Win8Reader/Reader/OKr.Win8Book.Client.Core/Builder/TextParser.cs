@@ -18,7 +18,7 @@ namespace OKr.Win8Book.Client.Core.Builder
             OKrStorage storage = new OKrStorage();
             string content = await storage.ReadString(url);
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
-            StreamReader reader = null;
+            StreamReader reader = null;            
 
             try
             {
@@ -48,16 +48,44 @@ namespace OKr.Win8Book.Client.Core.Builder
             }
             return result;
         }
+        
+        public static Chapter GetChapter(string context, int[] count)
+        {
+            Chapter chapter = new Chapter();
+            List<string> list = new List<string>();
+            byte[] bytes = Encoding.GetEncoding("utf-8").GetBytes(context);
+            int start = 0;
+            int num2 = 0;
+            int location = 1;
 
-        public static Page GetOnePage(string str, int start, int[] count)
+            while (start < bytes.Length)
+            {
+                Page item = GetOnePage(context, start, count, ref location);
+                start += item.CharNum;
+                list.Add(item.Result);
+                chapter.Pages.Add(item);
+                if (start >= context.Length)
+                {
+                    num2++;
+                    break;
+                }
+                num2++;
+            }
+            chapter.PageList = list;
+            chapter.PageNum = num2;
+            return chapter;
+        }
+
+        public static Page GetOnePage(string str, int start, int[] count, ref int location)
         {
             Page result = new Page();
             int num = 1;
             int num2 = 0;
             int num3 = 0;
+            int num4 = 0;
             int length = 0;
             int startIndex = start;
-            int num6 = 0;
+
             for (int i = start; i < str.Length; i++)
             {
                 if (Regex.IsMatch(str.Substring(i, 1), @"[\r\n]"))
@@ -65,8 +93,8 @@ namespace OKr.Win8Book.Client.Core.Builder
                     num2 = 0;
                     length++;
                     num3++;
-                    num6++;
-                    if (num6 == 1)
+                    num4++;
+                    if (num4 == 1)
                     {
                         num++;
                         result.Row.Add(str.Substring(startIndex, length));
@@ -79,7 +107,7 @@ namespace OKr.Win8Book.Client.Core.Builder
                     }
                     break;
                 }
-                num6 = 0;
+                num4 = 0;
                 string s = str.Substring(i, 1);
                 byte[] bytes = Encoding.GetEncoding("utf-8").GetBytes(s);
                 if (bytes.Length == 3)
@@ -120,36 +148,18 @@ namespace OKr.Win8Book.Client.Core.Builder
                         }
                     }
                 }
+
+                if (s.Contains("。") || s.Contains("."))
+                {
+                    result.Locations.Add(location);
+                    location++;
+                }
+
                 num3++;
                 length++;
             }
             result.CharNum = num3;
             return result;
-        }
-
-        public static Chapter GetChapter(string context, int[] count)
-        {
-            Chapter chapter = new Chapter();
-            List<string> list = new List<string>();
-            byte[] bytes = Encoding.GetEncoding("utf-8").GetBytes(context);
-            int start = 0;
-            int num2 = 0;
-            while (start < bytes.Length)
-            {
-                Page item = GetOnePage(context, start, count);
-                start += item.CharNum;
-                list.Add(item.Result);
-                chapter.Pages.Add(item);
-                if (start >= context.Length)
-                {
-                    num2++;
-                    break;
-                }
-                num2++;
-            }
-            chapter.PageList = list;
-            chapter.PageNum = num2;
-            return chapter;
         }
     }
 }

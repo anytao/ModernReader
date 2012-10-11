@@ -80,12 +80,13 @@ namespace OKr.Win8Book.Client.View
             this.Frame.Navigate(typeof(Viewer), chapter);
         }
 
-        #endregion
 
         private void OnTheme(object sender, RoutedEventArgs e)
         {
             SwitchTheme();
             HideAppBars();
         }
+
+        #endregion
     }
 }

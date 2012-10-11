@@ -12,6 +12,7 @@ namespace OKr.Win8Book.Client.Core.Data
         public Chapter()
         {
             this.Pages = new List<Page>();
+            this.Pos = 1;
         }
 
         public string Title { get; set; }
@@ -23,6 +24,11 @@ namespace OKr.Win8Book.Client.Core.Data
         public Mark Mark { get; set; }
         public List<string> PageList { get; set; }
         public List<Page> Pages { get; set; }
+
+        /// <summary>
+        /// Used for nav to location
+        /// </summary>
+        public int Pos { get; set; }
 
         private Page currentPage;
 

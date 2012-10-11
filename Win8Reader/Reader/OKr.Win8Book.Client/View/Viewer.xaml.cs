@@ -44,11 +44,13 @@ namespace OKr.Win8Book.Client.View
 
                 this.chapter = category;
                 this.current = category.PageCount;
+                this.location = category.Pos;
+                
 
                 this.book = await bc.Load();
                 this.chapter = await LoadData(this.currentChapter, category.Title);
-                chapter.CurrentPage = chapter.Pages[this.current];
-
+                chapter.CurrentPage = GetCurrent(chapter, this.location);
+                
                 this.DataContext = chapter;
 
                 this.mark = await mc.Load();
@@ -56,13 +58,32 @@ namespace OKr.Win8Book.Client.View
 
                 this.chapter.Mark = this.mark;
 
-                this.pageTitle.Text = this.book.Name;
+                this.pageTitle.Text = this.book.Name;                
             }
 
             LoadTheme();
         }
 
         #endregion
+
+        private OKr.Win8Book.Client.Core.Data.Page GetCurrent(Chapter chapter, int pos)
+        {
+            if (chapter != null)
+            {
+                if (chapter.Pages != null && chapter.Pages.Count > 0)
+                {
+                    foreach (OKr.Win8Book.Client.Core.Data.Page page in chapter.Pages)
+                    {
+                        if (page.Locations.Contains(pos))
+                        {
+                            return page;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
 
         #region Handlers
 
@@ -104,7 +125,7 @@ namespace OKr.Win8Book.Client.View
                 this.chapter.Mark = m;
             }
 
-            ChapterMark item = m.Marks.FirstOrDefault(x => x.Current == this.current && x.ChapterNo == this.currentChapter);
+            ChapterMark item = m.Marks.FirstOrDefault(x => x.Current == this.location && x.ChapterNo == this.currentChapter);
 
             if (item == null)
             {
@@ -112,7 +133,7 @@ namespace OKr.Win8Book.Client.View
                 item.ChapterNo = this.currentChapter;
                 item.Title = this.chapter.Title;
                 item.Date = DateTime.Now.ToString("yyyy/mm/dd hh:MM:ss");
-                item.Current = this.current;
+                item.Current = this.location;
                 item.Percent = ((double)this.current) / ((double)this.chapter.PageNum);
                 OKr.Win8Book.Client.Core.Data.Page page = this.chapter.Pages[this.current];
                 item.Content = page.Row[0].Trim() + page.Row[1].Trim();
@@ -124,7 +145,7 @@ namespace OKr.Win8Book.Client.View
                 int chapterNo = item.ChapterNo;
 
                 List<ChapterMark> list = new List<ChapterMark>();
-                list = this.mark.Marks.Where(x => x.ChapterNo == chapterNo && x.Current == this.current).ToList();
+                list = this.mark.Marks.Where(x => x.ChapterNo == chapterNo && x.Current == this.location).ToList();
 
                 foreach (var mark in list)
                 {
@@ -206,6 +227,8 @@ namespace OKr.Win8Book.Client.View
                 this.current++;
 
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
+
+                this.location = this.chapter.CurrentPage.Locations[0];
             }            
         }
 
@@ -220,6 +243,8 @@ namespace OKr.Win8Book.Client.View
                 this.current--;
 
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
+
+                this.location = this.chapter.CurrentPage.Locations[0];
             }         
         }
 
@@ -291,6 +316,8 @@ namespace OKr.Win8Book.Client.View
         private Chapter chapter;
 
         private int current;
+
+        private int location;
 
         #endregion
     }

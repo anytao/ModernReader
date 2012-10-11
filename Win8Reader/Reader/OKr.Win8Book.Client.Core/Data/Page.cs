@@ -12,12 +12,15 @@ namespace OKr.Win8Book.Client.Core.Data
         public Page()
         {
             this.Row = new List<string>();
+            this.Locations = new List<int>();
         }
 
         public int CharNum { get; set; }
         public int FontSize { get; set; }
         public string Result { get; set; }
         public List<string> Row { get; set; }
+
+        public List<int> Locations { get; set; }
 
         public string Text 
         {
