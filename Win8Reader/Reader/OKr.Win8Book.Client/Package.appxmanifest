@@ -18,6 +18,9 @@
       <VisualElements DisplayName="OKrReader" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="A windows 8 text book reader." ForegroundText="light" BackgroundColor="#464646" ToastCapable="true">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+        </InitialRotationPreference>
       </VisualElements>
     </Application>
   </Applications>

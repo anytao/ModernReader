@@ -13,7 +13,7 @@ namespace OKr.Win8Book.Client.Core.Data
         public string Title { get; set; }
         public string Content { get; set; }
         public string Date { get; set; }
-        public double Percent { get; set; }
+        public string Percent { get; set; }
         public int Current { get; set; }
     }
 }

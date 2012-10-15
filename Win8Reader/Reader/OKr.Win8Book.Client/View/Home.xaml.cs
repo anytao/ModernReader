@@ -141,5 +141,15 @@ namespace OKr.Win8Book.Client.View
         private SettingsCommand scFeedback;
 
         #endregion
+
+        private void OnGoChapter(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Catalog));
+        }
+
+        private void OnGoMark(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Bookmark));
+        }
     }
 }

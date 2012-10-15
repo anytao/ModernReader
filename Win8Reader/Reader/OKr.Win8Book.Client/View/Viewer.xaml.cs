@@ -134,7 +134,7 @@ namespace OKr.Win8Book.Client.View
                 item.Title = this.chapter.Title;
                 item.Date = DateTime.Now.ToString("yyyy/mm/dd hh:MM:ss");
                 item.Current = this.location;
-                item.Percent = ((double)this.current) / ((double)this.chapter.PageNum);
+                item.Percent = ((((double)this.current) / ((double)this.chapter.PageNum)) * 100).ToString("N2") + "%";
                 OKr.Win8Book.Client.Core.Data.Page page = this.chapter.Pages[this.current];
                 item.Content = page.Row[0].Trim() + page.Row[1].Trim();
 

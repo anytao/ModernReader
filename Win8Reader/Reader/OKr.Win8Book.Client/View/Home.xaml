@@ -23,7 +23,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MarkTemplate">
-            <Grid Height="90" Width="360">
+            <Grid Height="100" Width="360">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -33,6 +33,7 @@
                 <StackPanel Grid.Column="1" >
                     <TextBlock Text="{Binding Title}" Style="{StaticResource Home_MarkTitle_Style}" />
                     <TextBlock Text="{Binding Content}" Style="{StaticResource Home_MarkContent_Style}" />
+                    <TextBlock Text="{Binding Percent}" Style="{StaticResource Home_MarkContent_Style}" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -89,7 +90,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" DataContext="{Binding Book}">
                         <TextBlock Text="目录" Style="{StaticResource Home_SectionTileStyle}"/>
-                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}">
+                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" Tapped="OnGoChapter">
                             <Run Text="共"/>
                             <Run Text="{Binding Chapters.Count}"/>
                             <Run Text="章"/>
@@ -112,7 +113,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="书签" Style="{StaticResource Home_SectionTileStyle}"/>
-                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" DataContext="{Binding Mark}">
+                        <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" DataContext="{Binding Mark}" Tapped="OnGoMark">
                             <Run Text="共"/>
                             <Run Text="{Binding Marks.Count}"/>
                             <Run Text="枚"/>

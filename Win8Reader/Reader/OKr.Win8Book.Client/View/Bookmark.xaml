@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="MarkTemplate">
-            <Grid Height="90" Width="360">
+            <Grid Height="100" Width="360">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -22,6 +22,7 @@
                 <StackPanel Grid.Column="1" >
                     <TextBlock Text="{Binding Title}" Style="{StaticResource Home_MarkTitle_Style}" />
                     <TextBlock Text="{Binding Content}" Style="{StaticResource Home_MarkContent_Style}" />
+                    <TextBlock Text="{Binding Percent}" Style="{StaticResource Home_MarkContent_Style}" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
