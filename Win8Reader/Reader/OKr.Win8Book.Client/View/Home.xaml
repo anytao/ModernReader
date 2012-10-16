@@ -38,6 +38,22 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="SnappedMarkTemplate">
+            <Grid Height="100" Width="290">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Style="{StaticResource Home_MarkTemplate_Background_Style}"/>
+                <Image Style="{StaticResource Home_Mark_Icon_1_Style}"/>
+                <StackPanel Grid.Column="1" >
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource Home_MarkTitle_Style}" />
+                    <TextBlock Text="{Binding Content}" Style="{StaticResource Home_MarkContent_Style}" />
+                    <TextBlock Text="{Binding Percent}" Style="{StaticResource Home_MarkContent_Style}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
         <DataTemplate x:Key="OKrAppTemplate">
             <Grid >
                 <Grid.ColumnDefinitions>
@@ -178,7 +194,7 @@
             <TextBlock x:Name="pageTitleSnapped" Style="{StaticResource PageTitleStyleSnapped}"
                    Text="{Binding Book.Name}"/>
             <ScrollViewer Grid.Row="1">
-                <StackPanel Margin="16,0,16,20">
+                <StackPanel Margin="16,0,0,20">
                     <!--chapters-->
                     <Button Style="{StaticResource OKrContentButtonStyle}" Click="OnGoChapter">
                         <StackPanel Orientation="Horizontal" DataContext="{Binding Book}">
@@ -213,7 +229,7 @@
                     <ListView Margin="0,16,0,0" 
                               Style="{StaticResource NonScrollable_ListViewStyle}"
                             ItemsSource="{Binding RecentMarks}"
-                            ItemTemplate="{StaticResource MarkTemplate}"
+                            ItemTemplate="{StaticResource SnappedMarkTemplate}"
                             SelectionMode="Multiple"
                             IsItemClickEnabled="True"
                             ItemClick="Mark_ItemClick">

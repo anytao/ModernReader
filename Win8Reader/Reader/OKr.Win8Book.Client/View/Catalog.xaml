@@ -105,7 +105,7 @@
             </StackPanel>
 
             <ScrollViewer Grid.Row="1" Margin="0,20,0,0">
-                <StackPanel Margin="16,0,16,20">
+                <StackPanel Margin="16,0,0,20">
                     <ListView ItemsSource="{Binding Book.Chapters}"
                             ItemTemplate="{StaticResource SnappedChapterTemplate}"
                             Style="{StaticResource NonScrollable_ListViewStyle}"
