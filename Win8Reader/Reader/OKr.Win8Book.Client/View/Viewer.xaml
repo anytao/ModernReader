@@ -11,92 +11,103 @@
     NavigationCacheMode="Enabled">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <!--full view-->
+        <Grid x:Name="fullView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <!--<Button  IsEnabled="True" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>-->
-            <OKrControls:ImageButton x:Name="backButton" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>
-            <TextBlock x:Name="pageTitle" Text="{Binding Name}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
-        </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--<Button  IsEnabled="True" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>-->
+                <OKrControls:ImageButton x:Name="backButton" Style="{StaticResource OKrBackButton_Light_Style}" Click="GoBack"/>
+                <TextBlock x:Name="pageTitle" Text="{Binding Title}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
+            </Grid>
 
-        <Grid x:Name="bodyGrid" Grid.Row="1" 
+            <Grid x:Name="bodyGrid" Grid.Row="1" Margin="0,0,0,50"
               ManipulationMode="TranslateX" 
               ManipulationStarted="bodyGrid_ManipulationStarted" 
               ManipulationDelta="bodyGrid_ManipulationDelta" 
               ManipulationCompleted="bodyGrid_ManipulationCompleted">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--<TextBlock Text="{Binding Title}" Style="{StaticResource Viewer_ChapterName_Style}"/>-->
+
+                <!-- Content is allowed to flow across as many columns as needed -->
+                <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
+                    <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                        <Paragraph>
+                            <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <!-- Additional columns are created from this template -->
+                    <common:RichTextColumns.ColumnTemplate>
+                        <DataTemplate>
+                            <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                                <RichTextBlockOverflow.RenderTransform>
+                                    <TranslateTransform X="-1" Y="4"/>
+                                </RichTextBlockOverflow.RenderTransform>
+                            </RichTextBlockOverflow>
+                        </DataTemplate>
+                    </common:RichTextColumns.ColumnTemplate>
+                </common:RichTextColumns>
+            </Grid>
+        </Grid>
+
+        <!--snapped view-->
+        <Grid x:Name="snappedView" Opacity="0" IsHitTestVisible="False">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <!--title-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="16,25,0,0" VerticalAlignment="Top">
+                    <OKrControls:ImageButton x:Name="snappedBackButton" Style="{StaticResource OKrBackButton_Snapped_Light_Style}" Click="GoBack"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Viewer_ChapterName_Snapped_Style}"/>
+            </Grid>
 
-            <TextBlock Text="{Binding Title}" Style="{StaticResource Viewer_ChapterName_Style}"/>
-
-            <!-- Content is allowed to flow across as many columns as needed -->
-            <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
-                <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
-                    <Paragraph>
-                        <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
-                    </Paragraph>
-                </RichTextBlock>
-
-                <!-- Additional columns are created from this template -->
-                <common:RichTextColumns.ColumnTemplate>
-                    <DataTemplate>
-                        <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
-                            <RichTextBlockOverflow.RenderTransform>
-                                <TranslateTransform X="-1" Y="4"/>
-                            </RichTextBlockOverflow.RenderTransform>
-                        </RichTextBlockOverflow>
-                    </DataTemplate>
-                </common:RichTextColumns.ColumnTemplate>
-            </common:RichTextColumns>
-
-            <VisualStateManager.VisualStateGroups>
-
-                <!-- Visual states reflect the application's view state inside the FlipView -->
-                <VisualStateGroup x:Name="ApplicationViewStates">
-                    <VisualState x:Name="FullScreenLandscape"/>
-                    <VisualState x:Name="Filled"/>
-
-                    <!-- Respect the narrower 100-pixel margin convention for portrait -->
-                    <VisualState x:Name="FullScreenPortrait">
-                        <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextColumns" Storyboard.TargetProperty="Margin">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="97,0,87,57"/>
-                            </ObjectAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="image" Storyboard.TargetProperty="MaxHeight">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="400"/>
-                            </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>
-
-                    <!-- When snapped, the content is reformatted and scrolls vertically -->
-                    <VisualState x:Name="Snapped">
-                        <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextColumns" Storyboard.TargetProperty="Margin">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="17,0,17,57"/>
-                            </ObjectAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="scrollViewer" Storyboard.TargetProperty="Style">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource VerticalScrollViewerStyle}"/>
-                            </ObjectAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="richTextBlock" Storyboard.TargetProperty="Width">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="280"/>
-                            </ObjectAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="image" Storyboard.TargetProperty="MaxHeight">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="160"/>
-                            </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
+            <OKrControls:ImageButton Style="{StaticResource ImageButton_OneImage_Style}"
+                                     Grid.Row="1" HorizontalAlignment="Center" Margin="0,20,0,0"
+                                     BackgroundNormal="/Assets/Viewer/ViewArticleButton.png"
+                                     Click="viewArticle_Click"/>
         </Grid>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+                <VisualState x:Name="FullScreenPortrait"/>
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="fullView" d:IsOptimized="True"/>
+                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="snappedView" d:IsOptimized="True"/>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" Storyboard.TargetName="snappedView">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>True</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
     </Grid>
 
     <Page.BottomAppBar>

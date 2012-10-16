@@ -103,7 +103,7 @@ namespace OKr.Win8Book.Client.View
 
             this.chapter.Mark = this.mark;
 
-            this.pageTitle.Text = this.book.Name;
+            //this.pageTitle.Text = this.book.Name;
         }
 
         private async Task ToNext()
@@ -398,6 +398,11 @@ namespace OKr.Win8Book.Client.View
             {
                 PrePage();
             }
+        }
+
+        private void viewArticle_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.UI.ViewManagement.ApplicationView.TryUnsnap();
         }
     }
 }
