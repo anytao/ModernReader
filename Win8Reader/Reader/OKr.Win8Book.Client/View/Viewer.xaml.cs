@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Navigation;
 using OKr.Win8Book.Client.Common;
 using Windows.UI.Xaml.Controls;
 using OKr.Win8Book.Client.Controls;
+using Windows.UI.Core;
+using Windows.System;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -29,32 +31,37 @@ namespace OKr.Win8Book.Client.View
             NavBar bar = new NavBar(this, true, true, true, true);
             bar.Pre += async (sender, ex) => 
             {
-                if (this.chapter.ChapterNo - 1 >= 0)
-                {
-                    var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo - 1);
-
-                    if (category != null)
-                    {
-                        await LoadBook(category);
-                    }
-                }
+                await ToPre();
             };
 
             bar.Next += async (sender, ex) => 
             {
-                if (this.chapter.ChapterNo + 1 <= this.book.Chapters.Count)
-                {
-                    var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo + 1);
-
-                    if (category != null)
-                    {
-                        await LoadBook(category);
-                    }
-                }                
+                await ToNext();
             };
 
 
             this.TopAppBar = bar;
+
+            CoreDispatcher dispatcher = Window.Current.CoreWindow.Dispatcher;
+
+            dispatcher.AcceleratorKeyActivated += (sender, ex) => 
+            {
+                VirtualKey key = ex.VirtualKey;
+                if ((ex.EventType == CoreAcceleratorKeyEventType.KeyUp))
+                {
+                    if (((key == VirtualKey.Up) || (key == VirtualKey.Left)) || (key == VirtualKey.PageUp))
+                    {
+                        ex.Handled = true;
+
+                        PrePage();
+                    }
+                    else if (((key == VirtualKey.Down) || (key == VirtualKey.Right)) || (key == VirtualKey.PageDown))
+                    {
+                        ex.Handled = true;
+                        NextPage();
+                    }
+                }                
+            };
         }
 
         #endregion
@@ -97,6 +104,32 @@ namespace OKr.Win8Book.Client.View
             this.chapter.Mark = this.mark;
 
             this.pageTitle.Text = this.book.Name;
+        }
+
+        private async Task ToNext()
+        {
+            if (this.chapter.ChapterNo + 1 <= this.book.Chapters.Count)
+            {
+                var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo + 1);
+
+                if (category != null)
+                {
+                    await LoadBook(category);
+                }
+            } 
+        }
+
+        private async Task ToPre()
+        {
+            if (this.chapter.ChapterNo - 1 >= 0)
+            {
+                var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo - 1);
+
+                if (category != null)
+                {
+                    await LoadBook(category);
+                }
+            }
         }
 
         private OKr.Win8Book.Client.Core.Data.Page GetCurrent(Chapter chapter, int pos)
@@ -249,11 +282,11 @@ namespace OKr.Win8Book.Client.View
             return numArray;
         }
 
-        private void NextPage()
+        private async void NextPage()
         {
             if (this.current >= this.chapter.Pages.Count - 1)
             {
-                OKrToast.Show("已经是最后一页了。");
+                await ToNext();
             }
             else
             {
@@ -265,11 +298,11 @@ namespace OKr.Win8Book.Client.View
             }            
         }
 
-        private void PrePage()
+        private async void PrePage()
         {
             if (this.current <= 0)
             {
-                OKrToast.Show("已经是第一页了。");
+                await ToPre();
             }
             else
             {
@@ -353,5 +386,18 @@ namespace OKr.Win8Book.Client.View
         private int location;
 
         #endregion
+
+        private void OnGridKeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.RightButton)
+            {
+                NextPage();
+            }
+
+            if (e.Key == Windows.System.VirtualKey.LeftButton)
+            {
+                PrePage();
+            }
+        }
     }
 }
