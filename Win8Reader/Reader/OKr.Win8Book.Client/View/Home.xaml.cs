@@ -85,6 +85,16 @@ namespace OKr.Win8Book.Client.View
 
         }
 
+        private void OnGoChapter(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Catalog));
+        }
+
+        private void OnGoMark(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Bookmark));
+        }
+
         #endregion
 
         #region Setting
@@ -142,24 +152,5 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
-        private void OnGoChapter(object sender, TappedRoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Catalog));
-        }
-
-        private void OnGoMark(object sender, TappedRoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Bookmark));
-        }
-
-        private void OnDelMark(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void OnUnSelect(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

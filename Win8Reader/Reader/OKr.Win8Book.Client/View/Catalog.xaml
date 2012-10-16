@@ -57,7 +57,10 @@
                 <ListView Padding="120,0,80,50"
                             ItemsSource="{Binding Book.Chapters}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
-                              Style="{StaticResource NonScrollable_ListViewStyle}">
+                            Style="{StaticResource NonScrollable_ListViewStyle}"
+                            SelectionMode="None"
+                            IsItemClickEnabled="True"
+                            ItemClick="OnChapterItemClick">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapGrid Margin="0,0,0,0" Orientation="Vertical"/>

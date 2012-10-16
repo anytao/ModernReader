@@ -57,12 +57,14 @@
                             <Run Text="枚"/>
                 </TextBlock>
             </StackPanel>
-            <GridView Grid.Row="1" Margin="0,20,0,0" Padding="120,0,80,50"
+            <GridView x:Name="gvMarks" Grid.Row="1" Margin="0,20,0,0" Padding="120,0,80,50"
                             ItemsSource="{Binding Marks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
-                            SelectionMode="None"
+                            SelectionMode="Multiple"
+                            IsSwipeEnabled="True"
                             IsItemClickEnabled="True"
-                            ItemClick="OnMarkItemClick">
+                            ItemClick="OnMarkItemClick"
+                            SelectionChanged="OnMarkSelectionChanged">
             </GridView>
         </Grid>
 
@@ -76,6 +78,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                    <Button x:Name="btnDelMark" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="删除书签" Click="OnDelMark"/>
+                    <Button x:Name="btnUnSelect" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="取消选择" Click="OnUnSelect"/>
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                     <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>

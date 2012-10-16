@@ -17,8 +17,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using OKr.Win8Book.Client.ViewModel;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace OKr.Win8Book.Client.View
 {
     public sealed partial class Catalog : OKrPageBase
@@ -48,9 +46,10 @@ namespace OKr.Win8Book.Client.View
 
         #region Lifecycle
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
             LoadTheme();
         }
 

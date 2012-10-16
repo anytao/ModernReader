@@ -120,10 +120,10 @@
                         </TextBlock>
                     </StackPanel>
                     <ListView Grid.Row="1" Margin="0,20,0,0" 
-                              Style="{StaticResource NonScrollable_ListViewStyle}"
+                            Style="{StaticResource NonScrollable_ListViewStyle}"
                             ItemsSource="{Binding RecentMarks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
-                            SelectionMode="Multiple"
+                            SelectionMode="None"                            
                             IsItemClickEnabled="True"
                             ItemClick="Mark_ItemClick">
                         <ListView.ItemsPanel>
@@ -175,9 +175,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
-                    <Button x:Name="btnDelMark" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="删除书签" Click="OnDelMark"/>
-                    <Button x:Name="btnUnSelect" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="删除书签" Click="OnUnSelect"/>
+                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">       
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                     <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>

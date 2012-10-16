@@ -88,5 +88,52 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
+
+        private async void OnDelMark(object sender, RoutedEventArgs e)
+        {
+            Mark m = this.viewModel.Mark;
+
+            foreach (var item in this.gvMarks.SelectedItems)
+            {
+                var mark = item as ChapterMark;
+
+                if (mark != null)
+                {
+                    ChapterMark cm = m.Marks.FirstOrDefault(x => x.Current == mark.Current && x.ChapterNo == mark.ChapterNo);
+
+                    m.Marks.Remove(cm);
+                }
+            }
+
+            await this.mc.Save(m);
+
+            App.HomeViewModel.NotifyMarksChanged();
+        }
+
+        private void OnUnSelect(object sender, RoutedEventArgs e)
+        {
+            this.gvMarks.SelectedItems.Clear();
+        }
+
+        private void OnMarkSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = this.gvMarks.SelectedItems.Count;
+
+            if (count > 0)
+            {
+                this.BottomAppBar.IsSticky = true;
+                this.TopAppBar.IsSticky = true;
+                this.BottomAppBar.IsOpen = true;
+
+            }
+            else
+            {
+                this.BottomAppBar.IsOpen = false;
+                this.BottomAppBar.IsSticky = false;
+                this.TopAppBar.IsSticky = false;
+            }
+        }
+
+        MarkContext mc = new MarkContext();
     }
 }

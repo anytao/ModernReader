@@ -138,7 +138,7 @@ namespace OKr.Win8Book.Client.View
                 OKr.Win8Book.Client.Core.Data.Page page = this.chapter.Pages[this.current];
                 item.Content = page.Row[0].Trim() + page.Row[1].Trim();
 
-                this.mark.Marks.Add(item);
+                this.mark.Marks.Insert(0, item);
             }
             else
             {
