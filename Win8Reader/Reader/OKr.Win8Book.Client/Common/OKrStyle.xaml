@@ -15,6 +15,7 @@
     <Style x:Key="OKrTextBlockStyleBase" TargetType="TextBlock" >
         <Setter Property="FontFamily" Value="Microsoft YaHei"/>
         <Setter Property="TextTrimming" Value="WordEllipsis"/>
+        <Setter Property="FontWeight" Value="Normal"/>
     </Style>
     
     <!--common-->
@@ -23,6 +24,51 @@
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <!--<Setter Property="Margin" Value="0,0,0,25"/>-->
+    </Style>
+
+    <Style x:Key="PageTitleStyleSnapped" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="16,25,0,25"/>
+    </Style>
+
+    <Style x:Key="OKrContentButtonStyle" TargetType="ButtonBase">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Grid Background="Transparent" x:Name="rootGrid" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <CompositeTransform/>
+                        </Grid.RenderTransform>
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                        <Rectangle Fill="Red" IsHitTestVisible="False" Opacity="0"/>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0.9" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="rootGrid" />
+                                        <DoubleAnimation Duration="0" To="0.9" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="rootGrid" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused"/>
+                                <VisualState x:Name="Unfocused"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked"/>
+                                <VisualState x:Name="Unchecked"/>
+                                <VisualState x:Name="Indeterminate"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="ImageButton_OneImage_Style" TargetType="OKrControls:ImageButton">
