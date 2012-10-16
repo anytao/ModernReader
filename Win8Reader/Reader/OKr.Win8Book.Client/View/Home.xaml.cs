@@ -152,8 +152,6 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
-<<<<<<< HEAD
-=======
         private void OnGoChapter(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Catalog));
@@ -163,18 +161,5 @@ namespace OKr.Win8Book.Client.View
         {
             this.Frame.Navigate(typeof(Bookmark));
         }
-
-        private void OnDelMark(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void OnUnSelect(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
->>>>>>> bb478fa7160021393755edd2d8e2b07d05ec8d10
     }
 }

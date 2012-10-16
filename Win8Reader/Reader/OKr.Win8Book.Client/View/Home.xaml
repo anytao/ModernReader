@@ -121,21 +121,15 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="书签" Style="{StaticResource Home_SectionTileStyle}"/>
                                 <TextBlock Style="{StaticResource Home_SectionTileCountStyle}" DataContext="{Binding Mark}">
-                            <Run Text="共"/>
-                            <Run Text="{Binding Marks.Count}"/>
-                            <Run Text="枚"/>
-<<<<<<< HEAD
-                        </TextBlock>
-                    </StackPanel>
-                    <ListView Grid.Row="1" Margin="0,20,0,0" 
-                            Style="{StaticResource NonScrollable_ListViewStyle}"
-=======
+                                    <Run Text="共"/>
+                                    <Run Text="{Binding Marks.Count}"/>
+                                    <Run Text="枚"/>
                                 </TextBlock>
                             </StackPanel>
                         </Button>
+
                         <ListView Grid.Row="1" Margin="0,20,0,0" 
                               Style="{StaticResource NonScrollable_ListViewStyle}"
->>>>>>> bb478fa7160021393755edd2d8e2b07d05ec8d10
                             ItemsSource="{Binding RecentMarks}"
                             ItemTemplate="{StaticResource MarkTemplate}"
                             SelectionMode="None"                            
@@ -263,7 +257,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">       
+                <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                     <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
