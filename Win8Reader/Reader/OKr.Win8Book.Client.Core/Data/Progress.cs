@@ -10,6 +10,7 @@ namespace OKr.Win8Book.Client.Core.Data
     {
         public int Chapter { get; set; }
         public int Page { get; set; }
-        public double Percent { get; set; }
+        public int Location { get; set; }
+        public string Percent { get; set; }
     }
 }

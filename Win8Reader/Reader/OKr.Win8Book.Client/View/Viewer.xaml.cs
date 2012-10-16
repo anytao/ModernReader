@@ -29,12 +29,12 @@ namespace OKr.Win8Book.Client.View
         {
             this.InitializeComponent();
             NavBar bar = new NavBar(this, true, true, true, true);
-            bar.Pre += async (sender, ex) => 
+            bar.Pre += async (sender, ex) =>
             {
                 await ToPre();
             };
 
-            bar.Next += async (sender, ex) => 
+            bar.Next += async (sender, ex) =>
             {
                 await ToNext();
             };
@@ -44,7 +44,7 @@ namespace OKr.Win8Book.Client.View
 
             CoreDispatcher dispatcher = Window.Current.CoreWindow.Dispatcher;
 
-            dispatcher.AcceleratorKeyActivated += (sender, ex) => 
+            dispatcher.AcceleratorKeyActivated += (sender, ex) =>
             {
                 VirtualKey key = ex.VirtualKey;
                 if ((ex.EventType == CoreAcceleratorKeyEventType.KeyUp))
@@ -60,7 +60,7 @@ namespace OKr.Win8Book.Client.View
                         ex.Handled = true;
                         NextPage();
                     }
-                }                
+                }
             };
         }
 
@@ -81,75 +81,14 @@ namespace OKr.Win8Book.Client.View
             LoadTheme();
         }
 
+        protected async override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            await pc.Save(this.progress);
+        }
+
         #endregion
-
-        private async Task LoadBook(Chapter category) 
-        {
-            this.currentChapter = category.ChapterNo;
-
-            this.chapter = category;
-            this.current = category.PageCount;
-            this.location = category.Pos;
-
-
-            this.book = await bc.Load();
-            this.chapter = await LoadData(this.currentChapter, category.Title);
-            chapter.CurrentPage = GetCurrent(chapter, this.location);
-
-            this.DataContext = chapter;
-
-            this.mark = await mc.Load();
-            this.progress = await pc.Load();
-
-            this.chapter.Mark = this.mark;
-
-            this.pageTitle.Text = this.book.Name;
-        }
-
-        private async Task ToNext()
-        {
-            if (this.chapter.ChapterNo + 1 <= this.book.Chapters.Count)
-            {
-                var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo + 1);
-
-                if (category != null)
-                {
-                    await LoadBook(category);
-                }
-            } 
-        }
-
-        private async Task ToPre()
-        {
-            if (this.chapter.ChapterNo - 1 >= 0)
-            {
-                var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo - 1);
-
-                if (category != null)
-                {
-                    await LoadBook(category);
-                }
-            }
-        }
-
-        private OKr.Win8Book.Client.Core.Data.Page GetCurrent(Chapter chapter, int pos)
-        {
-            if (chapter != null)
-            {
-                if (chapter.Pages != null && chapter.Pages.Count > 0)
-                {
-                    foreach (OKr.Win8Book.Client.Core.Data.Page page in chapter.Pages)
-                    {
-                        if (page.Locations.Contains(pos))
-                        {
-                            return page;
-                        }
-                    }
-                }
-            }
-
-            return null;
-        }
 
         #region Handlers
 
@@ -238,7 +177,7 @@ namespace OKr.Win8Book.Client.View
         {
             this.progress.Chapter = this.currentChapter;
             this.progress.Page = this.current;
-            this.progress.Percent = 0.0;
+            this.progress.Percent = "0.0";
 
             await pc.Save(this.progress);
         }
@@ -295,7 +234,7 @@ namespace OKr.Win8Book.Client.View
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
 
                 this.location = this.chapter.CurrentPage.Locations[0];
-            }            
+            }
         }
 
         private async void PrePage()
@@ -311,7 +250,7 @@ namespace OKr.Win8Book.Client.View
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
 
                 this.location = this.chapter.CurrentPage.Locations[0];
-            }         
+            }
         }
 
         private void ShowMark()
@@ -348,9 +287,80 @@ namespace OKr.Win8Book.Client.View
 
         private async void SetPage()
         {
+            this.progress.Chapter = this.chapter.ChapterNo;
             this.progress.Page = this.current;
-            this.progress.Percent = ((double)this.current) / ((double)this.chapter.PageNum);
+            this.progress.Percent = ((((double)this.current) / ((double)this.chapter.PageNum)) * 100).ToString("N2") + "%";
+            this.progress.Location = this.chapter.CurrentPage.Locations[0];
             await pc.Save(this.progress);
+        }
+
+
+        private async Task LoadBook(Chapter category)
+        {
+            this.currentChapter = category.ChapterNo;
+
+            this.chapter = category;
+            this.current = category.PageCount;
+            this.location = category.Pos;
+
+
+            this.book = await bc.Load();
+            this.chapter = await LoadData(this.currentChapter, category.Title);
+            chapter.CurrentPage = GetCurrent(chapter, this.location);
+
+            this.DataContext = chapter;
+
+            this.mark = await mc.Load();
+            this.progress = await pc.Load();
+
+            this.chapter.Mark = this.mark;
+
+            this.pageTitle.Text = this.book.Name;
+        }
+
+        private async Task ToNext()
+        {
+            if (this.chapter.ChapterNo + 1 <= this.book.Chapters.Count)
+            {
+                var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo + 1);
+
+                if (category != null)
+                {
+                    await LoadBook(category);
+                }
+            }
+        }
+
+        private async Task ToPre()
+        {
+            if (this.chapter.ChapterNo - 1 >= 0)
+            {
+                var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo - 1);
+
+                if (category != null)
+                {
+                    await LoadBook(category);
+                }
+            }
+        }
+
+        private OKr.Win8Book.Client.Core.Data.Page GetCurrent(Chapter chapter, int pos)
+        {
+            if (chapter != null)
+            {
+                if (chapter.Pages != null && chapter.Pages.Count > 0)
+                {
+                    foreach (OKr.Win8Book.Client.Core.Data.Page page in chapter.Pages)
+                    {
+                        if (page.Locations.Contains(pos))
+                        {
+                            return page;
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
 
         #endregion
@@ -386,18 +396,5 @@ namespace OKr.Win8Book.Client.View
         private int location;
 
         #endregion
-
-        private void OnGridKeyUp(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.RightButton)
-            {
-                NextPage();
-            }
-
-            if (e.Key == Windows.System.VirtualKey.LeftButton)
-            {
-                PrePage();
-            }
-        }
     }
 }
