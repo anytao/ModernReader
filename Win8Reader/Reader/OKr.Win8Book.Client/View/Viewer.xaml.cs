@@ -83,6 +83,11 @@ namespace OKr.Win8Book.Client.View
             var category = e.Parameter as Chapter;
             if (e.NavigationMode == NavigationMode.New)
             {
+                SettingContext mc = new SettingContext();
+                var setting = await mc.Load();
+
+                this.fontsize = setting.Font;
+
                 await LoadBook(category);
             }
 
@@ -317,7 +322,12 @@ namespace OKr.Win8Book.Client.View
             this.progress.Chapter = this.chapter.ChapterNo;
             this.progress.Page = this.current;
             this.progress.Percent = ((((double)this.current) / ((double)this.chapter.PageNum)) * 100).ToString("N2") + "%";
-            this.progress.Location = this.chapter.CurrentPage.Locations[0];
+
+            if (this.chapter.CurrentPage != null)
+            {
+                this.progress.Location = this.chapter.CurrentPage.Locations[0];
+            }
+            
             await pc.Save(this.progress);
         }
 
@@ -378,7 +388,7 @@ namespace OKr.Win8Book.Client.View
 
         #region Variables
 
-        private int fontsize = OKrBookConfig.DEFALUTFONTSIZE;
+        private int fontsize;
         private int height = OKrBookConfig.HEIGHT; //762;
         private int lineHeight = OKrBookConfig.LINEHEIGHT; //0x10;
         private int currentChapter;
