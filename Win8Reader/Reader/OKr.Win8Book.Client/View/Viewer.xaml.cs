@@ -26,7 +26,35 @@ namespace OKr.Win8Book.Client.View
         public Viewer()
         {
             this.InitializeComponent();
-            this.TopAppBar = new NavBar(this, true, true, true);
+            NavBar bar = new NavBar(this, true, true, true, true);
+            bar.Pre += async (sender, ex) => 
+            {
+                if (this.chapter.ChapterNo - 1 >= 0)
+                {
+                    var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo - 1);
+
+                    if (category != null)
+                    {
+                        await LoadBook(category);
+                    }
+                }
+            };
+
+            bar.Next += async (sender, ex) => 
+            {
+                if (this.chapter.ChapterNo + 1 <= this.book.Chapters.Count)
+                {
+                    var category = App.HomeViewModel.Book.Chapters.FirstOrDefault(x => x.ChapterNo == this.chapter.ChapterNo + 1);
+
+                    if (category != null)
+                    {
+                        await LoadBook(category);
+                    }
+                }                
+            };
+
+
+            this.TopAppBar = bar;
         }
 
         #endregion
@@ -40,31 +68,36 @@ namespace OKr.Win8Book.Client.View
             var category = e.Parameter as Chapter;
             if (e.NavigationMode == NavigationMode.New)
             {
-                this.currentChapter = category.ChapterNo;
-
-                this.chapter = category;
-                this.current = category.PageCount;
-                this.location = category.Pos;
-                
-
-                this.book = await bc.Load();
-                this.chapter = await LoadData(this.currentChapter, category.Title);
-                chapter.CurrentPage = GetCurrent(chapter, this.location);
-                
-                this.DataContext = chapter;
-
-                this.mark = await mc.Load();
-                this.progress = await pc.Load();
-
-                this.chapter.Mark = this.mark;
-
-                this.pageTitle.Text = this.book.Name;                
+                await LoadBook(category);
             }
 
             LoadTheme();
         }
 
         #endregion
+
+        private async Task LoadBook(Chapter category) 
+        {
+            this.currentChapter = category.ChapterNo;
+
+            this.chapter = category;
+            this.current = category.PageCount;
+            this.location = category.Pos;
+
+
+            this.book = await bc.Load();
+            this.chapter = await LoadData(this.currentChapter, category.Title);
+            chapter.CurrentPage = GetCurrent(chapter, this.location);
+
+            this.DataContext = chapter;
+
+            this.mark = await mc.Load();
+            this.progress = await pc.Load();
+
+            this.chapter.Mark = this.mark;
+
+            this.pageTitle.Text = this.book.Name;
+        }
 
         private OKr.Win8Book.Client.Core.Data.Page GetCurrent(Chapter chapter, int pos)
         {

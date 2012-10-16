@@ -10,20 +10,39 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <StackPanel Orientation="Horizontal" Style="{StaticResource AppBarBackgroundStyle}">
-        <OKrControls:ImageButton x:Name="btnHome" Margin="10,10,0,10" 
-                                Style="{StaticResource ImageButton_OneImage_Style}" 
-                                BackgroundNormal="/Assets/NavBar/NavHome.png"
-                                Click="OnHome"/>
+    
+        <Grid Style="{StaticResource AppBarBackgroundStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+                <OKrControls:ImageButton x:Name="btnHome" Margin="10,10,0,10" 
+                                    Style="{StaticResource ImageButton_OneImage_Style}" 
+                                    BackgroundNormal="/Assets/NavBar/NavHome.png"
+                                    Click="OnHome"/>
 
-        <OKrControls:ImageButton x:Name="btnChapter"  Margin="10,10,0,10" 
-                                Style="{StaticResource ImageButton_OneImage_Style}" 
-                                BackgroundNormal="/Assets/NavBar/NavChapters.png"
-                                Click="OnChapter"/>
+                <OKrControls:ImageButton x:Name="btnChapter"  Margin="10,10,0,10" 
+                                    Style="{StaticResource ImageButton_OneImage_Style}" 
+                                    BackgroundNormal="/Assets/NavBar/NavChapters.png"
+                                    Click="OnChapter"/>
 
-        <OKrControls:ImageButton x:Name="btnMark"  Margin="10,10,0,10" 
-                                Style="{StaticResource ImageButton_OneImage_Style}" 
-                                BackgroundNormal="/Assets/NavBar/NavMark.png"
-                                Click="OnMark"/>
-    </StackPanel>
+                <OKrControls:ImageButton x:Name="btnMark"  Margin="10,10,0,10" 
+                                    Style="{StaticResource ImageButton_OneImage_Style}" 
+                                    BackgroundNormal="/Assets/NavBar/NavMark.png"
+                                    Click="OnMark"/>
+            </StackPanel>
+            <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                <OKrControls:ImageButton x:Name="btnPre"  Margin="10,10,0,10" 
+                                    Style="{StaticResource ImageButton_OneImage_Style}" 
+                                    BackgroundNormal="/Assets/NavBar/NavPre.png"
+                                    Click="OnPre" Visibility="Collapsed"/>
+
+                <OKrControls:ImageButton x:Name="btnNext"  Margin="10,10,0,10" 
+                                    Style="{StaticResource ImageButton_OneImage_Style}" 
+                                    BackgroundNormal="/Assets/NavBar/NavNext.png"
+                                    Click="OnNext" Visibility="Collapsed"/>
+            </StackPanel>
+        </Grid>
+
 </AppBar>

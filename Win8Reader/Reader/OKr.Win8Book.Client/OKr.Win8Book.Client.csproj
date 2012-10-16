@@ -161,6 +161,8 @@
     <Content Include="Assets\NavBar\NavChapters.png" />
     <Content Include="Assets\NavBar\NavHome.png" />
     <Content Include="Assets\NavBar\NavMark.png" />
+    <Content Include="Assets\NavBar\NavNext.png" />
+    <Content Include="Assets\NavBar\NavPre.png" />
     <Content Include="Common\ReadMe.txt" />
     <None Include="OKr.Win8Book.Client_TemporaryKey.pfx" />
   </ItemGroup>
