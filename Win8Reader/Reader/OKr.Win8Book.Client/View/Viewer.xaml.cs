@@ -464,6 +464,8 @@ namespace OKr.Win8Book.Client.View
                 default:
                     break;
             }
+            HideFontPopup();
+            base.HideAppBars();
         }
 
         #endregion
