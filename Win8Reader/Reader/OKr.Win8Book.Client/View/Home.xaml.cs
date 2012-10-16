@@ -151,5 +151,15 @@ namespace OKr.Win8Book.Client.View
         {
             this.Frame.Navigate(typeof(Bookmark));
         }
+
+        private void OnDelMark(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnUnSelect(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
