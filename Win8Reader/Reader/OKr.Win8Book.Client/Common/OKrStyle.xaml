@@ -124,6 +124,19 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
+    <Style x:Key="OKrBackButton_Snapped_Light_Style" TargetType="OKrControls:ImageButton" BasedOn="{StaticResource ImageButton_OneImage_Style}">
+        <Setter Property="BackgroundNormal" Value="/Assets/Common/BackButtonBlack.png"/>
+        <Setter Property="Margin" Value="0,0,16,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="OKrBackButton_Snapped_Dark_Style" TargetType="OKrControls:ImageButton" BasedOn="{StaticResource ImageButton_OneImage_Style}">
+        <Setter Property="BackgroundNormal" Value="/Assets/Common/BackButtonWhite.png"/>
+        <Setter Property="Margin" Value="0,0,16,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+
     <Style x:Key="NonScrollable_ListViewStyle" TargetType="ListView">
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="TabNavigation" Value="Once"/>

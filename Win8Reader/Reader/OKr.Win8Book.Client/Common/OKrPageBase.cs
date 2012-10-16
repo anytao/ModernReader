@@ -41,6 +41,7 @@ namespace OKr.Win8Book.Client.Common
         List<RichTextBlock> richTextBlocks = null;
         Grid pageRootGrid = null;
         FrameworkElement backButton = null;
+        FrameworkElement snappedBackButton = null;
 
         protected void LoadTheme()
         {
@@ -62,18 +63,21 @@ namespace OKr.Win8Book.Client.Common
             //SolidColorBrush Theme_Foreground = null;
             ImageBrush pageBackgroundBrush = null;
             Style backButtonStyle = null;
+            Style snappedBackButtonStyle = null;
 
             if (light)
             {
                 //Theme_Foreground = App.Resources["OKr_Theme_Foreground_Light"] as SolidColorBrush;
                 pageBackgroundBrush = App.Resources["OKr_Theme_PageBackground_Light"] as ImageBrush;
                 backButtonStyle = App.Resources["OKrBackButton_Light_Style"] as Style;
+                snappedBackButtonStyle = App.Resources["OKrBackButton_Snapped_Light_Style"] as Style;
             }
             else
             {
                 //Theme_Foreground = App.Resources["OKr_Theme_Foreground_Dark"] as SolidColorBrush;
                 pageBackgroundBrush = App.Resources["OKr_Theme_PageBackground_Dark"] as ImageBrush;
                 backButtonStyle = App.Resources["OKrBackButton_Dark_Style"] as Style;
+                snappedBackButtonStyle = App.Resources["OKrBackButton_Snapped_Dark_Style"] as Style;
             }
 
             textBlocks = new List<TextBlock>();
@@ -83,6 +87,7 @@ namespace OKr.Win8Book.Client.Common
 
             pageRootGrid = GetFirstChildOfType<Grid>(this);
             backButton = GetChildByName(this, "backButton");
+            snappedBackButton = GetChildByName(this, "snappedBackButton");
 
             foreach (var textBlock in textBlocks)
             {
@@ -122,6 +127,11 @@ namespace OKr.Win8Book.Client.Common
             {
                 backButton.Style = backButtonStyle;
                 backButton.UpdateLayout();
+            }
+            if (snappedBackButton!=null)
+            {
+                snappedBackButton.Style = snappedBackButtonStyle;
+                snappedBackButton.UpdateLayout();
             }
 
             pageRootGrid.Background = pageBackgroundBrush;

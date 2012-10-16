@@ -178,7 +178,6 @@
             <TextBlock x:Name="pageTitleSnapped" Style="{StaticResource PageTitleStyleSnapped}"
                    Text="{Binding Book.Name}"/>
             <ScrollViewer Grid.Row="1">
-
                 <StackPanel Margin="16,0,16,20">
                     <!--chapters-->
                     <Button Style="{StaticResource OKrContentButtonStyle}" Click="OnGoChapter">
