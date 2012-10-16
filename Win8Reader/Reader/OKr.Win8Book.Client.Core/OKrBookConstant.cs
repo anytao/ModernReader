@@ -24,6 +24,7 @@ namespace OKr.Win8Book.Client.Core
         public static readonly string MARK = "mark.xml";
         public static readonly string PROGRESS = "progress.xml";
         public static readonly string OKRAPPS = "okr_apps.xml";
+        public static readonly string SETTING = "setting.xml";
 
     }
 }

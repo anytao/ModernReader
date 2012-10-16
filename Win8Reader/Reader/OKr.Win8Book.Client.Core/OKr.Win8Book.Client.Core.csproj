@@ -108,6 +108,7 @@
     <Compile Include="Context\OKrAppContext.cs" />
     <Compile Include="Context\OKrBookContextBase.cs" />
     <Compile Include="Context\ProgressContext.cs" />
+    <Compile Include="Context\SettingContext.cs" />
     <Compile Include="Data\Ad.cs" />
     <Compile Include="Data\Book.cs" />
     <Compile Include="Data\Chapter.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Data\OKrApps.cs" />
     <Compile Include="Data\Page.cs" />
     <Compile Include="Data\Progress.cs" />
+    <Compile Include="Data\Setting.cs" />
     <Compile Include="OKrBookConfig.cs" />
     <Compile Include="OKrBookConstant.cs" />
     <Compile Include="OKrBookContext.cs" />
