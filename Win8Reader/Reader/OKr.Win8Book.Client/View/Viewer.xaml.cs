@@ -8,7 +8,6 @@ using OKr.Win8Book.Client.Core;
 using OKr.Win8Book.Client.Core.Builder;
 using OKr.Win8Book.Client.Core.Context;
 using OKr.Win8Book.Client.Core.Data;
-using Sina.View.Common.Toast;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
@@ -18,6 +17,8 @@ using Windows.UI.Xaml.Controls;
 using OKr.Win8Book.Client.Controls;
 using Windows.UI.Core;
 using Windows.System;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.Foundation;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -28,6 +29,8 @@ namespace OKr.Win8Book.Client.View
         public Viewer()
         {
             this.InitializeComponent();
+            this.Loaded += Viewer_Loaded;
+
             NavBar bar = new NavBar(this, true, true, true, true);
             bar.Pre += async (sender, ex) =>
             {
@@ -62,6 +65,11 @@ namespace OKr.Win8Book.Client.View
                     }
                 }
             };
+        }
+
+        void Viewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            PrepareFontPopup();
         }
 
         #endregion
@@ -136,7 +144,7 @@ namespace OKr.Win8Book.Client.View
 
         private void OnFontChange(object sender, RoutedEventArgs e)
         {
-
+            ShowFontPopup((UIElement)sender);
         }
 
         private async void OnMark(object sender, RoutedEventArgs e)
@@ -394,5 +402,62 @@ namespace OKr.Win8Book.Client.View
         {
             Windows.UI.ViewManagement.ApplicationView.TryUnsnap();
         }
+
+        #region Font Flyout
+
+        private FrameworkElement _fontSizePopupMenu = null;
+        private Popup _popUp = null;
+
+        private void PrepareFontPopup()
+        {
+            _fontSizePopupMenu = this.fontPopup;
+            var parent = _fontSizePopupMenu.Parent as Grid;
+            if (parent != null)
+            {
+                parent.Children.Remove(_fontSizePopupMenu);
+                _fontSizePopupMenu.Visibility = Visibility.Visible;
+            }
+            if (_popUp == null)
+            {
+                _popUp = new Popup();
+                _popUp.IsLightDismissEnabled = true;
+            }
+        }
+
+        private void ShowFontPopup(UIElement targetElement)
+        {
+            _popUp.Child = _fontSizePopupMenu;
+            var transform = targetElement.TransformToVisual(null);
+            var point = transform.TransformPoint(new Point(0, 0));
+            _popUp.HorizontalOffset = this.ScreenWidth - 180;
+            _popUp.VerticalOffset = point.Y - 220;
+
+            _popUp.IsOpen = true;
+        }
+
+        private void HideFontPopup()
+        {
+            _popUp.IsOpen = false;
+        }
+
+        private void fontMenu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string caption = (e.ClickedItem as TextBlock).Text;
+            switch (caption)
+            {
+                case "大号字体":
+                    break;
+                case "中号字体":
+                    break;
+                case "小号字体":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #endregion
+
+
     }
 }

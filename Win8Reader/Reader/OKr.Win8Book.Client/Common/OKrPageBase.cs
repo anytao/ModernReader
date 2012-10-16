@@ -33,6 +33,23 @@ namespace OKr.Win8Book.Client.Common
             }
         }
 
+        public double ScreenWidth
+        {
+            get
+            {
+                return Window.Current.Bounds.Width;
+            }
+        }
+
+        public double ScreenHeight
+        {
+            get
+            {
+                return Window.Current.Bounds.Height;
+            }
+        }
+
+
         #endregion
 
         #region Theme

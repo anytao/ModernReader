@@ -10,7 +10,7 @@
     xmlns:common="using:OKr.Win8Book.Client.Common"
     NavigationCacheMode="Enabled">
 
-    <Grid>
+    <Grid x:Name="layoutRoot">
         <!--full view-->
         <Grid x:Name="fullView">
             <Grid.RowDefinitions>
@@ -61,6 +61,21 @@
                 </common:RichTextColumns>
             </Grid>
         </Grid>
+
+        <!--font flyout-->
+        <Border  x:Name="fontPopup" BorderBrush="White" BorderThickness="2" Background="#3d8402"
+                Visibility="Collapsed" Height="200" Width="160" >
+            <Border.Transitions>
+                <TransitionCollection>
+                    <PopupThemeTransition />
+                </TransitionCollection>
+            </Border.Transitions>
+            <ListView SelectionMode="None" IsItemClickEnabled="True" ItemClick="fontMenu_ItemClick">
+                <TextBlock Text="大号字体" Style="{StaticResource Viewer_FontFlyout_Text_Style}" Tag="skiptheme"/>
+                <TextBlock Text="中号字体" Style="{StaticResource Viewer_FontFlyout_Text_Style}" Tag="skiptheme"/>
+                <TextBlock Text="小号字体" Style="{StaticResource Viewer_FontFlyout_Text_Style}" Tag="skiptheme"/>
+            </ListView>
+        </Border>
 
         <!--snapped view-->
         <Grid x:Name="snappedView" Opacity="0" IsHitTestVisible="False">
