@@ -10,6 +10,15 @@
     xmlns:common="using:OKr.Win8Book.Client.Common"
     NavigationCacheMode="Enabled">
 
+    <UserControl.Resources>
+        <Style x:Key="AppBarFontButtonStyle" TargetType="OKrControls:ImageButton" BasedOn="{StaticResource AppBarImageButtonStyle}">
+            <Setter Property="AutomationProperties.Name" Value="字体"/>
+            <Setter Property="BackgroundHover" Value="/Assets/Common/AppBarFontHover.png"/>
+            <Setter Property="BackgroundNormal" Value="/Assets/Common/AppBarFontNormal.png"/>
+            <Setter Property="BackgroundPressed" Value="/Assets/Common/AppBarFontPressed.png"/>
+        </Style>
+    </UserControl.Resources>
+
     <Grid x:Name="layoutRoot">
         <!--full view-->
         <Grid x:Name="fullView">
@@ -60,6 +69,8 @@
                     </common:RichTextColumns.ColumnTemplate>
                 </common:RichTextColumns>
             </Grid>
+
+            <OKrControls:BigMark OnMark="OnMark" IsMarked="False"/>
         </Grid>
 
         <!--font flyout-->
@@ -133,11 +144,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
-                    <Button x:Name="btnMark" Style="{StaticResource PicturesAppBarButtonStyle}" AutomationProperties.Name="书签" Visibility="Visible" Click="OnMark" />
+                    <!--<Button x:Name="btnMark" Style="{StaticResource PicturesAppBarButtonStyle}" AutomationProperties.Name="书签" Visibility="Visible" Click="OnMark" />-->
+                    <OKrControls:AppBarMarkButton OnMarked="OnMark" OnUnMarked="OnMark" />
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                    <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
-                    <Button x:Name="btnFont" Style="{StaticResource SaveLocalAppBarButtonStyle}" AutomationProperties.Name="字体" Click="OnFontChange"/>
+                    <OKrControls:ImageButton Style="{StaticResource AppBarFontButtonStyle}" Click="OnFontChange"/>
+                    <OKrControls:AppBarThemeButton OnLight="AppBarThemeButton_Click" OnDark="AppBarThemeButton_Click" />
                 </StackPanel>
             </Grid>
         </AppBar>

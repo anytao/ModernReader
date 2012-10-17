@@ -121,6 +121,15 @@
     <Compile Include="Common\OKrPageBase.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Controls\AppBarThemeButton.xaml.cs">
+      <DependentUpon>AppBarThemeButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AppBarMarkButton.xaml.cs">
+      <DependentUpon>AppBarMarkButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BigMark.xaml.cs">
+      <DependentUpon>BigMark.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DataContextProxy cs.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\NavBar.xaml.cs">
@@ -150,6 +159,21 @@
     <Content Include="Assets\Common\BackButtonWhite.png" />
     <Content Include="Assets\Common\PageBackgroundDark.jpg" />
     <Content Include="Assets\Common\PageBackgroundLight.jpg" />
+    <Content Include="Assets\Common\AppBarLightThemeHover.png" />
+    <Content Include="Assets\Common\AppBarLightThemePressed.png" />
+    <Content Include="Assets\Common\AppBarLightThemeNormal.png" />
+    <Content Include="Assets\Common\AppBarMarkHover.png" />
+    <Content Include="Assets\Common\AppBarMarkPressed.png" />
+    <Content Include="Assets\Common\AppBarMarkNormal.png" />
+    <Content Include="Assets\Common\AppBarUnMarkHover.png" />
+    <Content Include="Assets\Common\AppBarUnMarkPressed.png" />
+    <Content Include="Assets\Common\AppBarUnMarkNormal.png" />
+    <Content Include="Assets\Common\AppBarDarkThemeHover.png" />
+    <Content Include="Assets\Common\AppBarDarkThemePressed.png" />
+    <Content Include="Assets\Common\AppBarDarkThemeNormal.png" />
+    <Content Include="Assets\Common\AppBarFontHover.png" />
+    <Content Include="Assets\Common\AppBarFontPressed.png" />
+    <Content Include="Assets\Common\AppBarFontNormal.png" />
     <Content Include="Assets\Data\me.okr">
       <SubType>Designer</SubType>
     </Content>
@@ -163,6 +187,7 @@
     <Content Include="Assets\NavBar\NavMark.png" />
     <Content Include="Assets\NavBar\NavNext.png" />
     <Content Include="Assets\NavBar\NavPre.png" />
+    <Content Include="Assets\Viewer\BigMark.png" />
     <Content Include="Assets\Viewer\ViewArticleButton.png" />
     <Content Include="Common\ReadMe.txt" />
     <None Include="OKr.Win8Book.Client_TemporaryKey.pfx" />
@@ -327,6 +352,18 @@
     <Page Include="Common\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AppBarThemeButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AppBarMarkButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\BigMark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NavBar.xaml">
       <SubType>Designer</SubType>

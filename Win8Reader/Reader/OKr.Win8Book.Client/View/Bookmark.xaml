@@ -155,7 +155,7 @@
                     <Button x:Name="btnUnSelect" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="取消选择" Click="OnUnSelect"/>
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                    <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
+                    <OKrControls:AppBarThemeButton OnLight="AppBarThemeButton_Click" OnDark="AppBarThemeButton_Click" />
                 </StackPanel>
             </Grid>
         </AppBar>

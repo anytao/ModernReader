@@ -150,7 +150,7 @@
                 <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                    <Button x:Name="btnTheme" Style="{StaticResource EmojiAppBarButtonStyle}" AutomationProperties.Name="昼间模式" Click="OnTheme"/>
+                    <OKrControls:AppBarThemeButton OnLight="AppBarThemeButton_Click" OnDark="AppBarThemeButton_Click" />
                 </StackPanel>
             </Grid>
         </AppBar>

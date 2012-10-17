@@ -80,8 +80,7 @@ namespace OKr.Win8Book.Client.View
             this.Frame.Navigate(typeof(Viewer), chapter);
         }
 
-
-        private void OnTheme(object sender, RoutedEventArgs e)
+        private void AppBarThemeButton_Click(object sender, EventArgs e)
         {
             SwitchTheme();
             HideAppBars();
@@ -135,5 +134,6 @@ namespace OKr.Win8Book.Client.View
         }
 
         MarkContext mc = new MarkContext();
+
     }
 }

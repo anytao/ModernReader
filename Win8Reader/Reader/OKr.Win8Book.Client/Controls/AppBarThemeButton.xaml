@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="OKr.Win8Book.Client.Controls.AppBarThemeButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OKr.Win8Book.Client.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:OKrControls="using:OKr.Win8Book.Client.Controls"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    
+    <Grid>
+        <OKrControls:ImageButton x:Name="btnLightTheme" Style="{StaticResource AppBarImageButtonStyle}"
+                                 Click="LightTheme_Click" 
+                                    AutomationProperties.Name="昼间模式" Opacity="0" IsHitTestVisible="False"
+                                    BackgroundHover="/Assets/Common/AppBarLightThemeHover.png"
+                                    BackgroundNormal="/Assets/Common/AppBarLightThemeNormal.png"
+                                    BackgroundPressed="/Assets/Common/AppBarLightThemePressed.png"/>
+        <OKrControls:ImageButton x:Name="btnDarkTheme" Style="{StaticResource AppBarImageButtonStyle}"
+                                 Click="DarkTheme_Click" 
+                                    AutomationProperties.Name="夜间模式" 
+                                    BackgroundHover="/Assets/Common/AppBarDarkThemeHover.png"
+                                    BackgroundNormal="/Assets/Common/AppBarDarkThemeNormal.png"
+                                    BackgroundPressed="/Assets/Common/AppBarDarkThemePressed.png"/>
+    </Grid>
+</UserControl>

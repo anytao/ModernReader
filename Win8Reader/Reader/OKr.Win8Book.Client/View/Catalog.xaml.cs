@@ -62,12 +62,14 @@ namespace OKr.Win8Book.Client.View
 
         #region App Bar
 
-        private void OnTheme(object sender, RoutedEventArgs e)
+        private void AppBarThemeButton_Click(object sender, EventArgs e)
         {
             SwitchTheme();
             HideAppBars();
         }
 
         #endregion
+
+
     }
 }

@@ -152,7 +152,7 @@ namespace OKr.Win8Book.Client.View
             ShowFontPopup((UIElement)sender);
         }
 
-        private async void OnMark(object sender, RoutedEventArgs e)
+        private async void OnMark(object sender, EventArgs e)//(object sender, RoutedEventArgs e)
         {
             Mark m = this.chapter.Mark;
 
@@ -378,7 +378,7 @@ namespace OKr.Win8Book.Client.View
 
         #region App Bar
 
-        private void OnTheme(object sender, RoutedEventArgs e)
+        private void AppBarThemeButton_Click(object sender, EventArgs e)
         {
             SwitchTheme();
             HideAppBars();
@@ -439,7 +439,7 @@ namespace OKr.Win8Book.Client.View
             _popUp.Child = _fontSizePopupMenu;
             var transform = targetElement.TransformToVisual(null);
             var point = transform.TransformPoint(new Point(0, 0));
-            _popUp.HorizontalOffset = this.ScreenWidth - 180;
+            _popUp.HorizontalOffset = point.X - 40;// this.ScreenWidth - 180;
             _popUp.VerticalOffset = point.Y - 220;
 
             _popUp.IsOpen = true;
@@ -469,7 +469,6 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
-
 
     }
 }
