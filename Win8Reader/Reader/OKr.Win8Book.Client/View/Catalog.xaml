@@ -11,6 +11,12 @@
     NavigationCacheMode="Enabled">
 
     <Page.Resources>
+        <CollectionViewSource
+            x:Name="groupedItemsViewSource"
+            Source="{Binding ChapterGroups}"
+            IsSourceGrouped="true"
+            ItemsPath="Chapters"/>
+
         <DataTemplate x:Key="ChapterTemplate">
             <Grid Width="500" Margin="0,0,20,0">
                 <Grid.ColumnDefinitions>
@@ -32,6 +38,40 @@
                 <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
             </Grid>
         </DataTemplate>
+
+        <Style x:Key="GridViewStyle1" TargetType="GridView">
+            <Setter Property="Padding" Value="0,0,0,0"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="TabNavigation" Value="Once"/>
+            <Setter Property="IsSwipeEnabled" Value="True"/>
+            <Setter Property="ItemContainerTransitions">
+                <Setter.Value>
+                    <TransitionCollection>
+                        <AddDeleteThemeTransition/>
+                        <ContentThemeTransition/>
+                        <ReorderThemeTransition/>
+                        <EntranceThemeTransition IsStaggeringEnabled="False"/>
+                    </TransitionCollection>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapGrid Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridView">
+                        <ItemsPresenter HeaderTemplate="{TemplateBinding HeaderTemplate}" 
+                                                Header="{TemplateBinding Header}" 
+                                                HeaderTransitions="{TemplateBinding HeaderTransitions}" 
+                                                Padding="{TemplateBinding Padding}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid>
@@ -64,22 +104,42 @@
                             <Run Text="章"/>
                     </TextBlock>
                 </StackPanel>
+                
                 <ScrollViewer Grid.Row="1" Margin="0,20,0,0" 
                 HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" 
                           VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
-                    <ListView Padding="120,0,0,50"
-                            ItemsSource="{Binding Book.Chapters}"
+                    <GridView Padding="120,0,0,50"
+                           ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
-                            Style="{StaticResource NonScrollable_ListViewStyle}"
+                            Style="{StaticResource GridViewStyle1}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="OnChapterItemClick">
-                        <ItemsControl.ItemsPanel>
+                        <!--<ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapGrid Margin="0,0,160,0" Orientation="Vertical"/>
                             </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ListView>
+                        </ItemsControl.ItemsPanel>-->
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                        <GridView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0" />
+                                        <!--<WrapGrid Margin="0,0,160,0" Orientation="Vertical"/>-->
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
+                            </GroupStyle>
+                        </GridView.GroupStyle>
+                    </GridView>
                 </ScrollViewer>
             </Grid>
 

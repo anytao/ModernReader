@@ -35,6 +35,16 @@ namespace OKr.Win8Book.Client.ViewModel
             }
         }
 
+        private ObservableCollection<ChapterGroup> chapterGroups = new ObservableCollection<ChapterGroup>();
+        public ObservableCollection<ChapterGroup> ChapterGroups
+        {
+            get { return chapterGroups; }
+            set
+            {
+                this.SetProperty(ref chapterGroups, value);
+            }
+        }
+
         private Mark mark;
         public Mark Mark
         {
@@ -68,6 +78,8 @@ namespace OKr.Win8Book.Client.ViewModel
         }
 
         private Progress progress;
+
+        private int chapterGroupSize = 20;
 
         #endregion
 
@@ -117,6 +129,22 @@ namespace OKr.Win8Book.Client.ViewModel
             foreach (var chapter in filterResult)
             {
                 TopChapters.Add(chapter);
+            }
+
+            ChapterGroup group=null;
+            for (int i = 0; i < this.Book.Chapters.Count; i++)
+            {
+                if (group==null)
+                {
+                    group = new ChapterGroup();
+                    ChapterGroups.Add(group);
+                }
+
+                group.Chapters.Add(this.Book.Chapters[i]);
+                if (((i+1) % chapterGroupSize)==0)
+                {
+                    group = null;
+                }
             }
         }
 
