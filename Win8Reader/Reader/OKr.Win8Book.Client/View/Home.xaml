@@ -11,13 +11,18 @@
     NavigationCacheMode="Required">
 
     <Page.Resources>
+        <common:BooleanToVisibilityConverter x:Name="BooleanToVisibilityConverter"/>
+        
         <DataTemplate x:Key="ChapterTemplate">
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
+                <Image Style="{StaticResource Home_Chapter_Icon_UnRead_Style}" 
+                       Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='neg'}"/>
+                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}" 
+                       Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
             </Grid>
         </DataTemplate>
