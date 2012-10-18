@@ -183,6 +183,11 @@
     <Content Include="Assets\Home\ChapterIcon3.png" />
     <Content Include="Assets\Home\LockCover.jpg" />
     <Content Include="Assets\Home\MarkIcon1.png" />
+    <Content Include="Assets\Logo\Logo150x150.png" />
+    <Content Include="Assets\Logo\Logo30x30.png" />
+    <Content Include="Assets\Logo\Logo310x150.png" />
+    <Content Include="Assets\Logo\Logo50x50.png" />
+    <Content Include="Assets\Logo\Logo620x300.png" />
     <Content Include="Assets\NavBar\NavChapters.png" />
     <Content Include="Assets\NavBar\NavHome.png" />
     <Content Include="Assets\NavBar\NavMark.png" />
@@ -335,10 +340,6 @@
     <Content Include="Assets\Data\okr-bg.png" />
     <Content Include="Assets\Data\okr-icon.png" />
     <Content Include="Assets\Data\okr-splash.png" />
-    <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\SmallLogo.png" />
-    <Content Include="Assets\SplashScreen.png" />
-    <Content Include="Assets\StoreLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
