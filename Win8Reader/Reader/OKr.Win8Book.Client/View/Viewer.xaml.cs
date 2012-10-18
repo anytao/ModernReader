@@ -159,6 +159,8 @@ namespace OKr.Win8Book.Client.View
             }
 
             this.SetPage();
+
+            this.SetMarkStatus();
         }
 
         private void OnFontChange(object sender, RoutedEventArgs e)
@@ -284,6 +286,9 @@ namespace OKr.Win8Book.Client.View
                 this.current++;
 
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
+                chapter.NextPage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo + 1);
+                chapter.PrePage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo - 1);
+                
 
                 this.location = this.chapter.CurrentPage.Locations[0];
             }
@@ -300,6 +305,8 @@ namespace OKr.Win8Book.Client.View
                 this.current--;
 
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
+                chapter.NextPage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo + 1);
+                chapter.PrePage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo - 1);
 
                 this.location = this.chapter.CurrentPage.Locations[0];
             }
@@ -361,9 +368,11 @@ namespace OKr.Win8Book.Client.View
             this.location = category.Pos;
 
 
-            this.book = App.HomeViewModel.Book; //await bc.Load();
+            this.book = App.HomeViewModel.Book;
             this.chapter = await LoadData(this.currentChapter, category.Title);
             chapter.CurrentPage = GetCurrent(chapter, this.location);
+            chapter.NextPage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo + 1);
+            chapter.PrePage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo - 1);
 
             this.DataContext = chapter;
 
@@ -374,7 +383,12 @@ namespace OKr.Win8Book.Client.View
 
             this.pageTitle.Text = this.book.Name;
 
-            ChapterMark item = this.chapter.Mark.Marks.FirstOrDefault(x => x.Current == this.location && x.ChapterNo == this.currentChapter);
+            this.SetMarkStatus();
+        }
+
+        private void SetMarkStatus()
+        {
+            ChapterMark item = this.mark.Marks.FirstOrDefault(x => x.Current == this.location && x.ChapterNo == this.currentChapter);
 
             this.bigMark.IsMarked = item != null;
             this.appBarMark.IsMarked = item != null;
