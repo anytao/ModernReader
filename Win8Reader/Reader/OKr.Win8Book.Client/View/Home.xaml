@@ -11,13 +11,18 @@
     NavigationCacheMode="Required">
 
     <Page.Resources>
+        <common:BooleanToVisibilityConverter x:Name="BooleanToVisibilityConverter"/>
+        
         <DataTemplate x:Key="ChapterTemplate">
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
+                <Image Style="{StaticResource Home_Chapter_Icon_UnRead_Style}" 
+                       Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='neg'}"/>
+                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}" 
+                       Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
             </Grid>
         </DataTemplate>
@@ -68,6 +73,21 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        
+        <Storyboard x:Name="storyUnlock">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="coverPanel">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<CubicEase EasingMode="EaseInOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        		<EasingDoubleKeyFrame x:Name="keyFrameTo" KeyTime="0:0:0.5" Value="-768">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<CubicEase EasingMode="EaseInOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
 
     </Page.Resources>
 
@@ -90,7 +110,7 @@
             </Grid>
 
             <!--body-->
-            <ScrollViewer x:Name="gridViewScrollViewer"  Grid.Row="1"
+            <ScrollViewer x:Name="gridViewScrollViewer" Grid.Row="1" 
                       ZoomMode="Disabled"
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                       HorizontalScrollMode="Enabled" VerticalScrollMode="Disabled"
@@ -241,7 +261,15 @@
         </Grid>
 
         <ProgressRing x:Name="pr" Width="120" Height="120" />
-
+        
+        <!--cover-->
+        <ContentControl x:Name="coverPanel" RenderTransformOrigin="0.5,0.5" PointerPressed="coverPanel_PointerPressed">
+            <ContentControl.RenderTransform>
+        		<CompositeTransform/>
+            </ContentControl.RenderTransform>
+            <Image x:Name="coverImage" Source="/Assets/Home/LockCover.jpg" Stretch="UniformToFill"/>
+        </ContentControl>
+        
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ApplicationViewStates">
                 <VisualState x:Name="FullScreenLandscape"/>

@@ -102,7 +102,7 @@ namespace OKr.Win8Book.Client.View
 
             if (chapter != null)
             {
-                chapter.IsReaded = true;
+                chapter.IsRead = true;
 
                 await bc.Save(this.book);
             }

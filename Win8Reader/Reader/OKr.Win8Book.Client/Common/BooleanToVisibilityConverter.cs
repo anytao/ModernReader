@@ -21,7 +21,19 @@ namespace OKr.Win8Book.Client.Common
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return (value is bool && (bool)value) ? Visibility.Visible : Visibility.Collapsed;
+            bool boolValue = value is bool && (bool)value;
+            bool negate = false;
+            if (parameter != null && parameter.ToString().ToLower() == "neg")
+            {
+                negate = true;
+            }
+
+            if (negate)
+            {
+                boolValue = !boolValue;
+            }
+
+            return boolValue ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
