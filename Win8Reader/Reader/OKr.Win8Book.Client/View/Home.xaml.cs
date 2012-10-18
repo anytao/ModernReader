@@ -11,6 +11,8 @@ using Windows.UI.Xaml.Controls;
 using OKr.Win8Book.Client.ViewModel;
 using Windows.UI.ApplicationSettings;
 using OKr.Win8Book.Client.Controls;
+using Windows.UI.Core;
+using Windows.System;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -33,6 +35,7 @@ namespace OKr.Win8Book.Client.View
         public Home()
         {
             this.InitializeComponent();
+            PrepareCover();
             this.TopAppBar = new NavBar(this, false, true, true);
             SettingsPane.GetForCurrentView().CommandsRequested += SettingCommandsRequested;
         }
@@ -161,6 +164,40 @@ namespace OKr.Win8Book.Client.View
         {
             this.Frame.Navigate(typeof(Bookmark));
         }
+
+        #region Cover
+
+        CoreDispatcher dispatcher;
+        private void PrepareCover()
+        {
+            this.keyFrameTo.Value = 0 - this.ScreenHeight;
+
+            dispatcher = Window.Current.CoreWindow.Dispatcher;
+            dispatcher.AcceleratorKeyActivated += dispatcher_AcceleratorKeyActivated;
+        }
+
+        void dispatcher_AcceleratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs args)
+        {
+            VirtualKey key = args.VirtualKey;
+            if ((args.EventType == CoreAcceleratorKeyEventType.KeyDown))
+            {
+                Unlock();
+                args.Handled = true;
+            }
+        }
+
+        private void coverPanel_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            Unlock();
+        }
+
+        private void Unlock()
+        {
+            dispatcher.AcceleratorKeyActivated -= dispatcher_AcceleratorKeyActivated;
+            storyUnlock.Begin();
+        }
+
+        #endregion
 
     }
 }

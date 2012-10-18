@@ -181,6 +181,7 @@
     <Content Include="Assets\Home\ChapterIcon1.png" />
     <Content Include="Assets\Home\ChapterIcon2.png" />
     <Content Include="Assets\Home\ChapterIcon3.png" />
+    <Content Include="Assets\Home\LockCover.jpg" />
     <Content Include="Assets\Home\MarkIcon1.png" />
     <Content Include="Assets\NavBar\NavChapters.png" />
     <Content Include="Assets\NavBar\NavHome.png" />
