@@ -157,8 +157,6 @@
     </AppxManifest>
     <Content Include="Assets\Common\BackButtonBlack.png" />
     <Content Include="Assets\Common\BackButtonWhite.png" />
-    <Content Include="Assets\Common\PageBackgroundDark.jpg" />
-    <Content Include="Assets\Common\PageBackgroundLight.jpg" />
     <Content Include="Assets\Common\AppBarLightThemeHover.png" />
     <Content Include="Assets\Common\AppBarLightThemePressed.png" />
     <Content Include="Assets\Common\AppBarLightThemeNormal.png" />
@@ -174,6 +172,8 @@
     <Content Include="Assets\Common\AppBarFontHover.png" />
     <Content Include="Assets\Common\AppBarFontPressed.png" />
     <Content Include="Assets\Common\AppBarFontNormal.png" />
+    <Content Include="Assets\Common\PageBackgroundDark.png" />
+    <Content Include="Assets\Common\PageBackgroundLight.png" />
     <Content Include="Assets\Data\me.okr">
       <SubType>Designer</SubType>
     </Content>

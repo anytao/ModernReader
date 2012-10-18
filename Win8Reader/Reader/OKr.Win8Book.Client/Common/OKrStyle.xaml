@@ -8,8 +8,8 @@
     <SolidColorBrush x:Name="OKr_Theme_Foreground_Light" Color="#FF000000"/>
     <SolidColorBrush x:Name="OKr_Theme_Foreground_Dark" Color="#FFFFFFFF"/>
 
-    <ImageBrush x:Key="OKr_Theme_PageBackground_Light" ImageSource="/Assets/Common/PageBackgroundLight.jpg" Stretch="None"/>
-    <ImageBrush x:Key="OKr_Theme_PageBackground_Dark" ImageSource="/Assets/Common/PageBackgroundDark.jpg" Stretch="None"/>
+    <ImageBrush x:Key="OKr_Theme_PageBackground_Light" ImageSource="/Assets/Common/PageBackgroundLight.png" Stretch="UniformToFill"/>
+    <ImageBrush x:Key="OKr_Theme_PageBackground_Dark" ImageSource="/Assets/Common/PageBackgroundDark.png" Stretch="UniformToFill"/>
 
     <!--base-->
     <Style x:Key="OKrTextBlockStyleBase" TargetType="TextBlock" >
