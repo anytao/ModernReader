@@ -181,7 +181,7 @@
     <Content Include="Assets\Home\ChapterIcon1.png" />
     <Content Include="Assets\Home\ChapterIcon2.png" />
     <Content Include="Assets\Home\ChapterIcon3.png" />
-    <Content Include="Assets\Home\LockCover.jpg" />
+    <Content Include="Assets\Data\LockCover.jpg" />
     <Content Include="Assets\Home\MarkIcon1.png" />
     <Content Include="Assets\Logo\Logo150x150.png" />
     <Content Include="Assets\Logo\Logo30x30.png" />
@@ -342,14 +342,6 @@
     <Content Include="Assets\Data\book\119.txt" />
     <Content Include="Assets\Data\book\120.txt" />
     <Content Include="Assets\Data\book\category.txt" />
-    <Content Include="Assets\Data\cover.png" />
-    <Content Include="Assets\Data\okr-bg-200-3guo_173.png" />
-    <Content Include="Assets\Data\okr-bg-200-3guo_200.png" />
-    <Content Include="Assets\Data\okr-bg-200-3guo_62.png" />
-    <Content Include="Assets\Data\okr-bg-200-3guo_99.png" />
-    <Content Include="Assets\Data\okr-bg.png" />
-    <Content Include="Assets\Data\okr-icon.png" />
-    <Content Include="Assets\Data\okr-splash.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

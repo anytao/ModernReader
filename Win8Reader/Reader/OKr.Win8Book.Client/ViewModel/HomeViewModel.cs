@@ -67,6 +67,8 @@ namespace OKr.Win8Book.Client.ViewModel
             }
         }
 
+        private Progress progress;
+
         #endregion
 
         public async Task Load()
@@ -129,6 +131,12 @@ namespace OKr.Win8Book.Client.ViewModel
             {
                 RecentMarks.Add(chapterMark);
             }
+        }
+
+        private async Task LoadProgress()
+        {
+            ProgressContext pc = new ProgressContext();
+            progress = await pc.Load();
         }
 
         public async void NotifyMarksChanged()

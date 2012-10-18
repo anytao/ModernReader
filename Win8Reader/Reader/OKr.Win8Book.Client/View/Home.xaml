@@ -267,7 +267,8 @@
             <ContentControl.RenderTransform>
         		<CompositeTransform/>
             </ContentControl.RenderTransform>
-            <Image x:Name="coverImage" Source="/Assets/Home/LockCover.jpg" Stretch="UniformToFill"/>
+            <Image x:Name="coverImage" Source="/Assets/Data/LockCover.jpg" Stretch="UniformToFill"/>
+            
         </ContentControl>
         
         <VisualStateManager.VisualStateGroups>
