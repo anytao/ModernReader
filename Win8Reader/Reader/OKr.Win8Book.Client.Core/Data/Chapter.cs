@@ -41,5 +41,27 @@ namespace OKr.Win8Book.Client.Core.Data
                 this.SetProperty(ref this.currentPage, value);
             }
         }
+
+        private Page nextPage;
+
+        public Page NextPage
+        {
+            get { return this.nextPage; }
+            set
+            {
+                this.SetProperty(ref this.nextPage, value);
+            }
+        }
+
+        private Page prePage;
+
+        public Page PrePage
+        {
+            get { return this.prePage; }
+            set
+            {
+                this.SetProperty(ref this.prePage, value);
+            }
+        }
     }
 }

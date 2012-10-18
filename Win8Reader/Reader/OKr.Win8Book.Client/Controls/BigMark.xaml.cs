@@ -54,7 +54,7 @@ namespace OKr.Win8Book.Client.Controls
             {
                 OnMark(this, EventArgs.Empty);
             }
-            IsMarked = !IsMarked;
+            //IsMarked = !IsMarked;
         }
     }
 }
