@@ -21,6 +21,7 @@ namespace OKr.Win8Book.Client.Core.Data
         public int PageNum { get; set; }
         public int PageCount { get; set; }
         public string FileName { get; set; }
+        public bool IsReaded { get; set; }
         public Mark Mark { get; set; }
         public List<string> PageList { get; set; }
         public List<Page> Pages { get; set; }

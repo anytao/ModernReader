@@ -94,6 +94,20 @@ namespace OKr.Win8Book.Client.View
             LoadTheme();
         }
 
+        protected async override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            var chapter = this.book.Chapters.FirstOrDefault(x => x.ChapterNo == this.currentChapter);
+
+            if (chapter != null)
+            {
+                chapter.IsReaded = true;
+
+                await bc.Save(this.book);
+            }
+        }
+
         private async Task ToNext()
         {
             if (this.chapter.ChapterNo + 1 <= this.book.Chapters.Count)
@@ -104,7 +118,7 @@ namespace OKr.Win8Book.Client.View
                 {
                     await LoadBook(category);
                 }
-            } 
+            }
         }
 
         private async Task ToPre()
@@ -327,7 +341,7 @@ namespace OKr.Win8Book.Client.View
             {
                 this.progress.Location = this.chapter.CurrentPage.Locations[0];
             }
-            
+
             await pc.Save(this.progress);
         }
 
@@ -341,7 +355,7 @@ namespace OKr.Win8Book.Client.View
             this.location = category.Pos;
 
 
-            this.book = await bc.Load();
+            this.book = App.HomeViewModel.Book; //await bc.Load();
             this.chapter = await LoadData(this.currentChapter, category.Title);
             chapter.CurrentPage = GetCurrent(chapter, this.location);
 
@@ -469,6 +483,5 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
-
     }
 }
