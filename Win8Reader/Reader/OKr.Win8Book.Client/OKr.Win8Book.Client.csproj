@@ -130,7 +130,6 @@
     <Compile Include="Controls\BigMark.xaml.cs">
       <DependentUpon>BigMark.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DataContextProxy cs.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\NavBar.xaml.cs">
       <DependentUpon>NavBar.xaml</DependentUpon>

@@ -19,6 +19,7 @@ using Windows.UI.Core;
 using Windows.System;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.Foundation;
+using Windows.UI.Xaml.Media;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -138,29 +139,32 @@ namespace OKr.Win8Book.Client.View
 
         #region Handlers
 
+        bool dragging=false;
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
+            dragging = true;
         }
 
         private void bodyGrid_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
-
+            if (dragging)
+            {
+                var transform = (CompositeTransform)bodyGrid.RenderTransform;
+                transform.TranslateX += e.Delta.Translation.X;
+            }
         }
 
         private void bodyGrid_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            if (e.Velocities.Linear.X > 2)
+            dragging = false;
+            if (e.Cumulative.Translation.X > 0)
             {
-                PrePage();
+                FlipTransition(false);
             }
-            else if (e.Velocities.Linear.X < -2)
+            else
             {
-                NextPage();
+                FlipTransition(true);
             }
-
-            this.SetPage();
-
-            this.SetMarkStatus();
         }
 
         private void OnFontChange(object sender, RoutedEventArgs e)
@@ -223,8 +227,20 @@ namespace OKr.Win8Book.Client.View
 
         #region Private Methods
 
-        private void ChangePage()
+        private void ChangePage(bool nextPage)
         {
+            if (nextPage)
+            {
+                NextPage();
+            }
+            else
+            {
+                PrePage();
+            }
+
+            this.SetPage();
+
+            this.SetMarkStatus();
         }
 
         private async void SetChapter()
@@ -357,7 +373,6 @@ namespace OKr.Win8Book.Client.View
 
             await pc.Save(this.progress);
         }
-
 
         private async Task LoadBook(Chapter category)
         {
@@ -508,5 +523,28 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
+
+        #region Page Flip Transition
+
+        private bool flippingLeft = true;
+
+        private void FlipTransition(bool toLeft)
+        {
+            flippingLeft = toLeft;
+            var transform = (CompositeTransform)bodyGrid.RenderTransform;
+            keyFrameFrom.Value = transform.TranslateX;
+            keyFrameTo.Value = toLeft ? (0 - ScreenWidth) : ScreenWidth;
+            storyPageTransition.Begin();
+        }
+
+        private void storyPageTransition_Completed(object sender, object e)
+        {
+            var transform = (CompositeTransform)bodyGrid.RenderTransform;
+            transform.TranslateX = 0;
+            ChangePage(flippingLeft);
+        }
+
+        #endregion
+
     }
 }

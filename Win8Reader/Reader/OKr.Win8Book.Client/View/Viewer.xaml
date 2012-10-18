@@ -8,7 +8,7 @@
     xmlns:OKrControls="using:OKr.Win8Book.Client.Controls"
     mc:Ignorable="d"
     xmlns:common="using:OKr.Win8Book.Client.Common"
-    NavigationCacheMode="Enabled">
+    NavigationCacheMode="Disabled">
 
     <UserControl.Resources>
         <Style x:Key="AppBarFontButtonStyle" TargetType="OKrControls:ImageButton" BasedOn="{StaticResource AppBarImageButtonStyle}">
@@ -17,6 +17,14 @@
             <Setter Property="BackgroundNormal" Value="/Assets/Common/AppBarFontNormal.png"/>
             <Setter Property="BackgroundPressed" Value="/Assets/Common/AppBarFontPressed.png"/>
         </Style>
+
+        <Storyboard x:Name="storyPageTransition" Completed="storyPageTransition_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="bodyGrid">
+                <EasingDoubleKeyFrame x:Name="keyFrameFrom" KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame x:Name="keyFrameTo" KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
     </UserControl.Resources>
 
     <Grid x:Name="layoutRoot">
@@ -42,34 +50,92 @@
                   ManipulationStarted="bodyGrid_ManipulationStarted" 
                   ManipulationDelta="bodyGrid_ManipulationDelta" 
                   ManipulationCompleted="bodyGrid_ManipulationCompleted">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
 
-                <!--<TextBlock Text="{Binding Title}" Style="{StaticResource Viewer_ChapterName_Style}"/>-->
+                <!--next page (in the middle)-->
+                <Grid Background="LightBlue">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <!-- Content is allowed to flow across as many columns as needed -->
-                <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
-                    <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
-                        <Paragraph>
-                            <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
-                        </Paragraph>
-                    </RichTextBlock>
+                    <!--<TextBlock Text="{Binding Title}" Style="{StaticResource Viewer_ChapterName_Style}"/>-->
 
-                    <!-- Additional columns are created from this template -->
-                    <common:RichTextColumns.ColumnTemplate>
-                        <DataTemplate>
-                            <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
-                                <RichTextBlockOverflow.RenderTransform>
-                                    <TranslateTransform X="-1" Y="4"/>
-                                </RichTextBlockOverflow.RenderTransform>
-                            </RichTextBlockOverflow>
-                        </DataTemplate>
-                    </common:RichTextColumns.ColumnTemplate>
-                </common:RichTextColumns>
+                    <!-- Content is allowed to flow across as many columns as needed -->
+                    <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
+                        <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                            <Paragraph>
+                                <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
+                            </Paragraph>
+                        </RichTextBlock>
+
+                        <!-- Additional columns are created from this template -->
+                        <common:RichTextColumns.ColumnTemplate>
+                            <DataTemplate>
+                                <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                                    <RichTextBlockOverflow.RenderTransform>
+                                        <TranslateTransform X="-1" Y="4"/>
+                                    </RichTextBlockOverflow.RenderTransform>
+                                </RichTextBlockOverflow>
+                            </DataTemplate>
+                        </common:RichTextColumns.ColumnTemplate>
+                    </common:RichTextColumns>
+                </Grid>
+
+                <!--previous page (on the left)-->
+                <Grid Background="LightPink">
+                    <Grid.RenderTransform>
+                        <CompositeTransform TranslateX="-1366"/>
+                    </Grid.RenderTransform>
+                    <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
+                        <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                            <Paragraph>
+                                <Run FontWeight="SemiLight" Text="{Binding PrePage.Text}" FontSize="20"/>
+                            </Paragraph>
+                        </RichTextBlock>
+
+                        <!-- Additional columns are created from this template -->
+                        <common:RichTextColumns.ColumnTemplate>
+                            <DataTemplate>
+                                <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                                    <RichTextBlockOverflow.RenderTransform>
+                                        <TranslateTransform X="-1" Y="4"/>
+                                    </RichTextBlockOverflow.RenderTransform>
+                                </RichTextBlockOverflow>
+                            </DataTemplate>
+                        </common:RichTextColumns.ColumnTemplate>
+                    </common:RichTextColumns>
+                </Grid>
+
+                <!--next page (on the right)-->
+                <Grid Background="LightGreen">
+                    <Grid.RenderTransform>
+                        <CompositeTransform TranslateX="1366"/>
+                    </Grid.RenderTransform>
+                    <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
+                        <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                            <Paragraph>
+                                <Run FontWeight="SemiLight" Text="{Binding NextPage.Text}" FontSize="20"/>
+                            </Paragraph>
+                        </RichTextBlock>
+
+                        <!-- Additional columns are created from this template -->
+                        <common:RichTextColumns.ColumnTemplate>
+                            <DataTemplate>
+                                <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                                    <RichTextBlockOverflow.RenderTransform>
+                                        <TranslateTransform X="-1" Y="4"/>
+                                    </RichTextBlockOverflow.RenderTransform>
+                                </RichTextBlockOverflow>
+                            </DataTemplate>
+                        </common:RichTextColumns.ColumnTemplate>
+                    </common:RichTextColumns>
+                </Grid>
+
             </Grid>
-
+            
             <OKrControls:BigMark x:Name="bigMark" OnMark="OnMark" IsMarked="False"/>
         </Grid>
 
