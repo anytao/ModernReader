@@ -301,12 +301,10 @@ namespace OKr.Win8Book.Client.View
             {
                 this.current++;
 
-                this.chapter.CurrentPage = this.chapter.Pages[this.current];
-                chapter.NextPage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo + 1);
-                chapter.PrePage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo - 1);
-                
-
+                this.chapter.CurrentPage = this.chapter.Pages[this.current];                               
                 this.location = this.chapter.CurrentPage.Locations[0];
+
+                this.UpdatePage();
             }
         }
 
@@ -321,10 +319,9 @@ namespace OKr.Win8Book.Client.View
                 this.current--;
 
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
-                chapter.NextPage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo + 1);
-                chapter.PrePage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo - 1);
-
                 this.location = this.chapter.CurrentPage.Locations[0];
+
+                this.UpdatePage();
             }
         }
 
@@ -343,21 +340,6 @@ namespace OKr.Win8Book.Client.View
                     }
                 }
             }
-
-            //ImageBrush brush = new ImageBrush();
-            //if (currentMark != null)
-            //{
-            //    brush.ImageSource = new BitmapImage(new Uri("/_static/img/okr-marked.png", UriKind.Relative));
-            //}
-            //else
-            //{
-            //    brush.ImageSource = new BitmapImage(new Uri("/_static/img/okr-marking.png", UriKind.Relative));
-            //}
-
-            //Dispatcher.BeginInvoke(delegate
-            //{
-            //    this.markbtn.Source = brush.ImageSource;
-            //});
         }
 
         private async void SetPage()
@@ -386,9 +368,9 @@ namespace OKr.Win8Book.Client.View
             this.book = App.HomeViewModel.Book;
             this.chapter = await LoadData(this.currentChapter, category.Title);
             chapter.CurrentPage = GetCurrent(chapter, this.location);
-            chapter.NextPage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo + 1);
-            chapter.PrePage = chapter.Pages.FirstOrDefault(x => x.CharNum == chapter.ChapterNo - 1);
 
+            this.UpdatePage();
+            
             this.DataContext = chapter;
 
             this.mark = await mc.Load();
@@ -399,6 +381,45 @@ namespace OKr.Win8Book.Client.View
             this.pageTitle.Text = this.book.Name;
 
             this.SetMarkStatus();
+        }
+
+        private async void UpdatePage()
+        {
+            int index = chapter.Pages.FindIndex(x => x.CharNum == chapter.CurrentPage.CharNum);
+
+            if (index < this.chapter.Pages.Count - 1)
+            {
+                chapter.NextPage = chapter.Pages[index + 1];
+            }
+            else
+            {
+                await ToNext();
+
+                //if (this.currentChapter < this.book.Chapters.Count - 1)
+                //{
+                //    var nextChapter = this.book.Chapters[this.currentChapter + 1];
+
+                //    chapter.NextPage = nextChapter.Pages[0];
+                //}
+            }
+
+            if (index > 0)
+            {
+                chapter.PrePage = chapter.Pages[index - 1];
+            }
+            else
+            {
+                await ToPre();
+                //if (this.currentChapter > 0)
+                //{
+                //    var preChapter = this.book.Chapters[this.currentChapter - 1];
+                //    chapter.PrePage = preChapter.Pages[0];
+                //}
+                //else
+                //{
+                //    chapter.PrePage = null;
+                //}
+            }
         }
 
         private void SetMarkStatus()
@@ -545,6 +566,5 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
-
     }
 }
