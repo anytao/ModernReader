@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
   <Identity Name="fc72d4e1-3bbb-42bd-bde9-d39e858c9d63" Publisher="CN=Anytao" Version="1.0.0.0" />
   <Properties>
-    <DisplayName>OKrClientReader</DisplayName>
+    <DisplayName>MXReader</DisplayName>
     <PublisherDisplayName>Anytao</PublisherDisplayName>
     <Logo>Assets\Logo\Logo50x50.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="OKr.Win8Book.Client.App">
-      <VisualElements DisplayName="OKrReader" Logo="Assets\Logo\Logo150x150.png" SmallLogo="Assets\Logo\Logo30x30.png" Description="A windows 8 text book reader." ForegroundText="light" BackgroundColor="#d74f2a" ToastCapable="true">
+      <VisualElements DisplayName="MXReader" Logo="Assets\Logo\Logo150x150.png" SmallLogo="Assets\Logo\Logo30x30.png" Description="A windows 8 text book reader." ForegroundText="light" BackgroundColor="#d74f2a" ToastCapable="true">
         <DefaultTile ShowName="allLogos" WideLogo="Assets\Logo\Logo310x150.png" />
         <SplashScreen Image="Assets\Logo\Logo620x300.png" BackgroundColor="#d74f2a" />
         <InitialRotationPreference>
