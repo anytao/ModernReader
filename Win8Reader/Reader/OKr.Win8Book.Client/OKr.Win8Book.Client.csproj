@@ -182,6 +182,7 @@
     <Content Include="Assets\Home\ChapterIcon3.png" />
     <Content Include="Assets\Data\LockCover.jpg" />
     <Content Include="Assets\Home\MarkIcon1.png" />
+    <Content Include="Assets\Home\MarkProgressBackground.png" />
     <Content Include="Assets\Logo\Logo150x150.png" />
     <Content Include="Assets\Logo\Logo30x30.png" />
     <Content Include="Assets\Logo\Logo310x150.png" />

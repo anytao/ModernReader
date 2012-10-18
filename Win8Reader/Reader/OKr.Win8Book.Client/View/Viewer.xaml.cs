@@ -142,11 +142,19 @@ namespace OKr.Win8Book.Client.View
         bool dragging=false;
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
+            if (transitionInProcess)
+            {
+                return;
+            }
             dragging = true;
         }
 
         private void bodyGrid_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
+            if (transitionInProcess)
+            {
+                return;
+            }
             if (dragging)
             {
                 var transform = (CompositeTransform)bodyGrid.RenderTransform;
@@ -156,6 +164,10 @@ namespace OKr.Win8Book.Client.View
 
         private void bodyGrid_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
+            if (transitionInProcess)
+            {
+                return;
+            }
             dragging = false;
             if (e.Cumulative.Translation.X > 0)
             {
@@ -548,7 +560,7 @@ namespace OKr.Win8Book.Client.View
         #region Page Flip Transition
 
         private bool flippingLeft = true;
-
+        private bool transitionInProcess = false;
         private void FlipTransition(bool toLeft)
         {
             flippingLeft = toLeft;
@@ -556,6 +568,7 @@ namespace OKr.Win8Book.Client.View
             keyFrameFrom.Value = transform.TranslateX;
             keyFrameTo.Value = toLeft ? (0 - ScreenWidth) : ScreenWidth;
             storyPageTransition.Begin();
+            transitionInProcess = true;
         }
 
         private void storyPageTransition_Completed(object sender, object e)
@@ -563,6 +576,7 @@ namespace OKr.Win8Book.Client.View
             var transform = (CompositeTransform)bodyGrid.RenderTransform;
             transform.TranslateX = 0;
             ChangePage(flippingLeft);
+            transitionInProcess = false;
         }
 
         #endregion

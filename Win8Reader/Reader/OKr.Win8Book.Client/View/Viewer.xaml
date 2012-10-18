@@ -8,7 +8,7 @@
     xmlns:OKrControls="using:OKr.Win8Book.Client.Controls"
     mc:Ignorable="d"
     xmlns:common="using:OKr.Win8Book.Client.Common"
-    NavigationCacheMode="Disabled">
+    NavigationCacheMode="Enabled">
 
     <UserControl.Resources>
         <Style x:Key="AppBarFontButtonStyle" TargetType="OKrControls:ImageButton" BasedOn="{StaticResource AppBarImageButtonStyle}">

@@ -38,8 +38,11 @@
                 <StackPanel Grid.Column="1" >
                     <TextBlock Text="{Binding Title}" Style="{StaticResource Home_MarkTitle_Style}" />
                     <TextBlock Text="{Binding Content}" Style="{StaticResource Home_MarkContent_Style}" />
-                    <TextBlock Text="{Binding Percent}" Style="{StaticResource Home_MarkContent_Style}" />
                 </StackPanel>
+                <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                    <Image Style="{StaticResource MarkProgressBackgroundStyle}"/>
+                    <TextBlock Text="{Binding Percent}" Style="{StaticResource Home_MarkPercent_Style}" />
+                </Grid>
             </Grid>
         </DataTemplate>
 

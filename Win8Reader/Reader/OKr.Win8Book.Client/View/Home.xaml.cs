@@ -35,9 +35,9 @@ namespace OKr.Win8Book.Client.View
         public Home()
         {
             this.InitializeComponent();
-            PrepareCover();
             this.TopAppBar = new NavBar(this, false, true, true);
             SettingsPane.GetForCurrentView().CommandsRequested += SettingCommandsRequested;
+            PrepareCover();
         }
 
         #endregion
@@ -174,6 +174,9 @@ namespace OKr.Win8Book.Client.View
 
             dispatcher = Window.Current.CoreWindow.Dispatcher;
             dispatcher.AcceleratorKeyActivated += dispatcher_AcceleratorKeyActivated;
+
+            this.BottomAppBar.Visibility = Visibility.Collapsed;
+            this.TopAppBar.Visibility = Visibility.Collapsed;
         }
 
         void dispatcher_AcceleratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs args)
@@ -195,6 +198,8 @@ namespace OKr.Win8Book.Client.View
         {
             dispatcher.AcceleratorKeyActivated -= dispatcher_AcceleratorKeyActivated;
             storyUnlock.Begin();
+            this.BottomAppBar.Visibility = Visibility.Visible;
+            this.TopAppBar.Visibility = Visibility.Visible;
         }
 
         #endregion
