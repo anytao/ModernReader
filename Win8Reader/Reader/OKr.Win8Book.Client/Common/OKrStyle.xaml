@@ -374,6 +374,20 @@
         <Setter Property="Margin" Value="12,0,0,0"/>
     </Style>
 
+    <Style x:Key="MarkProgressBackgroundStyle" TargetType="Image">
+        <Setter Property="Source" Value="/Assets/Home/MarkProgressBackground.png"/>
+        <Setter Property="Stretch" Value="None"/>
+    </Style>
+
+    <Style x:Key="Home_MarkPercent_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
+    </Style>
+
     <Style x:Key="Home_OKrAppName_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="32"/>
