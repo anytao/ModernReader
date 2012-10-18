@@ -94,6 +94,20 @@ namespace OKr.Win8Book.Client.View
             LoadTheme();
         }
 
+        protected async override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            var chapter = this.book.Chapters.FirstOrDefault(x => x.ChapterNo == this.currentChapter);
+
+            if (chapter != null)
+            {
+                chapter.IsReaded = true;
+
+                await bc.Save(this.book);
+            }
+        }
+
         private async Task ToNext()
         {
             if (this.chapter.ChapterNo + 1 <= this.book.Chapters.Count)
@@ -104,7 +118,7 @@ namespace OKr.Win8Book.Client.View
                 {
                     await LoadBook(category);
                 }
-            } 
+            }
         }
 
         private async Task ToPre()
@@ -176,6 +190,9 @@ namespace OKr.Win8Book.Client.View
                 item.Content = page.Row[0].Trim() + page.Row[1].Trim();
 
                 this.mark.Marks.Insert(0, item);
+
+                this.bigMark.IsMarked = true;
+                this.appBarMark.IsMarked = true;
             }
             else
             {
@@ -188,6 +205,9 @@ namespace OKr.Win8Book.Client.View
                 {
                     this.mark.Marks.Remove(mark);
                 }
+
+                this.bigMark.IsMarked = false;
+                this.appBarMark.IsMarked = false;
             }
 
             this.ShowMark();
@@ -327,7 +347,7 @@ namespace OKr.Win8Book.Client.View
             {
                 this.progress.Location = this.chapter.CurrentPage.Locations[0];
             }
-            
+
             await pc.Save(this.progress);
         }
 
@@ -341,7 +361,7 @@ namespace OKr.Win8Book.Client.View
             this.location = category.Pos;
 
 
-            this.book = await bc.Load();
+            this.book = App.HomeViewModel.Book; //await bc.Load();
             this.chapter = await LoadData(this.currentChapter, category.Title);
             chapter.CurrentPage = GetCurrent(chapter, this.location);
 
@@ -353,6 +373,11 @@ namespace OKr.Win8Book.Client.View
             this.chapter.Mark = this.mark;
 
             this.pageTitle.Text = this.book.Name;
+
+            ChapterMark item = this.chapter.Mark.Marks.FirstOrDefault(x => x.Current == this.location && x.ChapterNo == this.currentChapter);
+
+            this.bigMark.IsMarked = item != null;
+            this.appBarMark.IsMarked = item != null;
         }
 
         private OKr.Win8Book.Client.Core.Data.Page GetCurrent(Chapter chapter, int pos)
@@ -469,6 +494,5 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
-
     }
 }

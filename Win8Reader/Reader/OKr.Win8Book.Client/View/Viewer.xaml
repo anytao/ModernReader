@@ -70,7 +70,7 @@
                 </common:RichTextColumns>
             </Grid>
 
-            <OKrControls:BigMark OnMark="OnMark" IsMarked="False"/>
+            <OKrControls:BigMark x:Name="bigMark" OnMark="OnMark" IsMarked="False"/>
         </Grid>
 
         <!--font flyout-->
@@ -145,7 +145,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="LeftPanel" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
                     <!--<Button x:Name="btnMark" Style="{StaticResource PicturesAppBarButtonStyle}" AutomationProperties.Name="书签" Visibility="Visible" Click="OnMark" />-->
-                    <OKrControls:AppBarMarkButton OnMarked="OnMark" OnUnMarked="OnMark" />
+                    <OKrControls:AppBarMarkButton x:Name="appBarMark" OnMarked="OnMark" OnUnMarked="OnMark" />
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                     <OKrControls:ImageButton Style="{StaticResource AppBarFontButtonStyle}" Click="OnFontChange"/>
