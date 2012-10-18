@@ -299,7 +299,14 @@
         <Setter Property="Background" Value="#FF3d8400"/>
         <Setter Property="Margin" Value="-10,-2"/>
     </Style>
-    
+
+    <Style x:Key="NavButtonTextStyle" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
     <!--Home-->
     <Style x:Key="Home_SectionTileStyle" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
         <Setter Property="FontSize" Value="27"/>
