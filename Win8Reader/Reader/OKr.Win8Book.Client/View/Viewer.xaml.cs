@@ -388,7 +388,7 @@ namespace OKr.Win8Book.Client.View
 
         private void SetMarkStatus()
         {
-            ChapterMark item = this.chapter.Mark.Marks.FirstOrDefault(x => x.Current == this.location && x.ChapterNo == this.currentChapter);
+            ChapterMark item = this.mark.Marks.FirstOrDefault(x => x.Current == this.location && x.ChapterNo == this.currentChapter);
 
             this.bigMark.IsMarked = item != null;
             this.appBarMark.IsMarked = item != null;
