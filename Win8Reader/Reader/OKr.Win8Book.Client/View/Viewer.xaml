@@ -24,7 +24,6 @@
                 <EasingDoubleKeyFrame x:Name="keyFrameTo" KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-
     </UserControl.Resources>
 
     <Grid x:Name="layoutRoot">
