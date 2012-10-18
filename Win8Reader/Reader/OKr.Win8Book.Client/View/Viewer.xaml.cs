@@ -313,8 +313,11 @@ namespace OKr.Win8Book.Client.View
             {
                 this.current++;
 
-                this.chapter.CurrentPage = this.chapter.Pages[this.current];                               
-                this.location = this.chapter.CurrentPage.Locations[0];
+                this.chapter.CurrentPage = this.chapter.Pages[this.current];
+                if (this.chapter.CurrentPage.Locations.Count > 0)
+                {
+                    this.location = this.chapter.CurrentPage.Locations[0];
+                }
 
                 this.UpdatePage();
             }
@@ -331,7 +334,11 @@ namespace OKr.Win8Book.Client.View
                 this.current--;
 
                 this.chapter.CurrentPage = this.chapter.Pages[this.current];
-                this.location = this.chapter.CurrentPage.Locations[0];
+                if (this.chapter.CurrentPage.Locations.Count > 0)
+                {
+                    this.location = this.chapter.CurrentPage.Locations[0];
+                }
+                
 
                 this.UpdatePage();
             }
@@ -376,12 +383,9 @@ namespace OKr.Win8Book.Client.View
             this.current = category.PageCount;
             this.location = category.Pos;
 
-
             this.book = App.HomeViewModel.Book;
             this.chapter = await LoadData(this.currentChapter, category.Title);
-            chapter.CurrentPage = GetCurrent(chapter, this.location);
-
-            this.UpdatePage();
+            chapter.CurrentPage = GetCurrent(chapter, this.location);            
             
             this.DataContext = chapter;
 
@@ -393,6 +397,8 @@ namespace OKr.Win8Book.Client.View
             this.pageTitle.Text = this.book.Name;
 
             this.SetMarkStatus();
+
+            this.UpdatePage();
         }
 
         private async void UpdatePage()
@@ -405,11 +411,11 @@ namespace OKr.Win8Book.Client.View
             }
             else
             {
-                await ToNext();
+                chapter.NextPage = null;
 
                 //if (this.currentChapter < this.book.Chapters.Count - 1)
                 //{
-                //    var nextChapter = this.book.Chapters[this.currentChapter + 1];
+                //    var nextChapter = await LoadData(this.currentChapter + 1, "");
 
                 //    chapter.NextPage = nextChapter.Pages[0];
                 //}
@@ -421,10 +427,11 @@ namespace OKr.Win8Book.Client.View
             }
             else
             {
-                await ToPre();
+                chapter.PrePage = null;
+
                 //if (this.currentChapter > 0)
                 //{
-                //    var preChapter = this.book.Chapters[this.currentChapter - 1];
+                //    var preChapter = await LoadData(this.currentChapter - 1, "");
                 //    chapter.PrePage = preChapter.Pages[0];
                 //}
                 //else

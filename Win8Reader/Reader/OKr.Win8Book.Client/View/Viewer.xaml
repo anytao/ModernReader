@@ -54,7 +54,7 @@
                 </Grid.RenderTransform>
 
                 <!--next page (in the middle)-->
-                <Grid Background="LightBlue">
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -84,7 +84,7 @@
                 </Grid>
 
                 <!--previous page (on the left)-->
-                <Grid Background="LightPink">
+                <Grid>
                     <Grid.RenderTransform>
                         <CompositeTransform TranslateX="-1366"/>
                     </Grid.RenderTransform>
@@ -109,7 +109,7 @@
                 </Grid>
 
                 <!--next page (on the right)-->
-                <Grid Background="LightGreen">
+                <Grid>
                     <Grid.RenderTransform>
                         <CompositeTransform TranslateX="1366"/>
                     </Grid.RenderTransform>
