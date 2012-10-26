@@ -5,7 +5,7 @@ namespace OKr.Win8Book.Client.ViewModel
 {
     public class ChapterGroup
     {
-        private string key = "123";
+        private string key = "";
         public string Key
         {
             get

@@ -136,7 +136,7 @@ namespace OKr.Win8Book.Client.ViewModel
             {
                 if (group==null)
                 {
-                    group = new ChapterGroup();
+                    group = new ChapterGroup() { Key = (i + 1).ToString() + "~" + (i+chapterGroupSize).ToString() };
                     ChapterGroups.Add(group);
                 }
 
