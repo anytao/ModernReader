@@ -275,7 +275,7 @@
                 <Grid VerticalAlignment="Top" Margin="100" Background="#80FFFFFF" PointerPressed="continueReading_PointerPressed">
                     <StackPanel>
                         <TextBlock Text="继续阅读" FontSize="50" />
-                        <TextBlock Text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" FontSize="25" />
+                        <TextBlock Text="{Binding Progress.Text}" FontSize="25" />
                     </StackPanel>
                 </Grid>
             </Grid>

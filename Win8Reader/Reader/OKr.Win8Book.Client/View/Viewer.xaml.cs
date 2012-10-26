@@ -83,6 +83,8 @@ namespace OKr.Win8Book.Client.View
 
             if (e.NavigationMode == NavigationMode.New)
             {
+                this.book = App.HomeViewModel.Book;
+
                 // load settings
                 SettingContext mc = new SettingContext();
                 var setting = await mc.Load();
@@ -392,8 +394,7 @@ namespace OKr.Win8Book.Client.View
             this.chapter = category;
             this.current = category.PageCount;
             this.location = category.Pos;
-
-            this.book = App.HomeViewModel.Book;
+            
             this.chapter = await LoadData(this.currentChapter, category.Title);
             chapter.CurrentPage = GetCurrent(chapter, this.location);
 

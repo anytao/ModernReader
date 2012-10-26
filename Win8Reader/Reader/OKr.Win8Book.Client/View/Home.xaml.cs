@@ -208,7 +208,9 @@ namespace OKr.Win8Book.Client.View
 
         private void continueReading_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            e.Handled = true;
+            //e.Handled = true;
+
+            this.Frame.Navigate(typeof(Viewer), "p");
         }
 
         #endregion
