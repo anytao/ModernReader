@@ -2,8 +2,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
     xmlns:local="using:OKr.Win8Book.Client.Common"
+    xmlns:common="using:OKr.Win8Book.Client.Common"
     xmlns:OKrControls="using:OKr.Win8Book.Client.Controls">
     
+    <!--converters-->
+    <common:AnythingToVisibilityConverter x:Name="AnythingToVisibilityConverter"/>
+
     <!--theme-->
     <SolidColorBrush x:Name="OKr_Theme_Foreground_Light" Color="#FF000000"/>
     <SolidColorBrush x:Name="OKr_Theme_Foreground_Dark" Color="#FFFFFFFF"/>
@@ -408,6 +412,25 @@
         <Setter Property="Opacity" Value="0.6"/>
     </Style>
 
+    <!--continue read-->
+    <Style x:Key="ContinueRead_ChapterTitle_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="20,10"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
+    </Style>
+
+    <Style x:Key="ContinueRead_Body_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="20,0,20,10"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
+    </Style>
+
     <!--viewer-->
     <Style x:Key="Viewer_ChapterName_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
         <Setter Property="FontSize" Value="32"/>
@@ -442,6 +465,8 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
+    
+    
     <!--xxx-->
     <!--xxx-->
     <!--xxx-->

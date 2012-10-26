@@ -1,11 +1,8 @@
-﻿using OKr.Win8Book.Client.Core.Context;
-using OKr.Win8Book.Client.Core.Data;
+﻿using OKr.Win8Book.Client.Core.Data;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using OKr.Win8Book.Client.Common;
-using Windows.UI.Xaml.Media;
-using System.Collections.Generic;
 using System;
 using Windows.UI.Xaml.Controls;
 using OKr.Win8Book.Client.ViewModel;
@@ -13,6 +10,8 @@ using Windows.UI.ApplicationSettings;
 using OKr.Win8Book.Client.Controls;
 using Windows.UI.Core;
 using Windows.System;
+using System.Linq;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace OKr.Win8Book.Client.View
 {
@@ -55,6 +54,7 @@ namespace OKr.Win8Book.Client.View
                 this.pr.IsActive = false;
 
                 this.DataContext = viewModel;
+                continueReadingPanel.Visibility = viewModel.Progress == null ? Visibility.Collapsed : Visibility.Visible;
                 DataLoaded = true;
             }
 
@@ -170,8 +170,8 @@ namespace OKr.Win8Book.Client.View
         CoreDispatcher dispatcher;
         private void PrepareCover()
         {
-            this.keyFrameTo.Value = 0 - this.ScreenHeight;
-
+            //this.keyFrameTo.Value = 0 - this.ScreenHeight;
+            SetAnimationValue();
             dispatcher = Window.Current.CoreWindow.Dispatcher;
             dispatcher.AcceleratorKeyActivated += dispatcher_AcceleratorKeyActivated;
 
@@ -197,11 +197,25 @@ namespace OKr.Win8Book.Client.View
         private void Unlock(bool useTransitions = true)
         {
             dispatcher.AcceleratorKeyActivated -= dispatcher_AcceleratorKeyActivated;
-            storyUnlock.Begin();
-            //this.UnCoverKeyFrameTo.Value = 0 - this.ScreenHeight;
-            //VisualStateManager.GoToState(this, "UnCovered", useTransitions);
+            VisualStateManager.GoToState(this, "UnCovered", useTransitions);
             this.BottomAppBar.Visibility = Visibility.Visible;
             this.TopAppBar.Visibility = Visibility.Visible;
+        }
+
+        private void SetAnimationValue()
+        {
+            // find the "UnCovered" visual state and set a proper value to its storyboard animation
+
+            VisualStateGroup vsGroup = (from stateGroup in VisualStateManager.GetVisualStateGroups(rootGrid)
+                              where stateGroup.Name == "CoverStates"
+                              select stateGroup).FirstOrDefault();
+            
+            var visualState = from state in vsGroup.States
+                            where state.Name == "UnCovered"
+                         select state;
+
+            var animation = visualState.FirstOrDefault().Storyboard.Children.FirstOrDefault() as DoubleAnimation;
+            animation.To = 0 - this.ScreenHeight;
         }
 
         #endregion
@@ -210,8 +224,8 @@ namespace OKr.Win8Book.Client.View
 
         private void continueReading_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            //e.Handled = true;
-
+            e.Handled = true;
+            Unlock(false);
             this.Frame.Navigate(typeof(Viewer), "p");
         }
 

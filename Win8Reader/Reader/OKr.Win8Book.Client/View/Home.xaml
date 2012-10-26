@@ -11,7 +11,6 @@
     NavigationCacheMode="Required">
 
     <Page.Resources>
-        <common:BooleanToVisibilityConverter x:Name="BooleanToVisibilityConverter"/>
         
         <DataTemplate x:Key="ChapterTemplate">
             <Grid >
@@ -20,9 +19,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Style="{StaticResource Home_Chapter_Icon_UnRead_Style}" 
-                       Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='neg'}"/>
+                       Visibility="{Binding IsRead, Converter={StaticResource AnythingToVisibilityConverter}, ConverterParameter='neg'}"/>
                 <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}" 
-                       Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                       Visibility="{Binding IsRead, Converter={StaticResource AnythingToVisibilityConverter}}"/>
                 <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}" />
             </Grid>
         </DataTemplate>
@@ -77,24 +76,9 @@
             </Grid>
         </DataTemplate>
         
-        <Storyboard x:Name="storyUnlock">
-        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="coverPanel">
-        		<EasingDoubleKeyFrame KeyTime="0" Value="0">
-        			<EasingDoubleKeyFrame.EasingFunction>
-        				<CubicEase EasingMode="EaseInOut"/>
-        			</EasingDoubleKeyFrame.EasingFunction>
-        		</EasingDoubleKeyFrame>
-        		<EasingDoubleKeyFrame x:Name="keyFrameTo" KeyTime="0:0:0.5" Value="-768">
-        			<EasingDoubleKeyFrame.EasingFunction>
-        				<CubicEase EasingMode="EaseInOut"/>
-        			</EasingDoubleKeyFrame.EasingFunction>
-        		</EasingDoubleKeyFrame>
-        	</DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-
     </Page.Resources>
 
-    <Grid>
+    <Grid x:Name="rootGrid">
         <!--full view-->
         <Grid x:Name="fullView">
             <Grid.RowDefinitions>
@@ -274,16 +258,18 @@
                 <Image x:Name="coverImage" Source="/Assets/Data/LockCover.jpg" Stretch="UniformToFill"/>
 
                 <!--continue reading-->
-                <Grid Background="#B2FFFFFF" Margin="80" Height="100" VerticalAlignment="Top" HorizontalAlignment="Stretch"
-                      PointerPressed="continueReading_PointerPressed">
+                <Grid x:Name="continueReadingPanel" Background="#B2FFFFFF" Margin="80" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                      PointerPressed="continueReading_PointerPressed" Visibility="Collapsed">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="300"/>
                     </Grid.ColumnDefinitions>
                     <Rectangle Fill="#B200A2FF"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Progress.Text}" TextWrapping="Wrap" Tag="skiptheme"
-                               FontSize="25" Foreground="Black" Margin="20"/>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding Progress.Title}" Style="{StaticResource ContinueRead_ChapterTitle_Style}"/>
+                        <TextBlock Text="{Binding Progress.Text}" Style="{StaticResource ContinueRead_Body_Style}"/>
+                    </StackPanel>
                     <Grid Grid.Column="2" Background="#B200A2FF">
                         <TextBlock Text="点击继续阅读" FontSize="32" Foreground="White" 
                                    VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -313,22 +299,18 @@
                 </VisualState>
             </VisualStateGroup>
             <VisualStateGroup x:Name="CoverStates">
+            	<VisualStateGroup.Transitions>
+            		<VisualTransition GeneratedDuration="0:0:0.3">
+            			<VisualTransition.GeneratedEasingFunction>
+            				<CubicEase EasingMode="EaseInOut"/>
+            			</VisualTransition.GeneratedEasingFunction>
+            		</VisualTransition>
+            	</VisualStateGroup.Transitions>
                 <VisualState x:Name="Covered"/>
                 <VisualState x:Name="UnCovered">
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="coverPanel">
-                            <EasingDoubleKeyFrame KeyTime="0" Value="0">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseInOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                            <EasingDoubleKeyFrame x:Name="UnCoverKeyFrameTo" KeyTime="0:0:0.5" Value="-768">
-                                <EasingDoubleKeyFrame.EasingFunction>
-                                    <CubicEase EasingMode="EaseInOut"/>
-                                </EasingDoubleKeyFrame.EasingFunction>
-                            </EasingDoubleKeyFrame>
-                        </DoubleAnimationUsingKeyFrames>
-                    </Storyboard>
+                	<Storyboard>
+                		<DoubleAnimation x:Name="UnCoverAnimation" Duration="0" To="-768" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="coverPanel" d:IsOptimized="True"/>
+                	</Storyboard>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>

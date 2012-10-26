@@ -17,23 +17,32 @@ namespace OKr.Win8Book.Client.Common
     /// Value converter that translates true to <see cref="Visibility.Visible"/> and false to
     /// <see cref="Visibility.Collapsed"/>.
     /// </summary>
-    public sealed class BooleanToVisibilityConverter : IValueConverter
+    public sealed class AnythingToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            bool boolValue = value is bool && (bool)value;
+            bool result = false;
+
             bool negate = false;
             if (parameter != null && parameter.ToString().ToLower() == "neg")
             {
                 negate = true;
             }
 
-            if (negate)
+            if (value is bool)
             {
-                boolValue = !boolValue;
+                result = (bool)value;
+            }
+            else
+            {
+                result = value == null ? false : true;
             }
 
-            return boolValue ? Visibility.Visible : Visibility.Collapsed;
+            if (negate)
+            {
+                result = !result;
+            }
+            return result ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -116,7 +116,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\BooleanNegationConverter.cs" />
-    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\AnythingToVisibilityConverter.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
     <Compile Include="Common\OKrPageBase.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
