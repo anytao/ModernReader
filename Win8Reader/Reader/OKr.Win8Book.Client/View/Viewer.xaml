@@ -213,7 +213,7 @@
                     <OKrControls:AppBarMarkButton x:Name="appBarMark" OnMarked="OnMark" OnUnMarked="OnMark" />
                 </StackPanel>
                 <StackPanel x:Name="RightPanel" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                    <!--<OKrControls:ImageButton Style="{StaticResource AppBarFontButtonStyle}" Click="OnFontChange"/>-->
+                    <OKrControls:ImageButton Style="{StaticResource AppBarFontButtonStyle}" Click="OnFontChange"/>
                     <OKrControls:AppBarThemeButton OnLight="AppBarThemeButton_Click" OnDark="AppBarThemeButton_Click" />
                 </StackPanel>
             </Grid>

@@ -104,28 +104,30 @@
                             <Run Text="章"/>
                     </TextBlock>
                 </StackPanel>
-                
-                <ScrollViewer Grid.Row="1" Margin="0,20,0,0" ZoomMode="Disabled"
+
+                <ScrollViewer Grid.Row="1" Margin="0,20,0,0" ZoomMode="Disabled" Visibility="Collapsed"
                               HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" 
                               VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
-                    <SemanticZoom x:Name="semanticZoom" >
-                        <SemanticZoom.ZoomedOutView>
-                            <GridView >
-                                <GridView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid Width="50" Height="100" Background="Blue">
-                                            <TextBlock
+                </ScrollViewer>
+
+                <SemanticZoom x:Name="semanticZoom" Grid.Row="1" Margin="0,20,0,0">
+                    <SemanticZoom.ZoomedOutView>
+                        <GridView ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="50" Height="100" Background="Blue">
+                                        <TextBlock
                                                 Text="{Binding Group.Key}"
                                                 FontSize="24"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </GridView.ItemTemplate>
-                                <GridView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapGrid ItemWidth="75" ItemHeight="75" MaximumRowsOrColumns="1" VerticalChildrenAlignment="Center" />
-                                    </ItemsPanelTemplate>
-                                </GridView.ItemsPanel>
-                                <!--<GridView.ItemContainerStyle>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid ItemWidth="80" ItemHeight="120" VerticalChildrenAlignment="Center" />
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                            <!--<GridView.ItemContainerStyle>
                                     <Style TargetType="GridViewItem">
                                         <Setter Property="Margin" Value="4" />
                                         <Setter Property="Padding" Value="10" />
@@ -135,45 +137,43 @@
                                         <Setter Property="VerticalContentAlignment" Value="Center" />
                                     </Style>
                                 </GridView.ItemContainerStyle>-->
-                            </GridView>
-                        </SemanticZoom.ZoomedOutView>
-                        <SemanticZoom.ZoomedInView>
-                            <GridView Padding="120,0,0,50"
-                                      ScrollViewer.IsHorizontalScrollChainingEnabled="False"
-                              Style="{StaticResource NonScrollableGridViewStyle}"
+                        </GridView>
+                    </SemanticZoom.ZoomedOutView>
+                    <SemanticZoom.ZoomedInView>
+                        <GridView Padding="120,0,0,50"
+                            ScrollViewer.IsHorizontalScrollChainingEnabled="False"
                             ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="OnChapterItemClick">
-                        <!--<ItemsControl.ItemsPanel>
+                            <!--<ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapGrid Margin="0,0,160,0" Orientation="Vertical"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>-->
-                        <GridView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </GridView.ItemsPanel>
-                        <GridView.GroupStyle>
-                            <GroupStyle>
-                                <GroupStyle.HeaderTemplate>
-                                    <DataTemplate>
-                                    </DataTemplate>
-                                </GroupStyle.HeaderTemplate>
-                                <GroupStyle.Panel>
-                                    <ItemsPanelTemplate>
-                                        <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0" />
-                                        <!--<WrapGrid Margin="0,0,160,0" Orientation="Vertical"/>-->
-                                    </ItemsPanelTemplate>
-                                </GroupStyle.Panel>
-                            </GroupStyle>
-                        </GridView.GroupStyle>
-                    </GridView>
-                        </SemanticZoom.ZoomedInView>
-                    </SemanticZoom>
-                </ScrollViewer>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                            <GridView.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate>
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                    <GroupStyle.Panel>
+                                        <ItemsPanelTemplate>
+                                            <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0" />
+                                            <!--<WrapGrid Margin="0,0,160,0" Orientation="Vertical"/>-->
+                                        </ItemsPanelTemplate>
+                                    </GroupStyle.Panel>
+                                </GroupStyle>
+                            </GridView.GroupStyle>
+                        </GridView>
+                    </SemanticZoom.ZoomedInView>
+                </SemanticZoom>
             </Grid>
 
         </Grid>
