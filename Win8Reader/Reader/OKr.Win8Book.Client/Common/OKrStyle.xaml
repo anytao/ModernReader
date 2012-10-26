@@ -293,7 +293,14 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style x:Key="NonScrollableGridViewStyle" TargetType="GridView">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled"/>
+    </Style>
+
     <!--App Bar-->
     <Style x:Key="AppBarBackgroundStyle" TargetType="Panel" >
         <Setter Property="Background" Value="#FF3d8400"/>

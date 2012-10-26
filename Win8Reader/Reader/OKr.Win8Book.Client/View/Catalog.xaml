@@ -105,13 +105,44 @@
                     </TextBlock>
                 </StackPanel>
                 
-                <ScrollViewer Grid.Row="1" Margin="0,20,0,0" 
-                HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" 
-                          VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
-                    <GridView Padding="120,0,0,50"
-                           ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
+                <ScrollViewer Grid.Row="1" Margin="0,20,0,0" ZoomMode="Disabled"
+                              HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" 
+                              VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
+                    <SemanticZoom x:Name="semanticZoom" >
+                        <SemanticZoom.ZoomedOutView>
+                            <GridView >
+                                <GridView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="50" Height="100" Background="Blue">
+                                            <TextBlock
+                                                Text="{Binding Group.Key}"
+                                                FontSize="24"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                                <GridView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapGrid ItemWidth="75" ItemHeight="75" MaximumRowsOrColumns="1" VerticalChildrenAlignment="Center" />
+                                    </ItemsPanelTemplate>
+                                </GridView.ItemsPanel>
+                                <!--<GridView.ItemContainerStyle>
+                                    <Style TargetType="GridViewItem">
+                                        <Setter Property="Margin" Value="4" />
+                                        <Setter Property="Padding" Value="10" />
+                                        <Setter Property="BorderBrush" Value="Gray" />
+                                        <Setter Property="BorderThickness" Value="1" />
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    </Style>
+                                </GridView.ItemContainerStyle>-->
+                            </GridView>
+                        </SemanticZoom.ZoomedOutView>
+                        <SemanticZoom.ZoomedInView>
+                            <GridView Padding="120,0,0,50"
+                                      ScrollViewer.IsHorizontalScrollChainingEnabled="False"
+                              Style="{StaticResource NonScrollableGridViewStyle}"
+                            ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
                             ItemTemplate="{StaticResource ChapterTemplate}"
-                            Style="{StaticResource GridViewStyle1}"
                             SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="OnChapterItemClick">
@@ -140,6 +171,8 @@
                             </GroupStyle>
                         </GridView.GroupStyle>
                     </GridView>
+                        </SemanticZoom.ZoomedInView>
+                    </SemanticZoom>
                 </ScrollViewer>
             </Grid>
 

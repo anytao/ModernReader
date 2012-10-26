@@ -270,8 +270,15 @@
             <ContentControl.RenderTransform>
         		<CompositeTransform/>
             </ContentControl.RenderTransform>
-            <Image x:Name="coverImage" Source="/Assets/Data/LockCover.jpg" Stretch="UniformToFill"/>
-            
+            <Grid>
+                <Image x:Name="coverImage" Source="/Assets/Data/LockCover.jpg" Stretch="UniformToFill"/>
+                <Grid VerticalAlignment="Top" Margin="100" Background="#80FFFFFF" PointerPressed="continueReading_PointerPressed">
+                    <StackPanel>
+                        <TextBlock Text="继续阅读" FontSize="50" />
+                        <TextBlock Text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" FontSize="25" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </ContentControl>
         
         <VisualStateManager.VisualStateGroups>
