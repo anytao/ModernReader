@@ -216,6 +216,5 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
-
     }
 }

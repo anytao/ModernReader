@@ -174,7 +174,17 @@ namespace OKr.Win8Book.Client.ViewModel
         private async Task LoadProgress()
         {
             ProgressContext pc = new ProgressContext();
-            this.Progress = await pc.Load();
+
+            var progress = await pc.Load();
+
+            if (!string.IsNullOrEmpty(progress.Text))
+            {
+                this.Progress = await pc.Load();
+            }
+            else
+            {
+                this.Progress = null;
+            }
         }
 
         public async void NotifyMarksChanged()

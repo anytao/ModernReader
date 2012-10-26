@@ -85,11 +85,12 @@ namespace OKr.Win8Book.Client.View
             {
                 this.book = App.HomeViewModel.Book;
 
-                // load settings
-                SettingContext mc = new SettingContext();
-                var setting = await mc.Load();
+                // load settings                
+                var setting = await sc.Load();
 
                 this.fontsize = setting.Font;
+
+                SetFontSize(this.fontsize);
 
                 // load book from progress or chapter
                 if (e.Parameter.ToString() == "p")
@@ -118,6 +119,8 @@ namespace OKr.Win8Book.Client.View
 
                 await bc.Save(this.book);
             }
+
+            this.SetPage();
         }
 
         private async Task ToNext()
@@ -381,6 +384,7 @@ namespace OKr.Win8Book.Client.View
             if (this.chapter.CurrentPage != null)
             {
                 this.progress.Location = this.chapter.CurrentPage.Locations[0];
+                this.progress.Title = this.chapter.Title; 
                 this.progress.Text = this.chapter.CurrentPage.Row[0] + " " + this.chapter.CurrentPage.Row[1];
             }
 
@@ -579,22 +583,43 @@ namespace OKr.Win8Book.Client.View
             _popUp.IsOpen = false;
         }
 
-        private void fontMenu_ItemClick(object sender, ItemClickEventArgs e)
+        private async void fontMenu_ItemClick(object sender, ItemClickEventArgs e)
         {
             string caption = (e.ClickedItem as TextBlock).Text;
             switch (caption)
             {
                 case "大号字体":
+                    this.fontsize = OKrBookConfig.LARGEFONTSIZE;
                     break;
                 case "中号字体":
+                    this.fontsize = OKrBookConfig.DEFALUTFONTSIZE;
                     break;
                 case "小号字体":
+                    this.fontsize = OKrBookConfig.SMALLFONTSIZE;
                     break;
                 default:
                     break;
             }
+
+            SetFontSize(this.fontsize);
+
+            await LoadBook(chapter);
+
             HideFontPopup();
             base.HideAppBars();
+        }
+
+        private void SetFontSize(int size)
+        {
+            this.currentText.FontSize = size;
+            this.leftText.FontSize = size;
+            this.rightText.FontSize = size;
+
+
+            var setting = new Setting();
+            setting.Font = size;
+
+            this.sc.Save(setting);
         }
 
         #endregion
@@ -622,5 +647,7 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
+
+        SettingContext sc = new SettingContext();
     }
 }
