@@ -194,10 +194,12 @@ namespace OKr.Win8Book.Client.View
             Unlock();
         }
 
-        private void Unlock()
+        private void Unlock(bool useTransitions = true)
         {
             dispatcher.AcceleratorKeyActivated -= dispatcher_AcceleratorKeyActivated;
             storyUnlock.Begin();
+            //this.UnCoverKeyFrameTo.Value = 0 - this.ScreenHeight;
+            //VisualStateManager.GoToState(this, "UnCovered", useTransitions);
             this.BottomAppBar.Visibility = Visibility.Visible;
             this.TopAppBar.Visibility = Visibility.Visible;
         }
