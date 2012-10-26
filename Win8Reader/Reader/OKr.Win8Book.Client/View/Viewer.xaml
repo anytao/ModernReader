@@ -66,7 +66,7 @@
                     <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
                         <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
-                                <Run FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" FontSize="20"/>
+                                <Run x:Name="currentText" FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" />
                             </Paragraph>
                         </RichTextBlock>
 
@@ -91,7 +91,7 @@
                     <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
                         <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
-                                <Run FontWeight="SemiLight" Text="{Binding PrePage.Text}" FontSize="20"/>
+                                <Run x:Name="leftText" FontWeight="SemiLight" Text="{Binding PrePage.Text}" FontSize="20"/>
                             </Paragraph>
                         </RichTextBlock>
 
@@ -116,7 +116,7 @@
                     <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
                         <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
-                                <Run FontWeight="SemiLight" Text="{Binding NextPage.Text}" FontSize="20"/>
+                                <Run x:Name="rightText" FontWeight="SemiLight" Text="{Binding NextPage.Text}" />
                             </Paragraph>
                         </RichTextBlock>
 
