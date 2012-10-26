@@ -78,6 +78,15 @@ namespace OKr.Win8Book.Client.ViewModel
         }
 
         private Progress progress;
+        public Progress Progress
+        {
+            get { return progress; }
+            set
+            {
+                this.SetProperty(ref progress, value);
+            }
+        }
+
 
         private int chapterGroupSize = 20;
 
@@ -89,6 +98,7 @@ namespace OKr.Win8Book.Client.ViewModel
             await LoadBook();
             await LoadMark();
             await LoadApps();
+            await LoadProgress();
         }
 
         #region Theme
@@ -164,7 +174,7 @@ namespace OKr.Win8Book.Client.ViewModel
         private async Task LoadProgress()
         {
             ProgressContext pc = new ProgressContext();
-            progress = await pc.Load();
+            this.Progress = await pc.Load();
         }
 
         public async void NotifyMarksChanged()
