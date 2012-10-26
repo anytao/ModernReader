@@ -384,6 +384,7 @@ namespace OKr.Win8Book.Client.View
             if (this.chapter.CurrentPage != null)
             {
                 this.progress.Location = this.chapter.CurrentPage.Locations[0];
+                this.progress.Title = this.chapter.Title; 
                 this.progress.Text = this.chapter.CurrentPage.Row[0] + " " + this.chapter.CurrentPage.Row[1];
             }
 
