@@ -12,5 +12,6 @@ namespace OKr.Win8Book.Client.Core.Data
         public int Page { get; set; }
         public int Location { get; set; }
         public string Percent { get; set; }
+        public string Text { get; set; }
     }
 }

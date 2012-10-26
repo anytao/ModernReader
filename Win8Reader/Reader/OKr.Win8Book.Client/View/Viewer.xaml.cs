@@ -81,15 +81,24 @@ namespace OKr.Win8Book.Client.View
         {
             base.OnNavigatedTo(e);
 
-            var category = e.Parameter as Chapter;
             if (e.NavigationMode == NavigationMode.New)
             {
+                // load settings
                 SettingContext mc = new SettingContext();
                 var setting = await mc.Load();
 
                 this.fontsize = setting.Font;
 
-                await LoadBook(category);
+                // load book from progress or chapter
+                if (e.Parameter.ToString() == "p")
+                {
+                    await LoadProgress();
+                }
+                else
+                {
+                    var category = e.Parameter as Chapter;
+                    await LoadBook(category);
+                }                
             }
 
             LoadTheme();
@@ -139,7 +148,7 @@ namespace OKr.Win8Book.Client.View
 
         #region Handlers
 
-        bool dragging=false;
+        bool dragging = false;
         private void bodyGrid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             if (transitionInProcess)
@@ -338,7 +347,7 @@ namespace OKr.Win8Book.Client.View
                 {
                     this.location = this.chapter.CurrentPage.Locations[0];
                 }
-                
+
 
                 this.UpdatePage();
             }
@@ -370,6 +379,7 @@ namespace OKr.Win8Book.Client.View
             if (this.chapter.CurrentPage != null)
             {
                 this.progress.Location = this.chapter.CurrentPage.Locations[0];
+                this.progress.Text = this.chapter.CurrentPage.Row[0] + " " + this.chapter.CurrentPage.Row[1];
             }
 
             await pc.Save(this.progress);
@@ -385,8 +395,8 @@ namespace OKr.Win8Book.Client.View
 
             this.book = App.HomeViewModel.Book;
             this.chapter = await LoadData(this.currentChapter, category.Title);
-            chapter.CurrentPage = GetCurrent(chapter, this.location);            
-            
+            chapter.CurrentPage = GetCurrent(chapter, this.location);
+
             this.DataContext = chapter;
 
             this.mark = await mc.Load();
@@ -399,6 +409,30 @@ namespace OKr.Win8Book.Client.View
             this.SetMarkStatus();
 
             this.UpdatePage();
+        }
+
+        private async Task LoadProgress()
+        {
+            this.progress = await pc.Load();
+
+            Chapter chapter = null;
+
+            if (this.progress != null)
+            {
+                chapter = this.book.Chapters.FirstOrDefault(x => x.ChapterNo == this.progress.Chapter);
+            }
+            else
+            {
+                chapter = this.book.Chapters[0];
+            }
+
+            if (chapter != null)
+            {
+                chapter.PageCount = this.progress.Page;
+                chapter.Pos = this.progress.Location;
+
+                await LoadBook(chapter);
+            }
         }
 
         private async void UpdatePage()
