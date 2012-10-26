@@ -23,7 +23,7 @@
                        Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='neg'}"/>
                 <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}" 
                        Visibility="{Binding IsRead, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}" />
             </Grid>
         </DataTemplate>
 
