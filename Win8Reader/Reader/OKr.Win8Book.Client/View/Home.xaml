@@ -272,11 +272,23 @@
             </ContentControl.RenderTransform>
             <Grid>
                 <Image x:Name="coverImage" Source="/Assets/Data/LockCover.jpg" Stretch="UniformToFill"/>
-                <Grid VerticalAlignment="Top" Margin="100" Background="#80FFFFFF" PointerPressed="continueReading_PointerPressed">
-                    <StackPanel>
-                        <TextBlock Text="继续阅读" FontSize="50" />
-                        <TextBlock Text="{Binding Progress.Text}" FontSize="25" />
-                    </StackPanel>
+
+                <!--continue reading-->
+                <Grid Background="#B2FFFFFF" Margin="80" Height="100" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                      PointerPressed="continueReading_PointerPressed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Fill="#B200A2FF"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Progress.Text}" TextWrapping="Wrap" Tag="skiptheme"
+                               FontSize="25" Foreground="Black" Margin="20"/>
+                    <Grid Grid.Column="2" Background="#B200A2FF">
+                        <TextBlock Text="点击继续阅读" FontSize="32" Foreground="White" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   Tag="skiptheme"/>
+                    </Grid>
                 </Grid>
             </Grid>
         </ContentControl>

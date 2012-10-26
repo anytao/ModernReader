@@ -121,11 +121,6 @@
                                     </Grid>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
-                            <!--<GridView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </GridView.ItemsPanel>-->
                         </GridView>
                     </SemanticZoom.ZoomedOutView>
                     <SemanticZoom.ZoomedInView>
