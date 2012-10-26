@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="fc72d4e1-3bbb-42bd-bde9-d39e858c9d63" Publisher="CN=Anytao" Version="1.0.0.0" />
+  <Identity Name="fc72d4e1-3bbb-42bd-bde9-d39e858c9d63" Publisher="CN=Anytao" Version="1.0.0.1" />
   <Properties>
     <DisplayName>MXReader</DisplayName>
     <PublisherDisplayName>Anytao</PublisherDisplayName>
