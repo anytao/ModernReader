@@ -204,5 +204,14 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
+        #region Continue Reading
+
+        private void continueReading_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        #endregion
+
     }
 }
