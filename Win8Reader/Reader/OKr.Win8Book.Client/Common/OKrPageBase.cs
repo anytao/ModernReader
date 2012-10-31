@@ -49,7 +49,6 @@ namespace OKr.Win8Book.Client.Common
             }
         }
 
-
         #endregion
 
         #region Theme

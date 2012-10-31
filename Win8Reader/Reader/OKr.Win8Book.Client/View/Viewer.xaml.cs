@@ -105,13 +105,17 @@ namespace OKr.Win8Book.Client.View
                 // load book from progress or chapter
                 if (e.Parameter.ToString() == "p")
                 {
+                    this.cover.Visibility = Visibility.Visible;
+                    this.UpdateLayout();
+                    PrepareCover();
                     await LoadProgress();
+                    this.cover.Unlock(true);
                 }
                 else
                 {
                     var category = e.Parameter as Chapter;
                     await LoadBook(category);
-                }                
+                }
             }
 
             LoadTheme();
@@ -399,7 +403,7 @@ namespace OKr.Win8Book.Client.View
             if (this.chapter.CurrentPage != null)
             {
                 this.progress.Location = this.chapter.CurrentPage.Locations[0];
-                this.progress.Title = this.chapter.Title; 
+                this.progress.Title = this.chapter.Title;
                 this.progress.Text = this.chapter.CurrentPage.Row[0] + " " + this.chapter.CurrentPage.Row[1];
             }
 
@@ -413,7 +417,7 @@ namespace OKr.Win8Book.Client.View
             this.chapter = category;
             this.current = category.PageCount;
             this.location = category.Pos;
-            
+
             this.chapter = await LoadData(this.currentChapter, category.Title);
             chapter.CurrentPage = GetCurrent(chapter, this.location);
 
@@ -657,6 +661,15 @@ namespace OKr.Win8Book.Client.View
 
         private int location;
 
-        #endregion              
+        #endregion
+
+        #region Cover
+
+        private void PrepareCover()
+        {
+            this.cover.PrepareCover(this);
+        }
+
+        #endregion
     }
 }

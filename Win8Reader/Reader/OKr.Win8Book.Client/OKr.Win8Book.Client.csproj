@@ -130,6 +130,9 @@
     <Compile Include="Controls\BigMark.xaml.cs">
       <DependentUpon>BigMark.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Cover.xaml.cs">
+      <DependentUpon>Cover.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\NavBar.xaml.cs">
       <DependentUpon>NavBar.xaml</DependentUpon>
@@ -184,6 +187,7 @@
     <Content Include="Assets\Data\LockCover.jpg" />
     <Content Include="Assets\Home\MarkIcon1.png" />
     <Content Include="Assets\Home\MarkProgressBackground.png" />
+    <Content Include="Assets\Home\RightArrow.png" />
     <Content Include="Assets\Logo\Logo150x150.png" />
     <Content Include="Assets\Logo\Logo30x30.png" />
     <Content Include="Assets\Logo\Logo310x150.png" />
@@ -367,6 +371,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\BigMark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Cover.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

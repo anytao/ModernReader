@@ -411,22 +411,50 @@
         <Setter Property="Opacity" Value="0.6"/>
     </Style>
 
-    <!--continue read-->
-    <Style x:Key="ContinueRead_ChapterTitle_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="FontSize" Value="22"/>
+    <!--cover-->
+    <Style x:Key="Cover_BookName_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="64"/>
         <Setter Property="TextWrapping" Value="NoWrap"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Margin" Value="20,10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
+    </Style>
+
+    <Style x:Key="Cover_BookAuthor_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Margin" Value="20,0"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
+    </Style>
+
+    <Style x:Key="ContinueRead_ChapterTitle_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="0,0"/>
         <Setter Property="Tag" Value="SkipTheme"/>
     </Style>
 
     <Style x:Key="ContinueRead_Body_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
-        <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Margin" Value="20,0,20,10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="0,10"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
+    </Style>
+
+    <Style x:Key="ContinueRead_Hint_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="0,0,20,0"/>
         <Setter Property="Tag" Value="SkipTheme"/>
     </Style>
 

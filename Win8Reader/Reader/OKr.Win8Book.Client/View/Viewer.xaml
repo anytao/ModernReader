@@ -8,6 +8,7 @@
     xmlns:OKrControls="using:OKr.Win8Book.Client.Controls"
     mc:Ignorable="d"
     xmlns:common="using:OKr.Win8Book.Client.Common"
+    xmlns:controls="using:OKr.Win8Book.Client.Controls"
     NavigationCacheMode="Enabled">
 
     <UserControl.Resources>
@@ -176,6 +177,8 @@
                                      Click="viewArticle_Click"/>
         </Grid>
 
+        <controls:Cover x:Name="cover" Visibility="Collapsed"/>
+        
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ApplicationViewStates">
                 <VisualState x:Name="FullScreenLandscape"/>
