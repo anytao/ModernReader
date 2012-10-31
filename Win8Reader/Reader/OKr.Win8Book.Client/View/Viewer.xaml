@@ -44,7 +44,7 @@
                 <TextBlock x:Name="pageTitle" Text="{Binding Title}" Grid.Column="1" Style="{StaticResource PageTitleStyle}"/>
             </Grid>
 
-            <Grid x:Name="bodyGrid" Grid.Row="1" Margin="0,0,0,50"
+            <Grid x:Name="bodyGrid" Grid.Row="1" Margin="0,0,0,50" Background="#00000000"
                   ManipulationMode="TranslateX" 
                   ManipulationStarted="bodyGrid_ManipulationStarted" 
                   ManipulationDelta="bodyGrid_ManipulationDelta" 
@@ -60,13 +60,11 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!--<TextBlock Text="{Binding Title}" Style="{StaticResource Viewer_ChapterName_Style}"/>-->
-
                     <!-- Content is allowed to flow across as many columns as needed -->
                     <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
                         <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
-                                <Run x:Name="currentText" FontWeight="SemiLight" Text="{Binding CurrentPage.Text}" />
+                                <Run x:Name="currentText" Text="{Binding CurrentPage.Text}" />
                             </Paragraph>
                         </RichTextBlock>
 
@@ -91,7 +89,7 @@
                     <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
                         <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
-                                <Run x:Name="leftText" FontWeight="SemiLight" Text="{Binding PrePage.Text}" FontSize="20"/>
+                                <Run x:Name="leftText" Text="{Binding PrePage.Text}" FontSize="20"/>
                             </Paragraph>
                         </RichTextBlock>
 
@@ -116,7 +114,7 @@
                     <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
                         <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
-                                <Run x:Name="rightText" FontWeight="SemiLight" Text="{Binding NextPage.Text}" />
+                                <Run x:Name="rightText" Text="{Binding NextPage.Text}" />
                             </Paragraph>
                         </RichTextBlock>
 

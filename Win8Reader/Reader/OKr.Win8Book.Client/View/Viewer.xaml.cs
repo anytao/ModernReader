@@ -30,6 +30,16 @@ namespace OKr.Win8Book.Client.View
         public Viewer()
         {
             this.InitializeComponent();
+
+            if (this.ScreenWidth == 1366)
+            {
+                this.height = 2236;
+            }
+            else if (this.ScreenWidth == 1920)
+            {
+                this.height = 2610;
+            }
+
             this.Loaded += Viewer_Loaded;
 
             NavBar bar = new NavBar(this, true, true, true, true);
@@ -198,7 +208,12 @@ namespace OKr.Win8Book.Client.View
             ShowFontPopup((UIElement)sender);
         }
 
-        private async void OnMark(object sender, EventArgs e)//(object sender, RoutedEventArgs e)
+        private void viewArticle_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.UI.ViewManagement.ApplicationView.TryUnsnap();
+        }
+
+        private async void OnMark(object sender, EventArgs e)
         {
             Mark m = this.chapter.Mark;
 
@@ -519,33 +534,6 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
-        #region Variables
-
-        private int fontsize;
-        private int height = OKrBookConfig.HEIGHT; //762;
-        private int lineHeight = OKrBookConfig.LINEHEIGHT; //0x10;
-        private int currentChapter;
-
-        MarkContext mc = new MarkContext();
-        ProgressContext pc = new ProgressContext();
-        BookContext bc = new BookContext();
-
-        private Progress progress;
-        private Book book;
-        private Mark mark;
-        private Chapter chapter;
-
-        private int current;
-
-        private int location;
-
-        #endregion
-
-        private void viewArticle_Click(object sender, RoutedEventArgs e)
-        {
-            Windows.UI.ViewManagement.ApplicationView.TryUnsnap();
-        }
-
         #region Font Flyout
 
         private FrameworkElement _fontSizePopupMenu = null;
@@ -648,6 +636,27 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
+        #region Variables
+
+        private int fontsize;
+        private int height = OKrBookConfig.HEIGHT;
+        private int lineHeight = OKrBookConfig.LINEHEIGHT;
+        private int currentChapter;
+
+        MarkContext mc = new MarkContext();
+        ProgressContext pc = new ProgressContext();
+        BookContext bc = new BookContext();
         SettingContext sc = new SettingContext();
+
+        private Progress progress;
+        private Book book;
+        private Mark mark;
+        private Chapter chapter;
+
+        private int current;
+
+        private int location;
+
+        #endregion              
     }
 }
