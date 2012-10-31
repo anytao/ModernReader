@@ -409,7 +409,7 @@ namespace OKr.Win8Book.Client.View
 
             this.chapter.Mark = this.mark;
 
-            this.pageTitle.Text = this.book.Name;
+            //this.pageTitle.Text = this.book.Name;
 
             this.SetMarkStatus();
 

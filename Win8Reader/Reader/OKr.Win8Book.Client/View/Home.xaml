@@ -11,7 +11,7 @@
     NavigationCacheMode="Required">
 
     <Page.Resources>
-        <common:BooleanToVisibilityConverter x:Name="BooleanToVisibilityConverter"/>
+        
         
         <DataTemplate x:Key="ChapterTemplate">
             <Grid >

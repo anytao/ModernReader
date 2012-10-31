@@ -2,7 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
     xmlns:local="using:OKr.Win8Book.Client.Common"
+    xmlns:common="using:OKr.Win8Book.Client.Common"
     xmlns:OKrControls="using:OKr.Win8Book.Client.Controls">
+    
+    <!--converter-->
+    <common:BooleanToVisibilityConverter x:Name="BooleanToVisibilityConverter"/>
     
     <!--theme-->
     <SolidColorBrush x:Name="OKr_Theme_Foreground_Light" Color="#FF000000"/>
