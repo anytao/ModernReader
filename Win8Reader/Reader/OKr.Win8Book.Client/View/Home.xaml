@@ -251,35 +251,6 @@
 
         <!--cover-->
         <controls:Cover x:Name="cover" ContinueReadingPointerPressed="coverContinueReadingPointerPressed"/>
-        <!--<ContentControl x:Name="coverPanel" RenderTransformOrigin="0.5,0.5" PointerPressed="coverPanel_PointerPressed">
-            <ContentControl.RenderTransform>
-                <CompositeTransform/>
-            </ContentControl.RenderTransform>
-            <Grid>
-                <Image x:Name="coverImage" Source="/Assets/Data/LockCover.jpg" Stretch="UniformToFill"/>
-
-                <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="80">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                            <TextBlock Text="{Binding Book.Name}" Style="{StaticResource Cover_BookName_Style}"/>
-                            <TextBlock Text="{Binding Book.Author}" Style="{StaticResource Cover_BookAuthor_Style}"/>
-                        </StackPanel>
-                        <Grid x:Name="continueReadingPanel" Background="#00000000" 
-                              PointerPressed="continueReading_PointerPressed" Visibility="Collapsed">
-                            <StackPanel >
-                                <TextBlock Text="{Binding Progress.Title}" Style="{StaticResource ContinueRead_ChapterTitle_Style}"/>
-                                <TextBlock Text="{Binding Progress.Text}" Style="{StaticResource ContinueRead_Body_Style}"/>
-                                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                                    <TextBlock Text="点击继续阅读" Style="{StaticResource ContinueRead_Hint_Style}"/>
-                                    <Image Source="/Assets/Home/RightArrow.png" Stretch="None" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-
-            </Grid>
-        </ContentControl>-->
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ApplicationViewStates">
@@ -297,21 +268,6 @@
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-            <VisualStateGroup x:Name="CoverStates">
-                <VisualStateGroup.Transitions>
-                    <VisualTransition GeneratedDuration="0:0:0.3">
-                        <VisualTransition.GeneratedEasingFunction>
-                            <CubicEase EasingMode="EaseInOut"/>
-                        </VisualTransition.GeneratedEasingFunction>
-                    </VisualTransition>
-                </VisualStateGroup.Transitions>
-                <VisualState x:Name="Covered"/>
-                <VisualState x:Name="UnCovered">
-                    <Storyboard>
-                        <DoubleAnimation x:Name="UnCoverAnimation" Duration="0" To="-768" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="coverPanel" d:IsOptimized="True"/>
                     </Storyboard>
                 </VisualState>
             </VisualStateGroup>
