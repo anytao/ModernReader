@@ -11,7 +11,7 @@
     <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
   <Resources>
-    <Resource Language="x-generate" />
+    <Resource Language="zh-cn" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="OKr.Win8Book.Client.App">
