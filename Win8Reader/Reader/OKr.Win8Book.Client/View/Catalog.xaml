@@ -115,13 +115,11 @@
 
                 <SemanticZoom x:Name="semanticZoom" Grid.Row="1" Margin="0,20,0,0">
                     <SemanticZoom.ZoomedOutView>
-                        <GridView Padding="120,0,0,50" SelectionMode="None"
+                        <GridView Padding="120,50,0,50" SelectionMode="None"
                             ItemsSource="{Binding View.CollectionGroups, ElementName=groupedItemsViewSource}">
                             <GridView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Width="150" Height="300" Background="#80808080">
-                                        <TextBlock Text="{Binding Group.Key}" Style="{StaticResource Catalog_SemanticZoomOutText_Style}"/>
-                                    </Grid>
+                                    <OKrControls:CatalogZoomOutItem/>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
