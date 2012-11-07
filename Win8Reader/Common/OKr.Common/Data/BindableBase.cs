@@ -1,4 +1,6 @@
-﻿using System;
+﻿// 2012 OKr Works, http://okr.me
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

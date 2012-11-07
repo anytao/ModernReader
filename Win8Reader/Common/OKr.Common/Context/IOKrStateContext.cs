@@ -1,10 +1,10 @@
-﻿using System;
+﻿// 2012 OKr Works, http://okr.me
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-// http://okr.me
 
 namespace OKr.Common.Context
 {
