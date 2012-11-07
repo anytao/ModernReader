@@ -1,0 +1,69 @@
+﻿<UserControl
+    x:Class="OKr.Win8Book.Client.Controls.CatalogZoomOutItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OKr.Win8Book.Client.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:OKr.Win8Book.Client.Converters"
+    mc:Ignorable="d"
+    Height="342"
+    Width="168">
+
+    <UserControl.Resources>
+        <converters:CatalogReadCountConverter x:Key="catalogReadCountConverter"/>
+        <converters:CatalogReadProgressConverter x:Key="catalogReadProgressConverter"/>
+        <converters:CatalogReadVisibilityConverter x:Key="catalogReadVisibilityConverter"/>
+    </UserControl.Resources>
+    
+    <Grid DataContext="{Binding Group}">
+    	<Grid.Clip>
+    		<RectangleGeometry Rect="60.25,-91.961,402.288,402.288">
+    			<RectangleGeometry.Transform>
+    				<CompositeTransform CenterY="-91.960563659667969" CenterX="60.25" Rotation="45"/>
+    			</RectangleGeometry.Transform>
+    		</RectangleGeometry>
+    	</Grid.Clip>
+
+        <Grid x:Name="UnReadPanel" >
+            <Image Source="/Assets/Catalog/ZoomOutItemUnRead.png" Stretch="None"/>
+            <Image Source="/Assets/Catalog/ZoomOutItemUnReadRT.png" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+            <TextBlock Style="{StaticResource Catalog_SemanticZoomOut_UnReadTitle_Style}">
+                <Run Text="{Binding Key}" />
+                <Run Text="章"/>
+            </TextBlock>
+
+            <TextBlock Style="{StaticResource Catalog_SemanticZoomOut_UnReadTitle_Style}" VerticalAlignment="Bottom">
+                <Run Text="尚未阅读" FontSize="16"/>
+            </TextBlock>
+        </Grid>
+
+        <Grid x:Name="ReadPanel" Visibility="{Binding Converter={StaticResource catalogReadVisibilityConverter}}">
+            <Image Source="/Assets/Catalog/ZoomOutItemRead.png" Stretch="None"/>
+            <Rectangle Fill="#fff1960a" RenderTransformOrigin="0.5,1" 
+                       VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="342" Width="164">
+                <Rectangle.RenderTransform>
+                    <CompositeTransform ScaleY="{Binding Converter={StaticResource catalogReadProgressConverter}}"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Image Source="/Assets/Catalog/ZoomOutItemReadRT.png" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+            <TextBlock Style="{StaticResource Catalog_SemanticZoomOut_ReadTitle_Style}">
+                <Run Text="{Binding Key}" />
+                <Run Text="章"/>
+                <Run Text="{Binding Chapters.Count}" />
+            </TextBlock>
+
+            <TextBlock Style="{StaticResource Catalog_SemanticZoomOut_ReadTitle_Style}" VerticalAlignment="Bottom">
+                <Run Text="{Binding Converter={StaticResource catalogReadCountConverter}}" />
+                <Run Text="已阅章节" FontSize="16"/>
+            </TextBlock>
+        </Grid>
+
+        <Image Source="/Assets/Catalog/ZoomOutItemBook.png" Stretch="None" Opacity="0.2"
+               VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+        
+    </Grid>
+</UserControl>

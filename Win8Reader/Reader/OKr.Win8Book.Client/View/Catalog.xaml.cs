@@ -50,6 +50,11 @@ namespace OKr.Win8Book.Client.View
         {
             base.OnNavigatedTo(e);
 
+            /* to update the progress */
+            var temp = groupedItemsViewSource.Source;
+            groupedItemsViewSource.Source = null;
+            groupedItemsViewSource.Source = temp;
+
             LoadTheme();
         }
 

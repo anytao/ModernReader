@@ -484,16 +484,26 @@
     </Style>
 
     <!--catalog-->
-    <Style x:Key="Catalog_SemanticZoomOutText_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
-        <Setter Property="FontSize" Value="30"/>
+    <Style x:Key="Catalog_SemanticZoomOut_UnReadTitle_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontSize" Value="25"/>
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="12,20"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
     </Style>
 
-    
-    
+    <Style x:Key="Catalog_SemanticZoomOut_ReadTitle_Style" TargetType="TextBlock" BasedOn="{StaticResource OKrTextBlockStyleBase}">
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="Foreground" Value="#ff4a1b01"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="12,20"/>
+        <Setter Property="Tag" Value="SkipTheme"/>
+    </Style>
+
     <!--xxx-->
     <!--xxx-->
     <!--xxx-->
