@@ -113,7 +113,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <ScrollViewer Grid.Row="1" Margin="0,20,0,0" >
+            <ScrollViewer Grid.Row="1" Margin="0,20,0,0" ZoomMode="Disabled">
                 <StackPanel Margin="16,0,0,20">
                     <ListView ItemsSource="{Binding Marks}"
                             ItemTemplate="{StaticResource SnappedMarkTemplate}"

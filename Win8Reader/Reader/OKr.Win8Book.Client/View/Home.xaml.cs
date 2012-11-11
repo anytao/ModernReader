@@ -174,6 +174,11 @@ namespace OKr.Win8Book.Client.View
             this.Frame.Navigate(typeof(Viewer), "p");
         }
 
+        private void Snapped_Completed(object sender, object e)
+        {
+            this.cover.Unlock(false);
+        }
+
         #endregion
 
         #region Variables
@@ -184,6 +189,5 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
-        
     }
 }

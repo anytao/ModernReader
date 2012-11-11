@@ -37,7 +37,10 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}"/>
+                <Image Style="{StaticResource Home_Chapter_Icon_UnRead_Style}" 
+                       Visibility="{Binding IsRead, Converter={StaticResource AnythingToVisibilityConverter}, ConverterParameter='neg'}"/>
+                <Image Style="{StaticResource Home_Chapter_Icon_Read_Style}" 
+                       Visibility="{Binding IsRead, Converter={StaticResource AnythingToVisibilityConverter}}"/>
                 <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{StaticResource Home_ChapterName_Style}"/>
             </Grid>
         </DataTemplate>
@@ -176,7 +179,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <ScrollViewer Grid.Row="1" Margin="0,20,0,0">
+            <ScrollViewer Grid.Row="1" Margin="0,20,0,0" ZoomMode="Disabled">
                 <StackPanel Margin="16,0,0,20">
                     <ListView ItemsSource="{Binding Book.Chapters}"
                             ItemTemplate="{StaticResource SnappedChapterTemplate}"
