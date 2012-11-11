@@ -240,7 +240,7 @@
                               Style="{StaticResource NonScrollable_ListViewStyle}"
                             ItemsSource="{Binding RecentMarks}"
                             ItemTemplate="{StaticResource SnappedMarkTemplate}"
-                            SelectionMode="Multiple"
+                            SelectionMode="None"
                             IsItemClickEnabled="True"
                             ItemClick="Mark_ItemClick">
                     </ListView>
