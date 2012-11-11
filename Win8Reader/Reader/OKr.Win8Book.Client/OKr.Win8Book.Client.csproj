@@ -188,9 +188,9 @@
     <Content Include="Assets\Common\AppBarFontNormal.png" />
     <Content Include="Assets\Common\PageBackgroundDark.png" />
     <Content Include="Assets\Common\PageBackgroundLight.png" />
-    <Content Include="Assets\Data\me.okr">
+    <None Include="Assets\Data\app.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <Content Include="Assets\Data\okrapp2.config" />
     <Content Include="Assets\Home\ChapterIcon1.png" />
     <Content Include="Assets\Home\ChapterIcon2.png" />
@@ -199,11 +199,11 @@
     <Content Include="Assets\Home\MarkIcon1.png" />
     <Content Include="Assets\Home\MarkProgressBackground.png" />
     <Content Include="Assets\Home\RightArrow.png" />
-    <Content Include="Assets\Logo\Logo150x150.png" />
-    <Content Include="Assets\Logo\Logo30x30.png" />
-    <Content Include="Assets\Logo\Logo310x150.png" />
-    <Content Include="Assets\Logo\Logo50x50.png" />
-    <Content Include="Assets\Logo\Logo620x300.png" />
+    <Content Include="Assets\Data\Logo150x150.png" />
+    <Content Include="Assets\Data\Logo30x30.png" />
+    <Content Include="Assets\Data\Logo310x150.png" />
+    <Content Include="Assets\Data\Logo50x50.png" />
+    <Content Include="Assets\Data\Logo620x300.png" />
     <Content Include="Assets\NavBar\NavChaptersHover.png" />
     <Content Include="Assets\NavBar\NavChaptersNormal.png" />
     <Content Include="Assets\NavBar\NavChaptersPressed.png" />
