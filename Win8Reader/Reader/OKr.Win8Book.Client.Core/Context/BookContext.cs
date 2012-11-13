@@ -30,7 +30,7 @@ namespace OKr.Win8Book.Client.Core.Context
             Package package = Package.Current;
             StorageFolder installedLocation = package.InstalledLocation;
 
-            var file = await StorageFile.GetFileFromPathAsync(Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, @"Assets\Data\app.config"));
+            var file = await StorageFile.GetFileFromPathAsync(Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, @"Assets\Data\me.okr"));
 
             XmlDocument doc = await XmlDocument.LoadFromFileAsync(file);
             XDocument xdoc = XDocument.Parse(doc.GetXml());

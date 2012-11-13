@@ -1,45 +1,14 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3606BE7A-ECC1-44A4-BFE0-6009686E50C1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packer", "Packer", "{EE662746-FA32-4E30-86C1-50503B772BCC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reader", "Reader", "{5F542082-854F-466C-8D93-6930B69E4160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKr.WPBook.Client", "Reader\OKr.WPBook.Client\OKr.WPBook.Client.csproj", "{F6184782-37DB-46D1-9FCF-5C514FEF61C2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKr.Phone.Common", "Common\OKr.Phone.Common\OKr.Phone.Common.csproj", "{8EBE2A70-56E1-4D56-B48F-580C88947C40}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKr.WPBook.Client.Core", "Reader\OKr.WPBook.Client.Core\OKr.WPBook.Client.Core.csproj", "{976E7863-B01D-430A-9174-A43F2E040CDC}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F6184782-37DB-46D1-9FCF-5C514FEF61C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6184782-37DB-46D1-9FCF-5C514FEF61C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6184782-37DB-46D1-9FCF-5C514FEF61C2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{F6184782-37DB-46D1-9FCF-5C514FEF61C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6184782-37DB-46D1-9FCF-5C514FEF61C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6184782-37DB-46D1-9FCF-5C514FEF61C2}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{8EBE2A70-56E1-4D56-B48F-580C88947C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EBE2A70-56E1-4D56-B48F-580C88947C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EBE2A70-56E1-4D56-B48F-580C88947C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EBE2A70-56E1-4D56-B48F-580C88947C40}.Release|Any CPU.Build.0 = Release|Any CPU
-		{976E7863-B01D-430A-9174-A43F2E040CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{976E7863-B01D-430A-9174-A43F2E040CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{976E7863-B01D-430A-9174-A43F2E040CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{976E7863-B01D-430A-9174-A43F2E040CDC}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{8EBE2A70-56E1-4D56-B48F-580C88947C40} = {3606BE7A-ECC1-44A4-BFE0-6009686E50C1}
-		{F6184782-37DB-46D1-9FCF-5C514FEF61C2} = {5F542082-854F-466C-8D93-6930B69E4160}
-		{976E7863-B01D-430A-9174-A43F2E040CDC} = {5F542082-854F-466C-8D93-6930B69E4160}
 	EndGlobalSection
 EndGlobal
