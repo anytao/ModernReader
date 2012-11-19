@@ -10,6 +10,7 @@ namespace OKr.Win8Book.Client.Core.Data
     public class OKrApp : EntityBase
     {
         public string AppId { get; set; }
+        public string PId { get; set; }
         public string AppName { get; set; }
         public string Author { get; set; }
         public string Intro { get; set; }
