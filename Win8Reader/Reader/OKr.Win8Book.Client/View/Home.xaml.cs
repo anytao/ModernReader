@@ -83,9 +83,11 @@ namespace OKr.Win8Book.Client.View
             this.Frame.Navigate(typeof(Viewer), chapter);
         }
 
-        private void App_ItemClick(object sender, ItemClickEventArgs e)
+        private async void App_ItemClick(object sender, ItemClickEventArgs e)
         {
+            OKrApp app = e.ClickedItem as OKrApp;
 
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store:PDP?PFN=" + app.PId, UriKind.RelativeOrAbsolute));
         }
 
         private void OnGoChapter(object sender, TappedRoutedEventArgs e)
