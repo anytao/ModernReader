@@ -326,8 +326,6 @@
     <Content Include="_static\data\okr-bg.png" />
     <Content Include="_static\data\okr-icon.png" />
     <Content Include="_static\data\okr-splash.png" />
-    <Content Include="_static\data\okr-道德经.txt" />
-    <Content Include="_static\data\道德经.txt" />
     <Content Include="_static\img\bbg-night.png" />
     <Content Include="_static\img\bbg.png" />
     <Content Include="_static\img\okr-arrow.png" />
