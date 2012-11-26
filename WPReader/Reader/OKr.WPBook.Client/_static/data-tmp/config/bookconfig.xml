@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bookconfig>
+  <bookname>朱镕基传</bookname>
+  <author>高新、何频</author>
+  <status>完本</status>
+  <readnum>0</readnum>
+  <datapath>_static/data/book</datapath>
+  <commonpath>_static/data</commonpath>
+  <ad>1#1#a14ef2d361835b1</ad>
+</bookconfig>

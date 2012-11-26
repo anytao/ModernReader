@@ -52,8 +52,30 @@
     <Compile Include="Config\OKrBookConfig.cs" />
     <Compile Include="Context\OKrBookContext.cs" />
     <Compile Include="Data\Ad.cs" />
+    <Compile Include="Data\AppInfo.cs" />
+    <Compile Include="Data\AppManager.cs" />
+    <Compile Include="Data\Book.cs" />
+    <Compile Include="Data\BookConfig.cs" />
+    <Compile Include="Data\BookSetting.cs" />
+    <Compile Include="Data\Chapter.cs" />
+    <Compile Include="Data\ChapterMark.cs" />
+    <Compile Include="Data\Config.cs" />
+    <Compile Include="Data\Configer.cs" />
+    <Compile Include="Data\DataInitilizer.cs" />
+    <Compile Include="Data\Mark.cs" />
     <Compile Include="Data\OKrApp.cs" />
+    <Compile Include="Data\OkrDataContext.cs" />
+    <Compile Include="Data\OkrRepository.cs" />
+    <Compile Include="Data\Page.cs" />
+    <Compile Include="Data\Progress.cs" />
+    <Compile Include="File\AtFile.cs" />
+    <Compile Include="Initilizer.cs" />
+    <Compile Include="NavHelper.cs" />
+    <Compile Include="OkrConstant.cs" />
+    <Compile Include="OKrHelper.cs" />
+    <Compile Include="OkrToast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\OKr.Phone.Common\OKr.Phone.Common.csproj">

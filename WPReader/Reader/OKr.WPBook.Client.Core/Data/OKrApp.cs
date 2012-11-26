@@ -9,9 +9,9 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace OKr.WPBook.Client.Core.Data
+namespace At.Okr.Client.Core.Data
 {
-    public class OKrApp
+    public class OkrApp
     {
         public string AppId { get; set; }
         public string AppName { get; set; }

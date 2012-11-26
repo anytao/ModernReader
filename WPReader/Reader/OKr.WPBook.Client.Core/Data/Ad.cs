@@ -8,8 +8,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using At.Phone.Common.Core;
 
-namespace OKr.WPBook.Client.Core.Data
+namespace At.Okr.Client.Core.Data
 {
     public class Ad
     {

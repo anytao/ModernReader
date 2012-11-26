@@ -8,17 +8,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using OKr.WPBook.Client.Core.Data;
-using OKr.WPBook.Client.Core.Config;
-using OKr.Phone.Common.Context;
+using At.Okr.Client.Core.Data;
+using System.IO.IsolatedStorage;
 
-namespace OKr.WPBook.Client.Core.Context
+namespace At.Okr.Client.Core.Context
 {
-    public class OKrBookContext : OKrContextBase
+    public class OkrBookContext
     {
         #region Ctor
 
-        private OKrBookContext()
+        private OkrBookContext()
         {
 
         }
@@ -27,7 +26,7 @@ namespace OKr.WPBook.Client.Core.Context
 
         #region Properties
 
-        public static OKrBookContext Current
+        public static OkrBookContext Current
         {
             get
             {
@@ -35,15 +34,15 @@ namespace OKr.WPBook.Client.Core.Context
             }
         }
 
-        public OKrBookConfig Config { get; set; }
+        public BookConfig Config { get; set; }
 
-        public OKrApp App { get; set; }
+        public OkrApp App { get; set; }
 
         #endregion
 
         #region Variables
 
-        private static OKrBookContext instance = new OKrBookContext();
+        private static OkrBookContext instance = new OkrBookContext();
 
         #endregion
     }

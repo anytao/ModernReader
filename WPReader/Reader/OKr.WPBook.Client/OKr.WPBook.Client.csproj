@@ -62,6 +62,39 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Apps.xaml.cs">
+      <DependentUpon>Apps.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\AtHeader.xaml.cs">
+      <DependentUpon>AtHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\AtTitle.xaml.cs">
+      <DependentUpon>AtTitle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\BookmarkItem.xaml.cs">
+      <DependentUpon>BookmarkItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\ChapterItem.xaml.cs">
+      <DependentUpon>ChapterItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\OkrBrowser.xaml.cs">
+      <DependentUpon>OkrBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Viewer.xaml.cs">
+      <DependentUpon>Viewer.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -72,12 +105,161 @@
   <ItemGroup>
     <Content Include="Asset\data\app.config" />
     <Content Include="Asset\data\okrapp.config" />
+    <Content Include="_static\data-tmp\book\001.txt" />
+    <Content Include="_static\data-tmp\book\002.txt" />
+    <Content Include="_static\data-tmp\book\003.txt" />
+    <Content Include="_static\data-tmp\book\004.txt" />
+    <Content Include="_static\data-tmp\book\005.txt" />
+    <Content Include="_static\data-tmp\book\006.txt" />
+    <Content Include="_static\data-tmp\book\007.txt" />
+    <Content Include="_static\data-tmp\book\008.txt" />
+    <Content Include="_static\data-tmp\book\009.txt" />
+    <Content Include="_static\data-tmp\book\010.txt" />
+    <Content Include="_static\data-tmp\book\011.txt" />
+    <Content Include="_static\data-tmp\book\012.txt" />
+    <Content Include="_static\data-tmp\book\013.txt" />
+    <Content Include="_static\data-tmp\book\014.txt" />
+    <Content Include="_static\data-tmp\book\015.txt" />
+    <Content Include="_static\data-tmp\book\016.txt" />
+    <Content Include="_static\data-tmp\book\017.txt" />
+    <Content Include="_static\data-tmp\book\018.txt" />
+    <Content Include="_static\data-tmp\book\019.txt" />
+    <Content Include="_static\data-tmp\book\020.txt" />
+    <Content Include="_static\data-tmp\book\category.txt" />
+    <Content Include="_static\data-tmp\config\bookconfig.xml" />
+    <Content Include="_static\data-tmp\cover.png" />
+    <Content Include="_static\data-tmp\okr-bg.png" />
+    <Content Include="_static\data-tmp\okr-icon.png" />
+    <Content Include="_static\data-tmp\okr-splash.png" />
+    <Content Include="_static\data-tmp\okrbook.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_static\data\app\okr-bg-chunqiu.png" />
+    <Content Include="_static\data\app\okr-bg-daxue.png" />
+    <Content Include="_static\data\app\okr-bg-guanzi.png" />
+    <Content Include="_static\data\app\okr-bg-hanfei.png" />
+    <Content Include="_static\data\app\okr-bg-laozi.png" />
+    <Content Include="_static\data\app\okr-bg-liji.png" />
+    <Content Include="_static\data\app\okr-bg-lunyu.png" />
+    <Content Include="_static\data\app\okr-bg-mengzi.png" />
+    <Content Include="_static\data\app\okr-bg-shangshu.png" />
+    <Content Include="_static\data\app\okr-bg-shijing.png" />
+    <Content Include="_static\data\app\okr-bg-xunzi.png" />
+    <Content Include="_static\data\app\okr-bg-yijing.png" />
+    <Content Include="_static\data\app\okr-bg-zhongyong.png" />
+    <Content Include="_static\data\app\okr-bg-zhuangzi.png" />
+    <Content Include="_static\data\book\001.txt" />
+    <Content Include="_static\data\book\002.txt" />
+    <Content Include="_static\data\book\003.txt" />
+    <Content Include="_static\data\book\004.txt" />
+    <Content Include="_static\data\book\005.txt" />
+    <Content Include="_static\data\book\006.txt" />
+    <Content Include="_static\data\book\007.txt" />
+    <Content Include="_static\data\book\008.txt" />
+    <Content Include="_static\data\book\009.txt" />
+    <Content Include="_static\data\book\010.txt" />
+    <Content Include="_static\data\book\011.txt" />
+    <Content Include="_static\data\book\012.txt" />
+    <Content Include="_static\data\book\013.txt" />
+    <Content Include="_static\data\book\014.txt" />
+    <Content Include="_static\data\book\015.txt" />
+    <Content Include="_static\data\book\016.txt" />
+    <Content Include="_static\data\book\017.txt" />
+    <Content Include="_static\data\book\018.txt" />
+    <Content Include="_static\data\book\019.txt" />
+    <Content Include="_static\data\book\020.txt" />
+    <Content Include="_static\data\book\021.txt" />
+    <Content Include="_static\data\book\022.txt" />
+    <Content Include="_static\data\book\023.txt" />
+    <Content Include="_static\data\book\024.txt" />
+    <Content Include="_static\data\book\025.txt" />
+    <Content Include="_static\data\book\026.txt" />
+    <Content Include="_static\data\book\027.txt" />
+    <Content Include="_static\data\book\028.txt" />
+    <Content Include="_static\data\book\029.txt" />
+    <Content Include="_static\data\book\030.txt" />
+    <Content Include="_static\data\book\031.txt" />
+    <Content Include="_static\data\book\032.txt" />
+    <Content Include="_static\data\book\033.txt" />
+    <Content Include="_static\data\book\034.txt" />
+    <Content Include="_static\data\book\035.txt" />
+    <Content Include="_static\data\book\036.txt" />
+    <Content Include="_static\data\book\037.txt" />
+    <Content Include="_static\data\book\038.txt" />
+    <Content Include="_static\data\book\039.txt" />
+    <Content Include="_static\data\book\040.txt" />
+    <Content Include="_static\data\book\041.txt" />
+    <Content Include="_static\data\book\042.txt" />
+    <Content Include="_static\data\book\043.txt" />
+    <Content Include="_static\data\book\044.txt" />
+    <Content Include="_static\data\book\045.txt" />
+    <Content Include="_static\data\book\046.txt" />
+    <Content Include="_static\data\book\047.txt" />
+    <Content Include="_static\data\book\048.txt" />
+    <Content Include="_static\data\book\049.txt" />
+    <Content Include="_static\data\book\050.txt" />
+    <Content Include="_static\data\book\051.txt" />
+    <Content Include="_static\data\book\052.txt" />
+    <Content Include="_static\data\book\053.txt" />
+    <Content Include="_static\data\book\054.txt" />
+    <Content Include="_static\data\book\055.txt" />
+    <Content Include="_static\data\book\056.txt" />
+    <Content Include="_static\data\book\057.txt" />
+    <Content Include="_static\data\book\058.txt" />
+    <Content Include="_static\data\book\059.txt" />
+    <Content Include="_static\data\book\060.txt" />
+    <Content Include="_static\data\book\061.txt" />
+    <Content Include="_static\data\book\062.txt" />
+    <Content Include="_static\data\book\063.txt" />
+    <Content Include="_static\data\book\064.txt" />
+    <Content Include="_static\data\book\065.txt" />
+    <Content Include="_static\data\book\066.txt" />
+    <Content Include="_static\data\book\067.txt" />
+    <Content Include="_static\data\book\068.txt" />
+    <Content Include="_static\data\book\069.txt" />
+    <Content Include="_static\data\book\070.txt" />
+    <Content Include="_static\data\book\071.txt" />
+    <Content Include="_static\data\book\072.txt" />
+    <Content Include="_static\data\book\073.txt" />
+    <Content Include="_static\data\book\074.txt" />
+    <Content Include="_static\data\book\075.txt" />
+    <Content Include="_static\data\book\076.txt" />
+    <Content Include="_static\data\book\077.txt" />
+    <Content Include="_static\data\book\078.txt" />
+    <Content Include="_static\data\book\079.txt" />
+    <Content Include="_static\data\book\080.txt" />
+    <Content Include="_static\data\book\081.txt" />
+    <Content Include="_static\data\book\category.txt" />
+    <Content Include="_static\data\cover.png" />
+    <Content Include="_static\data\intro.txt" />
+    <Content Include="_static\data\okr-bg-200.png" />
+    <Content Include="_static\data\okr-bg-200_173.png" />
+    <Content Include="_static\data\okr-bg-200_200.png" />
+    <Content Include="_static\data\okr-bg-200_62.png" />
+    <Content Include="_static\data\okr-bg-200_99.png" />
+    <Content Include="_static\data\okr-bg.png" />
+    <Content Include="_static\data\okr-icon.png" />
+    <Content Include="_static\data\okr-splash.png" />
+    <Content Include="_static\data\okr-道德经.txt" />
+    <Content Include="_static\data\道德经.txt" />
+    <Content Include="_static\img\bbg-night.png" />
+    <Content Include="_static\img\bbg.png" />
+    <Content Include="_static\img\okr-arrow.png" />
+    <Content Include="_static\img\okr-download.png" />
+    <Content Include="_static\img\okr-haoyue.png" />
+    <Content Include="_static\img\okr-header.png" />
+    <Content Include="_static\img\okr-info.png" />
+    <Content Include="_static\img\okr-marked.png" />
+    <Content Include="_static\img\okr-marking.png" />
+    <Content Include="_static\img\okr-text-bg.png" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
+    <None Include="_static\data\app.config" />
+    <None Include="_static\data\okrapp.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Control\" />
-    <Folder Include="View\" />
+    <Folder Include="_static\resource\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\data\app\okr-bg-3guo.png" />
@@ -214,6 +396,56 @@
     <Content Include="Asset\data\okr-bg.png" />
     <Content Include="Asset\data\okr-icon.png" />
     <Content Include="Asset\data\okr-splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Apps.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Setting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shared\AtHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shared\AtTitle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shared\BookmarkItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shared\ChapterItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shared\OkrBrowser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Splash.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Viewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="_static\skin\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
