@@ -1,0 +1,32 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="OKr.MXReader.Client.View.Shared.OkrBrowser"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:srd="clr-namespace:OKr.MXReader.Client.View.Shared"
+    xmlns:atloader="clr-namespace:At.Phone.Control.Loader;assembly=At.Phone.Control"
+    xmlns:ctrl="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource okr-color-base}">
+        <srd:AtHeader x:Name="title" Title="关于" VerticalAlignment="Top" />
+
+        <atloader:OkrLoader x:Name="loader" />
+        
+        <StackPanel Margin="0,58,0,0">
+            <ctrl:WebBrowser x:Name="browser" IsScriptEnabled="True"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="480" Height="700" Navigating="OnNavigating" Navigated="OnNavigated" LoadCompleted="OnLoadCompleted" />
+        </StackPanel>
+    </Grid>
+
+
+</phone:PhoneApplicationPage>
