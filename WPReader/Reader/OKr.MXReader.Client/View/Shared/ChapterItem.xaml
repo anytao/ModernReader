@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="OKr.MXReader.Client.View.Shared.ChapterItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="70" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot">
+        <Button CacheMode="BitmapCache" Width="390" Height="70" Margin="0,5,0,5" Click="OnRead" Tag="{Binding ChapterNo}" Style="{StaticResource okr-btn-noborder}">
+            <Button.Background>
+                <ImageBrush ImageSource="/_static/img/okr-text-bg.png" />
+            </Button.Background>
+            <TextBlock HorizontalAlignment="Left" Margin="12,0,12,0" Width="366" Text="{Binding Title}" Style="{StaticResource okr-text}" TextWrapping="Wrap" />
+        </Button>
+    </Grid>
+</UserControl>
