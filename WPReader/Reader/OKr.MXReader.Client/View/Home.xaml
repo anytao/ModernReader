@@ -19,7 +19,7 @@
 
     <UserControl.Resources>
         <DataTemplate x:Key="okr-panoheader">
-            <Image Source="/_static/img/okr-header.png" Stretch="None" RenderTransformOrigin="0,0" Height="46" Width="413" Margin="14,90,0,0">
+            <Image Source="/_static/img/okr-header.png" Stretch="None" RenderTransformOrigin="0,0" Height="46" Width="413" Margin="14,45,0,0">
                 <Image.RenderTransform>
                     <CompositeTransform />
                 </Image.RenderTransform>
@@ -68,21 +68,37 @@
             </ctrl:PanoramaItem>
 
             <ctrl:PanoramaItem Margin="12,10,0,0" Foreground="{StaticResource okr-color-blue}">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,-28,-12,0">
+                <!--<StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,-28,-12,0">
                     <TextBlock Text="目录" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource okr-subtitle-yellow}" />
                     <StackPanel Margin="12,10,12,10">
                         <ListBox x:Name="clist" Height="630" />
                     </StackPanel>
-                </StackPanel>
+                </StackPanel>-->
+                <Grid Margin="0,-28,-12,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="目录" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource okr-subtitle-yellow}" />
+                    <ListBox x:Name="clist" Grid.Row="1" Margin="12,10,12,20" />
+                </Grid>
             </ctrl:PanoramaItem>
 
             <ctrl:PanoramaItem Margin="12,10,0,0" Foreground="{StaticResource okr-color-blue}">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,-28,-12,0">
+                <!--<StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,-28,-12,0">
                     <TextBlock Text="书签" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource okr-subtitle-yellow}" />
                     <StackPanel Margin="12,10,12,10">
                         <ListBox x:Name="mlist" Height="630" />
                     </StackPanel>
-                </StackPanel>
+                </StackPanel>-->
+                <Grid Margin="0,-28,-12,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="书签" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource okr-subtitle-yellow}" />
+                    <ListBox x:Name="mlist" Grid.Row="1" Margin="12,10,12,20"/>
+                </Grid>
             </ctrl:PanoramaItem>
 
             <ctrl:PanoramaItem Margin="12,10,0,0" Foreground="{StaticResource okr-color-blue}">
