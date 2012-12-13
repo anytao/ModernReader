@@ -19,7 +19,7 @@ namespace OKr.MXReader.Client.Core
     {
         public static void LoadConfig()
         {
-            Uri uriResource = new Uri("_static/data/app.config", UriKind.Relative);
+            Uri uriResource = new Uri("_static/data/okr.me", UriKind.Relative);
             XElement element = XElement.Load(Application.GetResourceStream(uriResource).Stream);
 
             // Load the app from config

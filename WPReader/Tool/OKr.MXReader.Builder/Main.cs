@@ -48,7 +48,7 @@ namespace OKr.MXReader.Builder
             // 3. 修改Csproj文件
             OnResetCsproj();
 
-            // todo: {WT}, 需要重构OnResetConfig()，实现修改data/app.config的目的。
+            // todo: {WT}, 需要重构OnResetConfig()，实现修改data/okr.me的目的。
             // 4. 重置config文件
             OnResetConfig();
 
@@ -109,7 +109,7 @@ namespace OKr.MXReader.Builder
 
             //return this.description;
 
-            String introPath = this.rootPath + "\\" + "app.config";
+            String introPath = this.rootPath + "\\" + "okr.me";
 
             if (!File.Exists(introPath))
             {
@@ -191,7 +191,7 @@ namespace OKr.MXReader.Builder
 
             BuildItemGroup itemGroup = project.AddNewItemGroup();
 
-            itemGroup.AddNewItem("Content", "_static\\data\\app.config");
+            itemGroup.AddNewItem("Content", "_static\\data\\okr.me");
             itemGroup.AddNewItem("Content", "_static\\data\\cover.png");
             itemGroup.AddNewItem("Content", "_static\\data\\okr-bg.png");
             itemGroup.AddNewItem("Content", "_static\\data\\okr-icon.png");
@@ -217,7 +217,7 @@ namespace OKr.MXReader.Builder
 
         private void OnResetConfig()
         {
-            String xml = this.rootPath + "\\" + "app.config";
+            String xml = this.rootPath + "\\" + "okr.me";
 
             Uri uriResource = new Uri(xml, UriKind.RelativeOrAbsolute);
             XElement doc = XElement.Load(xml);

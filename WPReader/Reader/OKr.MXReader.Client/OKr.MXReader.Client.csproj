@@ -22,7 +22,7 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>mxreader.xap</XapFilename>
+    <XapFilename>okrbook.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <SilverlightAppEntry>OKr.MXReader.Client.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
@@ -163,6 +163,7 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="_static\data\okrapp.config" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\About.xaml">
@@ -218,147 +219,17 @@
     <Folder Include="_static\resource\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="_static\data\app.config" />
-    <Content Include="_static\data\app\okr-bg-3guo.png" />
-    <Content Include="_static\data\app\okr-bg-fengshen.png" />
-    <Content Include="_static\data\app\okr-bg-honglou.png" />
-    <Content Include="_static\data\app\okr-bg-jinping.png" />
-    <Content Include="_static\data\app\okr-bg-liaozhai.png" />
-    <Content Include="_static\data\app\okr-bg-rulin.png" />
-    <Content Include="_static\data\app\okr-bg-shuihu.png" />
-    <Content Include="_static\data\app\okr-bg-soushen.png" />
-    <Content Include="_static\data\app\okr-bg-xixiang.png" />
-    <Content Include="_static\data\app\okr-bg-xiyou.png" />
-    <Content Include="_static\data\book\001.txt" />
-    <Content Include="_static\data\book\002.txt" />
-    <Content Include="_static\data\book\003.txt" />
-    <Content Include="_static\data\book\004.txt" />
-    <Content Include="_static\data\book\005.txt" />
-    <Content Include="_static\data\book\006.txt" />
-    <Content Include="_static\data\book\007.txt" />
-    <Content Include="_static\data\book\008.txt" />
-    <Content Include="_static\data\book\009.txt" />
-    <Content Include="_static\data\book\010.txt" />
-    <Content Include="_static\data\book\011.txt" />
-    <Content Include="_static\data\book\012.txt" />
-    <Content Include="_static\data\book\013.txt" />
-    <Content Include="_static\data\book\014.txt" />
-    <Content Include="_static\data\book\015.txt" />
-    <Content Include="_static\data\book\016.txt" />
-    <Content Include="_static\data\book\017.txt" />
-    <Content Include="_static\data\book\018.txt" />
-    <Content Include="_static\data\book\019.txt" />
-    <Content Include="_static\data\book\020.txt" />
-    <Content Include="_static\data\book\021.txt" />
-    <Content Include="_static\data\book\022.txt" />
-    <Content Include="_static\data\book\023.txt" />
-    <Content Include="_static\data\book\024.txt" />
-    <Content Include="_static\data\book\025.txt" />
-    <Content Include="_static\data\book\026.txt" />
-    <Content Include="_static\data\book\027.txt" />
-    <Content Include="_static\data\book\028.txt" />
-    <Content Include="_static\data\book\029.txt" />
-    <Content Include="_static\data\book\030.txt" />
-    <Content Include="_static\data\book\031.txt" />
-    <Content Include="_static\data\book\032.txt" />
-    <Content Include="_static\data\book\033.txt" />
-    <Content Include="_static\data\book\034.txt" />
-    <Content Include="_static\data\book\035.txt" />
-    <Content Include="_static\data\book\036.txt" />
-    <Content Include="_static\data\book\037.txt" />
-    <Content Include="_static\data\book\038.txt" />
-    <Content Include="_static\data\book\039.txt" />
-    <Content Include="_static\data\book\040.txt" />
-    <Content Include="_static\data\book\041.txt" />
-    <Content Include="_static\data\book\042.txt" />
-    <Content Include="_static\data\book\043.txt" />
-    <Content Include="_static\data\book\044.txt" />
-    <Content Include="_static\data\book\045.txt" />
-    <Content Include="_static\data\book\046.txt" />
-    <Content Include="_static\data\book\047.txt" />
-    <Content Include="_static\data\book\048.txt" />
-    <Content Include="_static\data\book\049.txt" />
-    <Content Include="_static\data\book\050.txt" />
-    <Content Include="_static\data\book\051.txt" />
-    <Content Include="_static\data\book\052.txt" />
-    <Content Include="_static\data\book\053.txt" />
-    <Content Include="_static\data\book\054.txt" />
-    <Content Include="_static\data\book\055.txt" />
-    <Content Include="_static\data\book\056.txt" />
-    <Content Include="_static\data\book\057.txt" />
-    <Content Include="_static\data\book\058.txt" />
-    <Content Include="_static\data\book\059.txt" />
-    <Content Include="_static\data\book\060.txt" />
-    <Content Include="_static\data\book\061.txt" />
-    <Content Include="_static\data\book\062.txt" />
-    <Content Include="_static\data\book\063.txt" />
-    <Content Include="_static\data\book\064.txt" />
-    <Content Include="_static\data\book\065.txt" />
-    <Content Include="_static\data\book\066.txt" />
-    <Content Include="_static\data\book\067.txt" />
-    <Content Include="_static\data\book\068.txt" />
-    <Content Include="_static\data\book\069.txt" />
-    <Content Include="_static\data\book\070.txt" />
-    <Content Include="_static\data\book\071.txt" />
-    <Content Include="_static\data\book\072.txt" />
-    <Content Include="_static\data\book\073.txt" />
-    <Content Include="_static\data\book\074.txt" />
-    <Content Include="_static\data\book\075.txt" />
-    <Content Include="_static\data\book\076.txt" />
-    <Content Include="_static\data\book\077.txt" />
-    <Content Include="_static\data\book\078.txt" />
-    <Content Include="_static\data\book\079.txt" />
-    <Content Include="_static\data\book\080.txt" />
-    <Content Include="_static\data\book\081.txt" />
-    <Content Include="_static\data\book\082.txt" />
-    <Content Include="_static\data\book\083.txt" />
-    <Content Include="_static\data\book\084.txt" />
-    <Content Include="_static\data\book\085.txt" />
-    <Content Include="_static\data\book\086.txt" />
-    <Content Include="_static\data\book\087.txt" />
-    <Content Include="_static\data\book\088.txt" />
-    <Content Include="_static\data\book\089.txt" />
-    <Content Include="_static\data\book\090.txt" />
-    <Content Include="_static\data\book\091.txt" />
-    <Content Include="_static\data\book\092.txt" />
-    <Content Include="_static\data\book\093.txt" />
-    <Content Include="_static\data\book\094.txt" />
-    <Content Include="_static\data\book\095.txt" />
-    <Content Include="_static\data\book\096.txt" />
-    <Content Include="_static\data\book\097.txt" />
-    <Content Include="_static\data\book\098.txt" />
-    <Content Include="_static\data\book\099.txt" />
-    <Content Include="_static\data\book\100.txt" />
-    <Content Include="_static\data\book\101.txt" />
-    <Content Include="_static\data\book\102.txt" />
-    <Content Include="_static\data\book\103.txt" />
-    <Content Include="_static\data\book\104.txt" />
-    <Content Include="_static\data\book\105.txt" />
-    <Content Include="_static\data\book\106.txt" />
-    <Content Include="_static\data\book\107.txt" />
-    <Content Include="_static\data\book\108.txt" />
-    <Content Include="_static\data\book\109.txt" />
-    <Content Include="_static\data\book\110.txt" />
-    <Content Include="_static\data\book\111.txt" />
-    <Content Include="_static\data\book\112.txt" />
-    <Content Include="_static\data\book\113.txt" />
-    <Content Include="_static\data\book\114.txt" />
-    <Content Include="_static\data\book\115.txt" />
-    <Content Include="_static\data\book\116.txt" />
-    <Content Include="_static\data\book\117.txt" />
-    <Content Include="_static\data\book\118.txt" />
-    <Content Include="_static\data\book\119.txt" />
-    <Content Include="_static\data\book\120.txt" />
-    <Content Include="_static\data\book\category.txt" />
-    <Content Include="_static\data\cover.png" />
-    <Content Include="_static\data\okr-bg-200-3guo_173.png" />
-    <Content Include="_static\data\okr-bg-200-3guo_200.png" />
-    <Content Include="_static\data\okr-bg-200-3guo_62.png" />
-    <Content Include="_static\data\okr-bg-200-3guo_99.png" />
-    <Content Include="_static\data\okr-bg.png" />
-    <Content Include="_static\data\okr-icon.png" />
-    <Content Include="_static\data\okr-splash.png" />
-    <Content Include="_static\data\okrapp.config" />
+    <ProjectReference Include="..\OKr.MXReader.Client.Core\OKr.MXReader.Client.Core.csproj">
+      <Project>{16956CBD-3D66-4CA7-BA89-DC6D592D08EC}</Project>
+      <Name>OKr.MXReader.Client.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="MSAdvertising, Version=6.1">
+      <Name>Microsoft Advertising SDK for Windows Phone 8 %28XAML%29</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="_static\img\bbg-night.png" />
     <Content Include="_static\img\bbg.png" />
     <Content Include="_static\img\okr-arrow.png" />
@@ -369,17 +240,6 @@
     <Content Include="_static\img\okr-marked.png" />
     <Content Include="_static\img\okr-marking.png" />
     <Content Include="_static\img\okr-text-bg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OKr.MXReader.Client.Core\OKr.MXReader.Client.Core.csproj">
-      <Project>{16956CBD-3D66-4CA7-BA89-DC6D592D08EC}</Project>
-      <Name>OKr.MXReader.Client.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="MSAdvertising, Version=6.1">
-      <Name>Microsoft Advertising SDK for Windows Phone 8 %28XAML%29</Name>
-    </SDKReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
