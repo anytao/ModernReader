@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{9465f8a4-a57e-48ee-8f52-bd757880564f}" Title="data" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="OKr Works" Description="Sample description" Publisher="OKr Inc." PublisherID="{6cd5d726-7844-4804-82c5-dfdf1488d162}">
+  <App xmlns="" ProductID="{20e2e669-cdf4-47dc-9040-50f629791d74}" Title="sgyi" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="OKr Works" Description="Sample description" Publisher="OKr Inc." PublisherID="{6cd5d726-7844-4804-82c5-dfdf1488d162}">
     <IconPath IsRelative="true" IsResource="false">_static\data\okr-icon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
@@ -30,7 +30,7 @@
           <SmallImageURI IsResource="false" IsRelative="true">_static\data\okr-bg.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsResource="false" IsRelative="true">_static\data\okr-bg.png</BackgroundImageURI>
-          <Title>data</Title>
+          <Title>sgyi</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

@@ -163,6 +163,7 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="_static\data\okrapp.config" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\About.xaml">
