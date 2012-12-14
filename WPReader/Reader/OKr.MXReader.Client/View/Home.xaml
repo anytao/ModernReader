@@ -45,7 +45,7 @@
 
                     <ScrollViewer Margin="12,80,0,20">
                         <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                                 <Button Click="OnShow" Style="{StaticResource okr-btn-noborder}" Height="320" Width="210"  Foreground="{StaticResource okr-color-dark}">
                                     <Button.Background>
                                         <ImageBrush ImageSource="/_static/data/cover.png" />
@@ -60,8 +60,15 @@
                                         </Button.Background>
                                     </Button>
                                 </Grid>
-                            </StackPanel>
-                            <TextBlock x:Name="tbIntro" Margin="12,20" Style="{StaticResource okr-text}" Text="" TextWrapping="Wrap" />
+                            </StackPanel>-->
+                            <Button Click="OnShow" Content="我的阅读" Style="{StaticResource okr-btn-noborder}" Foreground="{StaticResource okr-color-dark}" 
+                                    HorizontalAlignment="Left" Width="221" Height="43">
+                                <Button.Background>
+                                    <ImageBrush Stretch="None" ImageSource="/_static/img/okr-arrow.png" />
+                                </Button.Background>
+                            </Button>
+                            <TextBlock Margin="12" Style="{StaticResource okr-text}"><Run Text="作者：" /><Run x:Name="tbAuthor" /></TextBlock>
+                            <TextBlock x:Name="tbIntro" Margin="12,0,12,20" Style="{StaticResource okr-text}" Text="" TextWrapping="Wrap" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -178,7 +185,8 @@
                                 <Button.Content>
                                     <StackPanel MinWidth="300" Orientation="Vertical" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center">
                                         <TextBlock Text="关于" Style="{StaticResource okr-title-dark}" />
-                                        <TextBlock Text="更多乐趣，尽在http://okr.me" Style="{StaticResource okr-tip}" />
+                                        <!--<TextBlock Text="更多乐趣，尽在http://okr.me" Style="{StaticResource okr-tip}" />-->
+                                        <TextBlock Text="官方微博：weibo.com/appfm" Style="{StaticResource okr-tip}" />
                                     </StackPanel>
                                 </Button.Content>
                             </Button>

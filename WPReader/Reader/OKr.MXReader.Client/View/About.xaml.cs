@@ -49,7 +49,7 @@ namespace OKr.MXReader.Client.View
 
         private void OnOKr(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new Uri(string.Format("/View/Shared/OkrBrowser.xaml?url={0}", OkrBookContext.Current.App.Url), UriKind.RelativeOrAbsolute));
+            //NavigationService.Navigate(new Uri(string.Format("/View/Shared/OkrBrowser.xaml?url={0}", OkrBookContext.Current.App.Url), UriKind.RelativeOrAbsolute));
         }
 
         private void OnUpdate(object sender, EventArgs e)

@@ -19,7 +19,7 @@
 
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
-            <ImageBrush ImageSource="/_static/data/okr-splash.png" />
+            <ImageBrush ImageSource="/_static/img/SplashScreen.png" />
         </Grid.Background>
     </Grid>
 

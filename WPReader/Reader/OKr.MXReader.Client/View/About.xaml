@@ -21,7 +21,7 @@
             <StackPanel MouseLeftButtonUp="OnOKr" Height="500" VerticalAlignment="Top">
                 <Image Margin="0,130,0,20" Width="112" Height="120" Source="/_static/img/okr-haoyue.png" />
                 <TextBlock HorizontalAlignment="Center" Text="好阅，阅尽天下精彩。" TextWrapping="Wrap" Style="{StaticResource okr-text}" />
-                <TextBlock HorizontalAlignment="Center" Text="http://okr.me" Style="{StaticResource okr-tip}" />
+                <!--<TextBlock HorizontalAlignment="Center" Text="http://okr.me" Style="{StaticResource okr-tip}" />-->
             </StackPanel>
             
             <!--<StackPanel Margin="20,350,0,0">
