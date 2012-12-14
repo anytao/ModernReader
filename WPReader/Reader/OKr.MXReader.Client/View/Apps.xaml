@@ -43,7 +43,7 @@
 
         <TextBlock Grid.Row="1" Margin="12,10,12,0" Style="{StaticResource okr-text-red}" Text="点击即可下载，随享更多精彩。" />
 
-        <TextBlock Grid.Row="2" Margin="12,0" Style="{StaticResource okr-tip}"><Run Text="更多好玩儿的应用，请访问" /><Run Text="http://okr.me" /></TextBlock>
+        <!--<TextBlock Grid.Row="2" Margin="12,0" Style="{StaticResource okr-tip}"><Run Text="更多好玩儿的应用，请访问" /><Run Text="http://okr.me" /></TextBlock>-->
 
         <ListBox Grid.Row="3" Margin="12,10,12,10" x:Name="applist" ItemsSource="{Binding}" ItemTemplate="{StaticResource okr-dt-app}" />
     </Grid>
