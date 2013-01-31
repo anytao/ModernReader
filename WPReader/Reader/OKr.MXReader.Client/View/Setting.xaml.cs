@@ -168,6 +168,7 @@ namespace OKr.MXReader.Client.View
 
             this.wrapper.Background = brush;
             this.tbIntro.Foreground = OkrBookConfig.WBrush;
+            this.tbIntro.InvalidateMeasure();
         }
 
         private void OnRemindUnchecked(object sender, RoutedEventArgs e)
@@ -185,6 +186,7 @@ namespace OKr.MXReader.Client.View
 
             this.wrapper.Background = brush;
             this.tbIntro.Foreground = OkrBookConfig.BBrush;
+            this.tbIntro.InvalidateMeasure();
         }
 
         private Brush greenBrush = (Brush)Application.Current.Resources["okr-color-green"];

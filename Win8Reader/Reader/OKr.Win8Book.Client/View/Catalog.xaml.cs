@@ -56,6 +56,7 @@ namespace OKr.Win8Book.Client.View
             groupedItemsViewSource.Source = temp;
 
             LoadTheme();
+            FitScreenSize();
         }
 
         private void OnChapterItemClick(object sender, ItemClickEventArgs e)
@@ -75,6 +76,16 @@ namespace OKr.Win8Book.Client.View
 
         #endregion
 
+        #region Fit Screen Size
+
+        private void FitScreenSize()
+        {
+            /* 578 is the actual content area height */
+            var paddingBottom = ScreenHeight - 578d - 140d;
+            zoomedInGridView.Padding = new Thickness(120, 0, 0, paddingBottom);
+        }
+
+        #endregion
 
     }
 }

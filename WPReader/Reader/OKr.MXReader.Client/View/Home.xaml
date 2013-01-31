@@ -61,7 +61,7 @@
                                     </Button>
                                 </Grid>
                             </StackPanel>-->
-                            <Button Click="OnShow" Content="我的阅读" Style="{StaticResource okr-btn-noborder}" Foreground="{StaticResource okr-color-dark}" 
+                            <Button Click="OnShow" Content="继续阅读" Style="{StaticResource okr-btn-noborder}" Foreground="{StaticResource okr-color-dark}" 
                                     HorizontalAlignment="Left" Width="221" Height="43">
                                 <Button.Background>
                                     <ImageBrush Stretch="None" ImageSource="/_static/img/okr-arrow.png" />

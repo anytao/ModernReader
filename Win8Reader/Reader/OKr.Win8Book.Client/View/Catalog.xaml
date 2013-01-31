@@ -128,7 +128,7 @@
                         </GridView>
                     </SemanticZoom.ZoomedOutView>
                     <SemanticZoom.ZoomedInView>
-                        <GridView Padding="120,0,0,50"
+                        <GridView x:Name="zoomedInGridView" Padding="120,0,0,50"
                                     ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
                                     ItemTemplate="{StaticResource ChapterTemplate}"
                                     SelectionMode="None"
@@ -136,7 +136,7 @@
                                     ItemClick="OnChapterItemClick">
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
+                                    <StackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </GridView.ItemsPanel>
                             <GridView.GroupStyle>
