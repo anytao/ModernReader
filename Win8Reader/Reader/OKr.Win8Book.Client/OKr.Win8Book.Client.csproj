@@ -219,7 +219,9 @@
     <Content Include="Assets\Viewer\ViewArticleButton.png" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="Assets\Data\okrapp.config" />
-    <Content Include="Assets\Data\me.okr" />
+    <Content Include="Assets\Data\me.okr">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="OKr.Win8Book.Client_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

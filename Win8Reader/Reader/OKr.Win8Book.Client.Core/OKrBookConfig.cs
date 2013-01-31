@@ -12,7 +12,7 @@ namespace OKr.Win8Book.Client.Core
         public static readonly int LARGEFONTSIZE = 24;
         public static readonly int SMALLFONTSIZE = 16;
 
-        public static readonly int HEIGHT = 2236;
+        public static readonly int HEIGHT = 3333; //1399;
         public static readonly int LINEHEIGHT = 42;
     }
 }

@@ -37,7 +37,7 @@ namespace OKr.Win8Book.Client.View
             }
             else if (this.ScreenWidth == 1920)
             {
-                this.height = 2610;
+                this.height = 5000;   //2610;
             }
 
             this.Loaded += Viewer_Loaded;
@@ -462,7 +462,7 @@ namespace OKr.Win8Book.Client.View
 
         private async void UpdatePage()
         {
-            int index = chapter.Pages.FindIndex(x => x.CharNum == chapter.CurrentPage.CharNum);
+            int index = chapter.Pages.FindIndex(x => x.Locations[0] == chapter.CurrentPage.Locations[0]);
 
             if (index < this.chapter.Pages.Count - 1)
             {

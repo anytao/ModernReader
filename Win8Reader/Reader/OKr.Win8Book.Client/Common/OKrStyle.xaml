@@ -16,7 +16,7 @@
 
     <!--base-->
     <Style x:Key="OKrTextBlockStyleBase" TargetType="TextBlock" >
-        <Setter Property="FontFamily" Value="Microsoft YaHei"/>
+        <Setter Property="FontFamily" Value="DengXian"/>
         <Setter Property="TextTrimming" Value="WordEllipsis"/>
         <Setter Property="FontWeight" Value="Normal"/>
     </Style>
