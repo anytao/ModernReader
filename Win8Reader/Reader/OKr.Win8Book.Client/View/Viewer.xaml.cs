@@ -119,6 +119,7 @@ namespace OKr.Win8Book.Client.View
             }
 
             LoadTheme();
+            FitScreenSize();
         }
 
         protected async override void OnNavigatedFrom(NavigationEventArgs e)
@@ -671,5 +672,37 @@ namespace OKr.Win8Book.Client.View
         }
 
         #endregion
+
+        #region Sceen Size Fitting
+
+        private double PerfectColumnWith
+        {
+            get
+            {
+                return (ScreenWidth - 120 - 80 - 16) / 2;
+            }
+        }
+
+        private void FitScreenSize()
+        {
+            currentRichTextBlock.Width = PerfectColumnWith;
+            previousRichTextBlock.Width = PerfectColumnWith;
+            nextRichTextBlock.Width = PerfectColumnWith;
+
+            previousTransform.TranslateX = 0 - ScreenWidth;
+            nextTransform.TranslateX = ScreenWidth;
+        }
+
+        private void RichTextBlockOverflow_Loaded(object sender, RoutedEventArgs e)
+        {
+            RichTextBlockOverflow flow = sender as RichTextBlockOverflow;
+            if (flow != null)
+            {
+                flow.Width = PerfectColumnWith;
+            }
+        }
+
+        #endregion
+
     }
 }

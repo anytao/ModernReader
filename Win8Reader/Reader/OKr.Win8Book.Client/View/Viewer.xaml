@@ -54,7 +54,7 @@
                     <CompositeTransform/>
                 </Grid.RenderTransform>
 
-                <!--next page (in the middle)-->
+                <!--current page (in the middle)-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -62,8 +62,9 @@
                     </Grid.RowDefinitions>
 
                     <!-- Content is allowed to flow across as many columns as needed -->
-                    <common:RichTextColumns x:Name="richTextColumns" Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
-                        <RichTextBlock x:Name="richTextBlock" Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                    <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
+                        <RichTextBlock x:Name="currentRichTextBlock" IsTextSelectionEnabled="False" LineHeight="42">
+                            <!--Width="560"-->
                             <Paragraph>
                                 <Run x:Name="currentText" Text="{Binding CurrentPage.Text}" />
                             </Paragraph>
@@ -72,7 +73,8 @@
                         <!-- Additional columns are created from this template -->
                         <common:RichTextColumns.ColumnTemplate>
                             <DataTemplate>
-                                <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                                <RichTextBlockOverflow Margin="80,0,0,0" Loaded="RichTextBlockOverflow_Loaded">
+                                    <!--Width="560"-->
                                     <RichTextBlockOverflow.RenderTransform>
                                         <TranslateTransform X="-1" Y="4"/>
                                     </RichTextBlockOverflow.RenderTransform>
@@ -85,10 +87,11 @@
                 <!--previous page (on the left)-->
                 <Grid>
                     <Grid.RenderTransform>
-                        <CompositeTransform TranslateX="-1366"/>
+                        <CompositeTransform x:Name="previousTransform"/>
+                        <!--TranslateX="-1366"-->
                     </Grid.RenderTransform>
                     <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
-                        <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                        <RichTextBlock x:Name="previousRichTextBlock" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
                                 <Run x:Name="leftText" Text="{Binding PrePage.Text}" FontSize="20"/>
                             </Paragraph>
@@ -97,7 +100,7 @@
                         <!-- Additional columns are created from this template -->
                         <common:RichTextColumns.ColumnTemplate>
                             <DataTemplate>
-                                <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                                <RichTextBlockOverflow Margin="80,0,0,0" Loaded="RichTextBlockOverflow_Loaded">
                                     <RichTextBlockOverflow.RenderTransform>
                                         <TranslateTransform X="-1" Y="4"/>
                                     </RichTextBlockOverflow.RenderTransform>
@@ -110,10 +113,11 @@
                 <!--next page (on the right)-->
                 <Grid>
                     <Grid.RenderTransform>
-                        <CompositeTransform TranslateX="1366"/>
+                        <CompositeTransform x:Name="nextTransform"/>
+                        <!--TranslateX="1366"-->
                     </Grid.RenderTransform>
                     <common:RichTextColumns Grid.Row="1" Margin="120,20,0,0" VerticalAlignment="Top">
-                        <RichTextBlock Width="560" IsTextSelectionEnabled="False" LineHeight="42">
+                        <RichTextBlock x:Name="nextRichTextBlock" IsTextSelectionEnabled="False" LineHeight="42">
                             <Paragraph>
                                 <Run x:Name="rightText" Text="{Binding NextPage.Text}" />
                             </Paragraph>
@@ -122,7 +126,7 @@
                         <!-- Additional columns are created from this template -->
                         <common:RichTextColumns.ColumnTemplate>
                             <DataTemplate>
-                                <RichTextBlockOverflow Width="560" Margin="80,0,0,0">
+                                <RichTextBlockOverflow Margin="80,0,0,0" Loaded="RichTextBlockOverflow_Loaded">
                                     <RichTextBlockOverflow.RenderTransform>
                                         <TranslateTransform X="-1" Y="4"/>
                                     </RichTextBlockOverflow.RenderTransform>
