@@ -188,6 +188,8 @@
     <Content Include="Assets\Common\AppBarFontNormal.png" />
     <Content Include="Assets\Common\PageBackgroundDark.png" />
     <Content Include="Assets\Common\PageBackgroundLight.png" />
+    <Content Include="Assets\Data\app\okr-bg-csd.png" />
+    <Content Include="Assets\Data\app\okr-bg-nld.png" />
     <Content Include="Assets\Home\ChapterIcon1.png" />
     <Content Include="Assets\Home\ChapterIcon2.png" />
     <Content Include="Assets\Home\ChapterIcon3.png" />
